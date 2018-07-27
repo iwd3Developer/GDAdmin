@@ -1,0 +1,142 @@
+
+
+<div style="height:625px;">
+
+<div class="container">
+        <!--Row with three equal columns-->
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="demo-content">.col-md-3</div>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            	<div class="demo-content bg-alt">.col-md-3</div>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            	<div class="demo-content">.col-md-3</div>
+            </div>
+        </div>
+        <hr>
+        <!--Row with three columns divided in 1:4:1 ratio-->
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            	<div class="demo-content">.col-md-2</div>
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+            	<div class="demo-content bg-alt">
+					<div id="A">
+						<a class="weatherwidget-io" href="https://forecast7.com/en/39d11n94d63/kansas-city/?unit=us" data-label_1="KANSAS CITY" data-label_2="WEATHER" data-days="3" data-theme="clear" >KANSAS CITY WEATHER</a>
+					</div>
+					</br><img width="100%" src="https://maps.googleapis.com/maps/api/staticmap?autoscale=3&size=400x200&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7Ckansas+city,+KS" alt="Google Map of Albany, NY">
+				</div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            	<div class="demo-content">.col-md-2</div>
+            </div>
+        </div>
+        <hr>
+        <!--Row with three columns divided unevenly-->
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            	<div class="demo-content">.col-md-3</div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            	<div class="demo-content bg-alt">xxxx</div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            	<div class="demo-content">.col-md-2</div>
+            </div>
+        </div>
+    </div>
+
+<!--
+	<div class="row">
+		<div class="col-sm-3"><div id="demo0">demo0</div></div>
+		<div class="col-sm-6"><div id="A">
+			<a class="weatherwidget-io" href="https://forecast7.com/en/39d11n94d63/kansas-city/?unit=us" data-label_1="KANSAS CITY" data-label_2="WEATHER" data-days="3" data-theme="clear" >KANSAS CITY WEATHER</a>
+		</div>
+		<div class="col-sm-3">
+			<img width="400" src="https://maps.googleapis.com/maps/api/staticmap?autoscale=3&size=400x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7Ckansas+city,+KS" alt="Google Map of Albany, NY">
+		</div>
+-->		
+		
+	
+		<div id="dialog">................</div>
+
+</div>
+
+
+
+
+<script>
+
+//setTimeout(gogo, 300);
+$(document).ready(function(){
+	setTimeout(a_pg0_init, 300);
+	
+	
+});
+
+	
+	
+function a_pg0_init() {
+//$("#calendar2").kendoCalendar();
+document.getElementById("demo0").innerHTML = cUserName;
+
+	// dialog : https://docs.telerik.com/kendo-ui/controls/layout/dialog/overview
+	// <div id="dialog">................</div>
+	// dialog events
+	function onInitOpen2(e) {
+		//alert("event :: initOpen");
+	}
+	function onOpen2(e) {
+		//alert("event :: open");
+	}
+	function onShow2(e) {
+		//alert("event :: show");
+	}
+	function onHide2(e) {
+		//alert("event :: hide");
+	}
+	function onClose2(e) {
+		//show.fadeIn();
+		//dialog2.data("kendoDialog").close();
+		
+		//alert("event :: close");
+	}
+	function onCancel2(e) {
+		//alert("action :: cancel");
+	}
+	// end dialog events
+	function onOK2(e) {
+		//alert("action :: OK");
+		dialog2.data("kendoDialog").close();//IMPORTANT!
+	}
+	var dialog2 = $('#dialog_s1');	
+	dialog2.kendoDialog({
+		width: "450px",
+		visible: false,
+		title: "Software Update",
+		closable: true,
+		modal: false,
+		content: "<p>XXXXX <strong>Kendo UI</strong> is available. Would you like to download and install it now?<p>",
+		actions: [
+			{ text: 'Skip this version' },
+			{ text: 'Remind me later' },
+			{ text: 'Install update', primary: true, action: onOK2 }
+		],
+		initOpen: onInitOpen2,
+            open: onOpen2,
+            close: onClose2,
+            show: onShow2,
+            hide: onHide2
+	});
+
+	// dialog2.data("kendoDialog").close();//IMPORTANT!
+	dialog2.data("kendoDialog").open();
+	// end dialog
+
+};
+</script>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>

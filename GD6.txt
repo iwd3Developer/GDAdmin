@@ -1,0 +1,11 @@
+
+
+Here's the file for the FTP info(filezilla).  The PW is Bradl!23y
+
+For the cpanel, I'm going to give you my login.  I added another login for you, but it isn't working right now.  It may need to update/refresh, but it'll just be easier this way.
+
+link: symbol.websitewelcome.com:2083
+UN: markdare
+PW: Bradl123y
+
+

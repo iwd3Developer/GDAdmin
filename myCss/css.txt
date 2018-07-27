@@ -1,0 +1,4 @@
+https://demos.telerik.com/kendo-ui/themebuilder/
+
+widget base #0070c0
+Accent color #13688c

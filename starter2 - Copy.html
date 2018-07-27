@@ -1,0 +1,600 @@
+  
+<link rel="stylesheet" href="http://kendo.cdn.telerik.com/2018.2.620/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="./myCss/kendo.custom.css" />
+<script src="http://kendo.cdn.telerik.com/2018.2.620/js/jquery.min.js"></script>
+<script src="http://kendo.cdn.telerik.com/2018.2.620/js/kendo.all.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+<div class="wrapper">
+
+  <!-- Main Header -->
+  <header class="main-header">
+
+    <!-- Logo -->
+    <a href="#" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>GD</b>M</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>GD</b>XXX</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+          <li class="dropdown messages-menu">
+            <!-- Menu toggle button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-envelope-o"></i>
+              <span class="label label-success">4</span>
+            </a>            
+          </li>
+          <!-- /.messages-menu -->
+
+          <!-- Notifications Menu -->
+          <li class="dropdown notifications-menu">
+            <!-- Menu toggle button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">10</span>
+            </a>            
+          </li>
+          <!-- Tasks Menu -->
+          <li class="dropdown tasks-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-flag-o"></i>
+              <span class="label label-danger">9</span>
+            </a>            
+          </li>
+		  
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="dist/img/avatar04.png" class="user-image" alt="User Image">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs">User Name 1</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="dist/img/avatar04.png" class="img-circle" alt="User Image">
+                <p>
+                  User Name 2 - Title
+                  <small>?????</small>
+                </p>
+              </li>
+			  
+              <!-- Menu Body -->
+              <li class="user-body">
+				<!--
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+				-->
+                <!-- /.row -->
+              </li>
+			  
+              <!-- Menu Footer
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+			  -->
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+		  
+		  
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="dist/img/avatar04.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>User Name 3</p>
+          <!-- Status -->
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+
+      <!-- search form (Optional) -->
+	  <!--
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+        </div>
+      </form>
+	  -->
+      <!-- /.search form -->
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header" style="color: white;">HEADER</li>
+		
+        <!-- Optionally, you can add icons to the links -->
+        <li class="active"><a href="#"><i class="fa fa-th"></i> <span>Link</span></a></li>
+        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        
+		<li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#">Link in level 2</a></li>
+          </ul>
+        </li>
+		
+		<!-- opt 1 -->
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Opt 1</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Opt 1 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 1 Blank 2</a></li>
+          </ul>
+        </li>
+		<!-- end opt 1 -->
+		<!-- opt 2 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Opt 2</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 2</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 3</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 4</a></li>
+          </ul>
+        </li>
+		<!-- end opt 2 -->
+		<!-- opt 3 -->
+        <li>
+          <a href="#">
+            <i class="fa fa-th"></i> <span>Opt 3</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+        </li>
+		<!-- end opt 3 -->
+		<!-- opt 4 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Opt 4</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 4 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 4 Blank 2</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 4 Blank 3</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 4 Blank 4</a></li>
+          </ul>
+        </li>
+		<!-- end opt 4 -->
+		<!-- opt 5 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Opt 5</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 2</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 3</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 4</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 5</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 6</a></li>
+          </ul>
+        </li>
+		<!-- end opt 5 -->
+		<!-- opt 6 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Opt 6</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 6 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 6 Blank 2</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 6 Blank 3</a></li>
+          </ul>
+        </li>
+		<!-- end opt 6 -->
+		<!-- opt 7 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Opt 7</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 7 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 7 Blank 2</a></li>
+          </ul>
+        </li>
+		<!-- end opt 7 -->
+		<!-- opt 8 -->
+        <li>
+          <a href="#">
+            <i class="fa fa-calendar"></i> <span>Opt 8</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red">3</small>
+              <small class="label pull-right bg-blue">17</small>
+            </span>
+          </a>
+        </li>
+		<!-- end opt 8 -->
+		<!-- opt 9 -->
+        <li>
+          <a href="#">
+            <i class="fa fa-envelope"></i> <span>Opt 9</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-yellow">12</small>
+              <small class="label pull-right bg-green">16</small>
+              <small class="label pull-right bg-red">5</small>
+            </span>
+          </a>
+        </li>
+		<!-- end opt 9 -->
+		<!-- opt 10 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>Opt 10</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 2</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 3</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 4</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 5</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 6</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 7</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 8</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 9</a></li>
+          </ul>
+        </li>
+		<!-- end opt 10 -->
+		<!-- opt 11 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Opt 11</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 11 Blank 1</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Opt 11 Blank 2
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Opt 11 Blank 2b</a></li>
+                <li class="treeview">
+                  <a href="#"><i class="fa fa-circle-o"></i>  Opt 11 Blank 2c
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Opt 11 Blank 2c1</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Opt 11 Blank 2c2</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>  Opt 11 Blank 7</a></li>
+          </ul>		  
+        </li>
+		<!-- end opt 11 -->
+		<!-- opt 12 -->
+        <li><a href="#"><i class="fa fa-book"></i> <span>Documentation / Help</span></a></li>
+		<!-- change or no uses
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+		-->
+      </ul>
+	  <!-- end opt 12 -->
+		
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" >
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+	
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
+
+    <!-- Main content ***************************************************************** -->
+    <section class="content container-fluid" >
+		<!--------------------------
+        | Your Page Content Here |
+        -------------------------->	
+
+		</br>
+		<div class="row" >
+			<div class="col-xs-12 col-sm-12 col-lg-12">
+				<!-- TABS -->
+				<div id="tabstrip" >
+					<ul>
+						<li class="k-state-active">
+							Desktop
+						</li>
+						<li>
+							Job Board
+						</li>
+						<li>
+							Status
+						</li>
+						<li>
+							Help
+						</li>
+					</ul>
+					<div>					
+						<p>DESKTOP</p>
+							<div class="row">
+							  <div class="col-sm-4">.col-sm-4</div>
+							  <div class="col-sm-4"><div id="calendar">calendar</div></div>
+							  <div class="col-sm-4"><div id="x32">XXXXXXXX</div></div>
+							</div>
+					</div>
+					<div>					
+						<p>JOB BOARD</p>
+					</div>
+					<div>					
+						<p>STATUS</p>
+					</div>
+					<div>					
+						<p>HELP</p>
+					</div>
+				</div>
+				<!-- END TABS -->
+			</div>
+		</div> <!-- end row -->
+		
+
+<!--		
+		<div class="row">
+		  <div class="col-sm-3">.col-sm-3</div>
+		  <div class="col-sm-6">.col-sm-6</div>
+		  <div class="col-sm-3">.col-sm-3</div>
+		</div>
+		
+		<div class="row">
+		  <div class="col-xs-12 col-sm-12 col-lg-12"></div>
+		</div>
+		
+		<div class="row">
+		  <div class="col-sm-4">.col-sm-4</div>
+		  <div class="col-sm-8">.col-sm-8</div>
+		</div>
+
+		<div class="row">
+		  <div class="col-sm-8">
+			.col-sm-8
+			<div class="row">
+			  <div class="col-sm-6">.col-sm-6</div>
+			  <div class="col-sm-6">.col-sm-6</div>
+			</div>
+		  </div>
+		  <div class="col-sm-4">.col-sm-4</div>
+		</div>
+
+		  
+		<div class="row">
+		  <div class="col-xs-9 col-md-7">.col-xs-9 .col-md-7</div>
+		  <div class="col-xs-3 col-md-5">.col-xs-3 .col-md-5</div>
+		</div>
+
+		<div class="row">
+		  <div class="col-xs-6 col-md-10">.col-xs-6 .col-md-10</div>
+		  <div class="col-xs-6 col-md-2">.col-xs-6 .col-md-2</div>
+		</div>
+
+		<div class="row">
+		  <div class="col-xs-6">.col-xs-6</div>
+		  <div class="col-xs-6">.col-xs-6</div>
+		</div>
+		
+		  
+		<div class="row">
+		  <div class="col-xs-7 col-sm-6 col-lg-8">.col-xs-7 .col-sm-6 .col-lg-8</div>
+		  <div class="col-xs-5 col-sm-6 col-lg-4">.col-xs-5 .col-sm-6 .col-lg-4</div>
+		</div>
+
+		<div class="row">
+		  <div class="col-xs-6 col-sm-8 col-lg-10">.col-xs-6 .col-sm-8 .col-lg-10</div>
+		  <div class="col-xs-6 col-sm-4 col-lg-2">.col-xs-6 .col-sm-4 .col-lg-2</div>
+		</div>
+-->
+		
+<!-- MAIN SCRIPT SECTION -->
+
+<!-- END MAIN SCRIPT SECTION -->
+
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer" >
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+      Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2016 <a href="#">GD</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:;">
+              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                <p>Will be 23 on April 24th</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+        <h3 class="control-sidebar-heading">Tasks Progress</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:;">
+              <h4 class="control-sidebar-subheading">
+                Custom Template Design
+              </h4>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Stats tab content -->
+      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+        <p>
+              Some information about this general settings option
+            </p>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+  immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+<script>
+
+$(document).ready(function(){
+
+	setTimeout(initKendoCtrls, 100);
+	//$("#x32").load("./pages/a_pg1.html");
+	//document.getElementById("cw32").style.visibility = "visible"; //object.style.visibility = "visible|hidden|collapse|initial|inherit"
+		
+});
+	
+	//setTimeout(initKendoCtrls, 300);
+	//$("#x32").load("./pages/a_pg1.html");
+	
+	
+	function initKendoCtrls() {
+		// init telerick controls
+		// create Calendar from div HTML element
+		$("#tabstrip").kendoTabStrip({
+			animation:  {
+				open: {
+					effects: "fadeIn"
+				}
+			}
+		});
+		
+		$("#calendar").kendoCalendar();
+		
+		
+				
+		
+		
+		//display:none|block|etc.. // This will not preserve the space for the div.
+		//visibility:visible|hidden //This will preserve the space for the div but wont be shown.
+		//setTimeout(a_pg1_init, 300);// calling newly loaded page
+		document.getElementById("demo").innerHTML = cUserName;
+	}
+	
+</script>
