@@ -671,23 +671,130 @@ transition: all 0.4s ease-in-out;
 						</div>
 						<!-- END DESKTOP TAB -->
 						
-						<div class="tfont">					
-							<p>JOB BOARD</p>
-							<div class="col-xs-12 col-sm-12 col-lg-12">
-							
+						<!-- Job Tab SECTION -->
+						<div class="tfont">
+							<div class="row">
+								<div class="col-xs-11 col-sm-11 col-lg-11">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<span itemscope itemtype="#">
+											<h3 class="panel-title" itemprop="name">Jobs</h3>
+										</div><!--/panel-heading-->
+											<div class="panel-body" itemprop="reviewBody">
+												<!-- code -->
+												
+												
+												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+												<span class="pull-right">
+													<p>hello</p>
+												</span><!--/reviewRating-->													
+											</div><!--/panel-body-->
+									</div><!--/panel-body-->
+								</div>
 							</div>
+							
+							<div class="row">
+								<div class="col-xs-3 col-sm-3 col-lg-3">
+
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span itemscope itemtype="#">
+												<h3 class="panel-title" itemprop="name">Crews</h3>
+											</div><!--/panel-heading-->
+												<div class="panel-body" itemprop="reviewBody">
+													<!-- code -->
+													
+													
+													<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+													<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+													<span class="pull-right">
+														<p>hello</p>
+													</span><!--/reviewRating-->													
+												</div><!--/panel-body-->
+										</div><!--/panel-body-->
+
+								</div>
+							
+								<div class="col-xs-8 col-sm-8 col-lg-8">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<span itemscope itemtype="#">
+												<h3 class="panel-title" itemprop="name">Job Map</h3>
+											</div><!--/panel-heading-->
+												<div class="panel-body" itemprop="reviewBody">
+													<!-- code -->
+													
+													
+													<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+													<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+													<span class="pull-right">
+														<p>hello</p>
+													</span><!--/reviewRating-->													
+												</div><!--/panel-body-->
+										</div><!--/panel-body-->
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-8 col-sm-8 col-lg-8">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<span itemscope itemtype="#">
+											<h3 class="panel-title" itemprop="name">Job Calendar</h3>
+										</div><!--/panel-heading-->
+											<div class="panel-body" itemprop="reviewBody">
+												<!-- code -->
+												<div id="scheduler" ></div>
+												
+												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+												<span class="pull-right">
+													<p>hello</p>
+												</span><!--/reviewRating-->													
+											</div><!--/panel-body-->
+									</div><!--/panel-body-->
+								</div>
+								<div class="col-xs-3 col-sm-3 col-lg-3">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<span itemscope itemtype="#">
+											<h3 class="panel-title" itemprop="name">Job Details</h3>
+										</div><!--/panel-heading-->
+											<div class="panel-body" itemprop="reviewBody">
+												<!-- code -->
+												
+												
+												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+												<span class="pull-right">
+													<p>hello</p>
+												</span><!--/reviewRating-->													
+											</div><!--/panel-body-->
+									</div><!--/panel-body-->								
+								</div>
+							</div>
+							
 						</div>
-						<div class="tfont">					
-							<p>STATUS</p>
-							<div class="col-xs-12 col-sm-12 col-lg-12">
-							
-							</div>
+						
+						<!-- STATUS TAB SECTION -->
+						<div class="tfont">	
+							<div class="row">
+								<p>STATUS</p>
+								<div class="col-xs-12 col-sm-12 col-lg-12">
+								
+								</div>
+							</div><!-- end row -->
 						</div>
-						<div class="tfont">					
-							<p>HELP</p>
-							<div class="col-xs-12 col-sm-12 col-lg-12">
-							
-							</div>
+						
+						<!-- HELP TAB SECTION -->
+						<div class="tfont">	
+							<div class="row">
+								<p>HELP</p>
+								<div class="col-xs-12 col-sm-12 col-lg-12">
+								
+								</div>
+							</div><!-- end row -->
 						</div>
 					</div>
 					
@@ -821,6 +928,8 @@ transition: all 0.4s ease-in-out;
 <script src="myJs/desktop.js"></script>
 <script src="myJs/myVehicle.js"></script>
 <script src="myJs/myMap1.js"></script>
+<script src="myJs/mySchedual.js"></script>
+
 <!--
 <script src="myJs/jCom.js"></script>
 <script src="myJs/myChat1.js"></script>
@@ -838,7 +947,12 @@ $(document).ready(function(){
 	//$("#x34").load("./pages/a_pg3.html");
 
 	getAllVehicle();
-	initComm();
+	//initComm();
+	
+
+ 
+	var g = {'cid':'0532', 'mode':'G', 'franID':'GD00KS', "id": 0 };
+	getAllEntry(g);
 });
 function showHideTab() {
     var x = document.getElementById("s32");

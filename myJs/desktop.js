@@ -16,6 +16,11 @@ function initKendoCtrls() {
 	});
 	showHideTab();
 	
+		// scheduler update
+		scheduler = $("#scheduler").data("kendoScheduler");		
+		$("#scheduler").data("kendoScheduler").refresh();	
+		$('#scheduler').data('kendoScheduler').dataSource.read();
+	
 	//EXAMPLE $("#calendar").kendoCalendar();
 	
 	var popupNotification = $("#popupNotification").kendoNotification().data("kendoNotification");
