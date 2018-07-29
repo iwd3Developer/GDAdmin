@@ -1,0 +1,25 @@
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<span itemscope itemtype="#">
+		<h3 class="panel-title" itemprop="name">Area Map</h3>
+	</div><!--/panel-heading-->
+		<div class="panel-body" itemprop="reviewBody">
+			<!-- code -->
+			
+			
+			<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+			<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+			<span class="pull-right">
+				<p>hello</p>
+			</span><!--/reviewRating-->													
+		</div><!--/panel-body-->
+</div><!--/panel-body-->
+
+
+
+
+<div class="box-body no-padding">
+											<!-- map -->
+											<div id="map" style="height:280px;" >map loading.....</div>
+										</div>
