@@ -65,6 +65,41 @@ function initKendoCtrls() {
 			weekNumber: '<a class="italic">#= data.weekNumber #</a>'
 		},
 	});
+	
+	
+	// grid example
+	$("#grid").kendoGrid({
+		dataSource: {
+			data: products,
+			schema: {
+				model: {
+					fields: {
+						ProductName: { type: "string" },
+						UnitPrice: { type: "number" },
+						UnitsInStock: { type: "number" },
+						Discontinued: { type: "boolean" }
+					}
+				}
+			},
+			pageSize: 20
+		},
+		height: 550,
+		scrollable: true,
+		sortable: true,
+		filterable: true,
+		pageable: {
+			input: true,
+			numeric: false
+		},
+		columns: [
+			"ProductName",
+			{ field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "130px" },
+			{ field: "UnitsInStock", title: "Units In Stock", width: "130px" },
+			{ field: "Discontinued", width: "130px" }
+		]
+	});
+	
+	// end grid
 				
 		/*
 		// OK
