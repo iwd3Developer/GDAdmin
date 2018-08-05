@@ -45,7 +45,7 @@ function initKendoCtrls() {
 		value: today,
 		dates: events,
 		weekNumber: true,
-		width:200, height:200,
+		width:180, height:130,
 		weekNumber: '<a class="italic">#= data.weekNumber #</a>',
 		month: {
 			// template for dates in month view
@@ -120,5 +120,7 @@ function initKendoCtrls() {
 		//document.getElementById("demo").innerHTML = cUserName;
 		
 		//document.getElementById("tabstrip").style.visibility = "visible"; //object.style.visibility = "visible|hidden|collapse|initial|inherit"
+
+		
 
 }
