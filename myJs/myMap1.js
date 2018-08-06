@@ -24,7 +24,7 @@ var labelIndex = 0;
 		//var center = new google.maps.LatLng(39.11,-94.62);
 		map.setCenter({	lat:39.11,lng:-94.62});
         //map.panTo(center);
-		GetLocation("Kansas City MS"); //init gps location "8686 Golson ave Cincinnati oh 45229 usa");
+		GetLocation("Kansas City, MS"); //init gps location "8686 Golson ave Cincinnati oh 45229 usa");
 		
 		/*
 		var myOptions = {
