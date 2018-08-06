@@ -1,79 +1,84 @@
 
 /*
-1. edit function if required
-2. title
-3. content
-4. action and events
-5. modal t/false
-6. closeable t/f 
-7. width
-8. add div for dialog on pageX
+ * https://docs.telerik.com/kendo-ui/api/javascript/ui/dialog
+ add:
+   <div id="dialog_1">
+      Content of the Dialog
+  </div> 
+ 
+ */
+
+// create this function for every dialog to be called
+function a_dialog_1(){
+	var dialog = $("#dialog_1").data("kendoDialog");
+    dialog.open();
+}
+
+// each dialog function if required
+
+/*
+// each dialog and its content here
+var dialog_1_content = "<p>...A new version of <strong>Kendo UI</strong> is available. Would you like to download and install it now?<p>";
+$("#dialog_1").kendoDialog({
+      width: "400px",
+      title: "Software Update",
+      buttonLayout: "stretched",
+      visible: false,
+      content: dialog_1_content,
+      actions: [
+          { text: 'Skip this version' },
+          { text: 'Remind me later' },
+          {
+              text: 'Install update',
+              primary: true,
+              action: function (e) {
+                  alert("Install update action was clicked");
+                  // Returning false will prevent the closing of the dialog
+                  return true;
+                },
+          }
+      ],
+  });
+// end of the above dialog
 */
 
-// <div id="dialog_1">................</div>
-
-// dialog_1 events
-function onInitOpen_d1(e) {
-//alert("event :: initOpen");
+//create this function for every dialog to be called
+function a_dialog_2(){
+	var dialog2 = $("#dialog_2").data("kendoDialog");
+ dialog2.open();
 }
 
-function onOpen_d1(e) {
-//alert("event :: open");
+//each dialog function if required
+function d_2(a) {
+	alert("Done "+a);
 }
 
-function onShow_d1(e) {
-//alert("event :: show");
-}
-
-function onHide_d1(e) {
-alert("event :: hide");
-}
-
-function onClose_d1(e) {
-//show.fadeIn();
-//dialog_1.data("kendoDialog").close();
-
-//alert("event :: close");
-}
-function onCancel_d1(e) {
-alert("action :: cancel");
-}
-// end dialog_1 events
-
-
-
-// dialogs
-function onOK_d1(e) {
-	//alert("action :: OK");
-	dialog_1.data("kendoDialog").close();//IMPORTANT!
-}
-
-//var dialog_1;	
-
-function init_d1() {
-	
-dialog_1.kendoDialog({
-	width: "450px",
-	title: "Software Update",
-	closable: true,
-	modal: false,
-	content: "<p>On Job Board <strong>Kendo UI</strong> is available. Would you like to download and install it now?<p>",
-	actions: [
-		{ text: 'Skip this version' },
-		{ text: 'Remind me later' },
-		{ text: 'Install update', primary: true, action: onOK_d1 }
-	],
-	initOpen: onInitOpen_d1,
-		open: onOpen_d1,
-		//close: onClose_d1,
-		show: onShow_d1,
-		hide: onHide_d1
+//each dialog and its content here
+var dialog_2_content = "<p>Have A Nice Day!<p>";
+$("#dialog_2").kendoDialog({
+   width: "400px",
+   title: "Dialog 2",
+   modal: true,
+   buttonLayout: "normal", //"stretched",
+   visible: false,
+   content: dialog_2_content,
+   actions: [
+       { text: 'Yes',
+    	   action: function (e) {
+    		   d_2('yes');
+           // Returning false will prevent the closing of the dialog
+           return true;
+         },
+       },
+       { text: 'No',
+    	   action: function (e) {
+    		   d_2('no');
+           // Returning false will prevent the closing of the dialog
+           return true;
+         },
+       }
+   ],
 });
-dialog_1 = $('#dialog1');
-dialog_1.data("kendoDialog").open();
+//end of the above dialog
 
-}
-// dialog_1.data("kendoDialog").close();//IMPORTANT!
-//dialog_1.data("kendoDialog").open();
-// end dialogs
-		
+

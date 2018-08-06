@@ -1,5 +1,4 @@
 
-
 function initKendoCtrls() {
 	// init telerick controls
 	// create Calendar from div HTML element
@@ -16,10 +15,12 @@ function initKendoCtrls() {
 	});
 	showHideTab();
 	
+	 //calX();
+	 
 		// scheduler update
-		scheduler = $("#scheduler").data("kendoScheduler");		
-		$("#scheduler").data("kendoScheduler").refresh();	
-		$('#scheduler').data('kendoScheduler').dataSource.read();
+		//scheduler = $("#scheduler").data("kendoScheduler");		
+		//$("#scheduler").data("kendoScheduler").refresh();	
+		//$('#scheduler').data('kendoScheduler').dataSource.read();
 	
 	//EXAMPLE $("#calendar").kendoCalendar();
 	
@@ -45,7 +46,7 @@ function initKendoCtrls() {
 		value: today,
 		dates: events,
 		weekNumber: true,
-		width:180, height:130,
+		//width:250, height:130,
 		weekNumber: '<a class="italic">#= data.weekNumber #</a>',
 		month: {
 			// template for dates in month view
@@ -121,6 +122,31 @@ function initKendoCtrls() {
 		
 		//document.getElementById("tabstrip").style.visibility = "visible"; //object.style.visibility = "visible|hidden|collapse|initial|inherit"
 
-		
+	// each dialog and its content here
+	/*
+	// test dialog
+	var dialog_1_content = "<p>...A new version of <strong>Kendo UI</strong> is available. Would you like to download and install it now?<p>";
+	$("#dialog_1").kendoDialog({
+		width: "400px",
+		title: "Software Update",
+		buttonLayout: "stretched",
+		visible: false,
+		content: dialog_1_content,
+		actions: [
+			{ 	text: 'Skip this version' },
+			{ 	text: 'Remind me later' },
+			{
+				text: 'Install update',
+				primary: true,
+				action: function (e) {
+					alert("Install update action was clicked");
+					// Returning false will prevent the closing of the dialog
+					return true;
+				},
+			}
+		],
+	});
+	// end of the above dialog
+	*/
 
 }
