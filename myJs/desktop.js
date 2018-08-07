@@ -273,3 +273,22 @@ function initKendoCtrls() {
 	*/
 
 }
+/* end initKendoCtrls() */
+
+function sec_func() {
+
+	document.getElementById("secAAA_hdr").innerHTML = "EDSIII (07:30 AM)";
+	document.getElementById("secAAA_content").innerHTML = "<p> Welcome to my world AAA.</p>";
+	
+	document.getElementById("secBBB_hdr").innerHTML = "EDSIII";
+	document.getElementById("secBBB_content").innerHTML = "<p> Welcome to my world BBB.</p>";
+	
+	document.getElementById("secCCC_hdr").innerHTML = "EDSIII";
+	document.getElementById("secCCC_content").innerHTML = "<p> Welcome to my world CCC.</p>";
+	
+	document.getElementById("secDDD_hdr").innerHTML = "EDSIII";
+	document.getElementById("secDDD_content").innerHTML = "<p> Welcome to my world DDD.</p>";
+	
+	document.getElementById("secEEE_hdr").innerHTML = "EDSIII";
+	document.getElementById("secEEE_content").innerHTML = "<p> Welcome to my world EEE.</p>";
+}

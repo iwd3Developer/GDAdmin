@@ -765,17 +765,13 @@ transition: all 0.4s ease-in-out;
 									<div class="panel panel-default" style="height:250px;overflow: hidden;">
 										<div class="panel-heading">
 											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">AAA</h3>
+											<h3 id="secAAA_hdr" class="panel-title" itemprop="name">AAA</h3>
 										</div><!--/panel-heading-->
 										<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
 											<!-- vehicle -->
-											<div style="height:90%;">xxxxxxx</div>										  
+											<div id="secAAA_content" style="height:65%;">xxxxxxx</div>										  
 											</br>
-											<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-											<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-											<span class="pull-right">
-												<p>hello</p>
-											</span><!--/reviewRating-->													
+																								
 										</div><!--/panel-body-->
 									</div><!--/panel-->
 								</div>
@@ -783,17 +779,13 @@ transition: all 0.4s ease-in-out;
 									<div class="panel panel-default" style="height:250px;overflow: hidden;">
 										<div class="panel-heading">
 											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">BBB</h3>
+											<h3 id="secBBB_hdr" class="panel-title" itemprop="name">EEE</h3>
 										</div><!--/panel-heading-->
 										<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
 											<!-- vehicle -->
-											<div style="height:90%;">xxxxxxx</div>										  
+											<div id="secBBB_content" style="height:65%;">xxxxxxx</div>										  
 											</br>
-											<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-											<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-											<span class="pull-right">
-												<p>hello</p>
-											</span><!--/reviewRating-->													
+																								
 										</div><!--/panel-body-->
 									</div><!--/panel-->
 								</div>
@@ -801,17 +793,12 @@ transition: all 0.4s ease-in-out;
 									<div class="panel panel-default" style="height:250px;overflow: hidden;">
 										<div class="panel-heading">
 											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">CCC</h3>
+											<h3 id="secCCC_hdr" class="panel-title" itemprop="name">EEE</h3>
 										</div><!--/panel-heading-->
 										<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
 											<!-- vehicle -->
-											<div style="height:90%;">xxxxxxx</div>										  
-											</br>
-											<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-											<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-											<span class="pull-right">
-												<p>hello</p>
-											</span><!--/reviewRating-->													
+											<div id="secCCC_content" style="height:65%;">xxxxxxx</div>										  
+											</br>													
 										</div><!--/panel-body-->
 									</div><!--/panel-->
 								</div>
@@ -819,42 +806,31 @@ transition: all 0.4s ease-in-out;
 									<div class="panel panel-default" style="height:250px;overflow: hidden;">
 										<div class="panel-heading">
 											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">DDD</h3>
+											<h3 id="secDDD_hdr" class="panel-title" itemprop="name">EEE</h3>
 										</div><!--/panel-heading-->
 										<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
 											<!-- vehicle -->
-											<div style="height:90%;">xxxxxxx</div>										  
+											<div id="secDDD_content" style="height:65%;">xxxxxxx</div>										  
 											</br>
-											<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-											<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-											<span class="pull-right">
-												<p>hello</p>
-											</span><!--/reviewRating-->													
-										</div><!--/panel-body-->
-									</div><!--/panel-->
+										</div><!--/panel-->
+									</div>
 								</div>
 								<div class="col-xs-2 col-sm-2 col-lg-2">
 									<div class="panel panel-default" style="height:250px;overflow: hidden;">
 										<div class="panel-heading">
 											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">AAA</h3>
+											<h3 id="secEEE_hdr" class="panel-title" itemprop="name">EEE</h3>
 										</div><!--/panel-heading-->
 										<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
-											<!-- vehicle -->
-											<div style="height:90%;">xxxxxxx</div>										  
-											</br>
-											<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-											<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-											<span class="pull-right">
-												<p>hello</p>
-											</span><!--/reviewRating-->													
-										</div><!--/panel-body-->
-									</div><!--/panel-->
+												<!-- vehicle -->
+												<div id="secEEE_content" style="height:65%;">xxxxxxx</div>										  
+												</br>											
+										</div><!--/panel-->
+									
+									</div>
 								</div>
-							</div><!-- end row 3 -->
-						</div>														
-							
-					</div>
+							</div>						
+					</div><!-- end tab 1 -->
 						<!-- END DESKTOP TAB -->
 						
 						<!-- Job Tab SECTION -->
@@ -1267,7 +1243,7 @@ $(document).ready(function(){
  
 	var g = {'cid':'0532', 'mode':'G', 'franID':'GD00KS', "id": 0 };
 	getAllEntry(g);
-	
+	sec_func();
 
 });
 function showHideTab() {
