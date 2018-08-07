@@ -99,7 +99,7 @@ function getAllVehicle() {
 	
 	var str1 = "";
 	/*
-	str1 += '<table class="table table-hover" width="100%"> ';
+	str1 += '<table class="table table-hover" width="100%" > ';
 	str1 += '<tr> ';
 	str1 += '<th width="100">ID</th> ';
 	str1 += '<th>Name</th> ';
