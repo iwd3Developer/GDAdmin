@@ -93,7 +93,7 @@ function initKendoCtrls() {
 			numeric: false
 		},
 		columns: [
-			"ProductName",
+			"ProductName11",
 			{ field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "130px" },
 			{ field: "UnitsInStock", title: "Units In Stock", width: "130px" },
 			{ field: "Discontinued", width: "130px" }
@@ -101,6 +101,129 @@ function initKendoCtrls() {
 	});
 	
 	// end grid
+	
+	// grid 1
+	function dSource1() {
+
+		/*
+		var dataSource= new kendo.data.SchedulerDataSource({
+		  data: [
+			  {id: 2,start: new Date("2018/8/6 10:15 AM"),end: new Date("2018/8/6 12:30 PM"),title: "Demo" }
+		  ]
+		});
+		*/
+		
+		//var i;
+		//for (i = 0; i < 1; i++) {
+			/*
+		// OK
+		var dataSource = new kendo.data.SchedulerDataSource();
+		dataSource.add({id: 3,start: new Date("2018/8/8 10:15 AM"),end: new Date("2018/8/8 12:30 PM"),title: "Demo" });
+		dataSource.add({id: 3,start: new Date("2018/8/7 10:15 AM"),end: new Date("2018/8/7 12:30 PM"),title: "Demo" });
+		return dataSource;
+		*/
+		
+		var dataSource = new kendo.data.SchedulerDataSource();
+		var i;
+		for (i = 0; i < 6; i++) {
+			dataSource.add({ProductName: "AAAA",UnitPrice: "$4.99",UnitsInStock: 3, Discontinued: i });
+		};
+		return dataSource;
+		
+		
+	}
+	// edit model and columns
+	$("#divGrid1").kendoGrid({
+		dataSource: dSource1(),
+			schema: {
+				model: {
+					fields: {
+						ProductName: { type: "string" },
+						UnitPrice: { type: "number" },
+						UnitsInStock: { type: "number" },
+						Discontinued: { type: "boolean" }
+					}
+				}
+			},
+		
+		pageSize: 20,
+		height: 150,
+		scrollable: true,
+		sortable: true,
+		filterable: true,
+		pageable: {
+			input: true,
+			numeric: false
+		},
+		columns: [
+			"ProductName",
+			{ field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "100px" },
+			{ field: "UnitsInStock", title: "Units In Stock", width: "100px" },
+			{ field: "Discontinued", width: "130px" }
+		]
+	});
+	
+	// end grid 1
+	
+	// grid 2
+	function dSource2() {
+
+		/*
+		var dataSource= new kendo.data.SchedulerDataSource({
+		  data: [
+			  {id: 2,start: new Date("2018/8/6 10:15 AM"),end: new Date("2018/8/6 12:30 PM"),title: "Demo" }
+		  ]
+		});
+		*/
+		
+		//var i;
+		//for (i = 0; i < 1; i++) {
+			/*
+		// OK
+		var dataSource = new kendo.data.SchedulerDataSource();
+		dataSource.add({id: 3,start: new Date("2018/8/8 10:15 AM"),end: new Date("2018/8/8 12:30 PM"),title: "Demo" });
+		dataSource.add({id: 3,start: new Date("2018/8/7 10:15 AM"),end: new Date("2018/8/7 12:30 PM"),title: "Demo" });
+		return dataSource;
+		*/
+		
+		var dataSource = new kendo.data.SchedulerDataSource();
+		var i;
+		for (i = 0; i < 16; i++) {
+			dataSource.add({ProductName: "AAAA",UnitPrice: "$4.99"});
+		};
+		return dataSource;
+		
+		
+	}
+	// edit model and columns
+	$("#divGrid2").kendoGrid({
+		dataSource: dSource2(),
+			schema: {
+				model: {
+					fields: {
+						ProductName: { type: "string" },
+						UnitPrice: { type: "number" }
+					}
+				}
+			},
+		
+		pageSize: 20,
+		height: 250,
+		scrollable: true,
+		sortable: true,
+		filterable: true,
+		//pageable: {
+			//input: true,
+			//numeric: false
+		//},
+		columns: [
+			"ProductName",
+			{ field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "100px" }
+		]
+	});
+	
+	// end grid 2
+	
 				
 		/*
 		// OK
