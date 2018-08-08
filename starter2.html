@@ -315,6 +315,7 @@ transition: all 0.4s ease-in-out;
       </div>
     </nav>
   </header>
+  
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
 
@@ -581,552 +582,378 @@ transition: all 0.4s ease-in-out;
 
     <!-- Main content ***************************************************************** -->
     <section class="content container-fluid" >
-		<!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-	<div id="mainX">	
-		
+	
 		<!-- TABS -->
 		</br>
 		<div id="s32" class="row" style="display:none;">
 			<div class="col-xs-12 col-sm-12 col-lg-12">
 				<!-- TABS -->
-					<div id="tabstrip" >
-						<ul>
-							<li class="k-state-active">
-								Desktop
-							</li>
-							<li>
-								Job Board
-							</li>
-							<li>
-								Status
-							</li>
-							<li>
-								Help
-							</li>
-							<li>
-								Admin
-							</li>
-						</ul>
+				<div id="tabstrip" >
+					<ul>
+						<li class="k-state-active">
+							Desktop
+						</li>
+						<li>
+							Job Board
+						</li>
+						<li>
+							Status
+						</li>
+						<li>
+							Help
+						</li>
+						<li>
+							Admin
+						</li>
+					</ul>
+					
+					<div class="row" style="height:930px;overflow-y: scroll;"><!-- tab 1 -->
+						<div class="col-xs-7 col-sm-7 col-lg-7">
+							<div class="panel panel-default" style="height:350px;">
+								<div class="panel-heading">
+									<span itemscope itemtype="#">
+									<h3 class="panel-title" itemprop="name">Area Map</h3>
+								</div><!--/panel-heading-->
+								<div class="panel-body" style="height:305px;overflow: hidden;">
+									<!-- map -->
+									<div id="map" style="height:80%;" >map loading.....</div>
+										</br>
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+										<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+										<span class="pull-right">
+											<p>hello</p>
+										</span><!--/reviewRating-->													
+								</div><!--/panel-body-->
+							</div><!--/panel-->
+						</div><!-- end row 1 column 1 -->
 						
-<!-- *******************DESKTOP TAB**************************************************** -->
-						<div class="tfont">								
-								<!--Row with two columns-->
-								<div class="row" >
-									<div class="col-xs-7 col-sm-7 col-lg-7">
-										<div class="panel panel-default" style="height:350px;">
-											<div class="panel-heading">
-												<span itemscope itemtype="#">
-												<h3 class="panel-title" itemprop="name">Area Map</h3>
-											</div><!--/panel-heading-->
-												<div class="panel-body" style="height:305px;overflow: hidden;">
-													<!-- map -->
-													<div id="map" style="height:80%;" >map loading.....</div>
-														</br>
-														<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-														<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-														<span class="pull-right">
-															<p>hello</p>
-														</span><!--/reviewRating-->													
-												</div><!--/panel-body-->
-										</div><!--/panel-->
-									</div><!-- end row column 1 -->
-									
-									<!-- row column 2 -->
-									<div class="col-xs-4 col-sm-4 col-lg-4">										
-										
-										<div class="panel panel-default" style="height:350px;">
-										  <div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">Chat</h3>
-										  </div>
-												<div class="panel-body" style="height:250px;overflow: hidden;">												
-													<ul class="chat" >
-														<div id="jC1" ></div>					
-													</ul>
-												</div>
-												<div class="input-group">
-													<input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-													<span class="input-group-btn">
-														<button class="btn btn-warning btn-sm" id="btn-chat" onclick="incMsg_send()">
-															Send</button>
-													</span>
-												</div>
-													
-													<!--
-													<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-
-														<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-
-														<meta itemprop="datePublished" content="01-01-2016">01-01-2016
-													  
-														<span class="pull-right">
-															<p>hello</p>
-														</span>
-													-->
-												
-										</div>
-									
-									</div><!-- end row 1 column 2 -->
-									
-								</div><!-- end row 1 -->								
-							
-							
-							<hr>
-							<!--Row 2 with two columns -->
-							<div class="row">									
-								<div class="col-xs-3 col-sm-3 col-lg-3">
-								
-									<div class="panel panel-default"  style="height:350px;">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">Quick Calendar</h3>
-										</div><!--/panel-heading-->
-											<div class="panel-body" style="height:305px;overflow: hidden;">
-												<div id="calendar1" style="width:100%;height:80%;">.....</div>
-												</br></br>
-												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-												<span class="pull-right">
-													<p>hello</p>
-												</span><!--/reviewRating-->													
-											</div><!--/panel-body-->
-									</div>										
-									</br>
-										
-									<div class="panel panel-default"  style="height:350px;">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">XXXXX</h3>
-										</div><!--/panel-heading-->
-										<div class="panel-body" style="height:305px;overflow: hidden;">
-											<div class="k-widget k-grid" id="divGrid2" style="width:100%;"></div>
-											</br>
-											<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-											<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-											<span class="pull-right">
-												<p>hello</p>
-											</span><!--/reviewRating-->													
-										</div><!--/panel-body-->
-									</div>
-									</br>
-										
-									
-									
-									
-								</div><!-- end row 2 column 1 -->
-								
-								<!--	row 2 column 2	-->						
-								<div class="col-xs-8 col-sm-8 col-lg-8">
-								
-									<div class="panel panel-default" style="height:350px;">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">Weather 3 day forcast / On-Board Crew Members</h3>
-										</div><!--/panel-heading-->
-											<div class="panel-body" itemprop="reviewBody" style="height:300px;overflow: hidden;">
-												<a class="weatherwidget-io" href="https://forecast7.com/en/39d11n94d63/kansas-city/?unit=us" data-label_1="KANSAS CITY" data-label_2="WEATHER" data-days="3" data-theme="clear" >KANSAS CITY WEATHER</a>
-												</br>
-												<div class="k-widget k-grid" id="divGrid1" style="width:100%;"></div>
-												
-												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-												<span class="pull-right">
-													<p>hello</p>
-												</span><!--/reviewRating-->													
-											</div><!--/panel-body-->
-											
-									</div><!--/panel-->
-									
-									</br>
-									
-									<div class="panel panel-default" style="height:350px;overflow: hidden;">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">Vehicles</h3>
-										</div><!--/panel-heading-->
-										<div class="panel-body" itemprop="reviewBody" style="height:285px;overflow: hidden;">
-											<!-- vehicle -->
-											<div id="theVehicle" class="box-body table-responsive no-padding" style="height:90%;"></div>										  
-											</br>
-											<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-											<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-											<span class="pull-right">
-												<p>hello</p>
-											</span><!--/reviewRating-->													
-										</div><!--/panel-body-->
-									</div><!--/panel-->
-									
-									
-								</div><!-- end row 2 column 2 -->
-							</div><!-- end row 2 -->
-							
-							<hr>
-							<!--Row 3 with 4 columns divided -->
-							<div class="row">
-								<div class="col-xs-2 col-sm-2 col-lg-2">
-									<div class="panel panel-default" style="height:250px;overflow: hidden;">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 id="secAAA_hdr" class="panel-title" itemprop="name">AAA</h3>
-										</div><!--/panel-heading-->
-										<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
-											<!-- vehicle -->
-											<div id="secAAA_content" style="height:65%;">xxxxxxx</div>										  
-											</br>
-																								
-										</div><!--/panel-body-->
-									</div><!--/panel-->
+						<!-- row 1 column 2 -->
+						<div class="col-xs-4 col-sm-4 col-lg-4">						
+							<div class="panel panel-default" style="height:350px;">
+								<div class="panel-heading">
+									<span itemscope itemtype="#">
+									<h3 class="panel-title" itemprop="name">Chat</h3>
 								</div>
-								<div class="col-xs-2 col-sm-2 col-lg-2">
-									<div class="panel panel-default" style="height:250px;overflow: hidden;">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 id="secBBB_hdr" class="panel-title" itemprop="name">EEE</h3>
-										</div><!--/panel-heading-->
-										<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
-											<!-- vehicle -->
-											<div id="secBBB_content" style="height:65%;">xxxxxxx</div>										  
-											</br>
-																								
-										</div><!--/panel-body-->
-									</div><!--/panel-->
+								<div class="panel-body" style="height:250px;overflow: hidden;">												
+									<ul class="chat" >
+										<div id="jC1" ></div>					
+									</ul>
 								</div>
-								<div class="col-xs-2 col-sm-2 col-lg-2">
-									<div class="panel panel-default" style="height:250px;overflow: hidden;">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 id="secCCC_hdr" class="panel-title" itemprop="name">EEE</h3>
-										</div><!--/panel-heading-->
-										<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
-											<!-- vehicle -->
-											<div id="secCCC_content" style="height:65%;">xxxxxxx</div>										  
-											</br>													
-										</div><!--/panel-body-->
-									</div><!--/panel-->
+								<div class="input-group">
+									<input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+									<span class="input-group-btn">
+										<button class="btn btn-warning btn-sm" id="btn-chat" onclick="incMsg_send()">
+											Send</button>
+									</span>
 								</div>
-								<div class="col-xs-2 col-sm-2 col-lg-2">
-									<div class="panel panel-default" style="height:250px;overflow: hidden;">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 id="secDDD_hdr" class="panel-title" itemprop="name">EEE</h3>
-										</div><!--/panel-heading-->
-										<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
-											<!-- vehicle -->
-											<div id="secDDD_content" style="height:65%;">xxxxxxx</div>										  
-											</br>
-										</div><!--/panel-->
-									</div>
-								</div>
-								<div class="col-xs-2 col-sm-2 col-lg-2">
-									<div class="panel panel-default" style="height:250px;overflow: hidden;">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 id="secEEE_hdr" class="panel-title" itemprop="name">EEE</h3>
-										</div><!--/panel-heading-->
-										<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
-												<!-- vehicle -->
-												<div id="secEEE_content" style="height:65%;">xxxxxxx</div>										  
-												</br>											
-										</div><!--/panel-->
-									
-									</div>
-								</div>
-							</div><!-- end row -->
-							
-					</div><!-- end tab 1 -->
-<!-- *****************************END DESKTOP TAB************************************************************ -->
+							</div>						
+						</div><!-- end row 1 column 2 -->
 						
-						<!-- Job Tab SECTION -->
-						<div class="tfont">
-							<div class="row">
-								<div class="col-xs-11 col-sm-11 col-lg-11">
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">Jobs</h3>
-										</div><!--/panel-heading-->
-											<div class="panel-body" itemprop="reviewBody">
-												<!-- code -->
-												
-												
-												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-												<span class="pull-right">
-													<p>hello</p>
-												</span><!--/reviewRating-->													
-											</div><!--/panel-body-->
-									</div><!--/panel-body-->
-								</div>
-							</div><!-- end row -->
-							
-							<div class="row">
-								<div class="col-xs-3 col-sm-3 col-lg-3">
-
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												<span itemscope itemtype="#">
-												<h3 class="panel-title" itemprop="name">Crews</h3>
-											</div><!--/panel-heading-->
-												<div class="panel-body" itemprop="reviewBody">
-													<!-- code -->
-													
-													
-													<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-													<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-													<span class="pull-right">
-														<p>hello</p>
-													</span><!--/reviewRating-->													
-												</div><!--/panel-body-->
-										</div><!--/panel-body-->
-
-								</div>
-							
-								<div class="col-xs-8 col-sm-8 col-lg-8">
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												<span itemscope itemtype="#">
-												<h3 class="panel-title" itemprop="name">Job Map</h3>
-											</div><!--/panel-heading-->
-												<div class="panel-body" itemprop="reviewBody">
-													<!-- code -->
-													
-													
-													<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-													<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-													<span class="pull-right">
-														<p>hello</p>
-													</span><!--/reviewRating-->													
-												</div><!--/panel-body-->
-										</div><!--/panel-body-->
-								</div>
-							</div><!-- end row -->
-							
-<!-- ***********************TAB 2 ROW 3******************************** -->							
-							<div class="row">
-								<div class="col-xs-8 col-sm-8 col-lg-8">
-									<div class="panel panel-default" style="height 350px;">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">Job Calendar</h3>
-										</div><!--/panel-heading-->
-											<div class="panel-body" itemprop="reviewBody">
-												<!-- code -->
-												<div id="scheduler" ></div>
-												
-												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-												<span class="pull-right">
-													<p>hello</p>
-												</span><!--/reviewRating-->													
-											</div><!--/panel-body-->
-									</div><!--/panel-->
-								</div>
-								<div class="col-xs-3 col-sm-3 col-lg-3">
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">Job Details</h3>
-										</div><!--/panel-heading-->
-											<div class="panel-body" itemprop="reviewBody">
-												<!-- code -->
-												
-												
-												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-												<span class="pull-right">
-													<p>hello</p>
-												</span><!--/reviewRating-->													
-											</div><!--/panel-body-->
-									</div><!--/panel-body-->								
-								</div>
+						<div class="col-xs-3 col-sm-3 col-lg-3">
+								
+							<div class="panel panel-default"  style="height:350px;">
+								<div class="panel-heading">
+									<span itemscope itemtype="#">
+									<h3 class="panel-title" itemprop="name">Quick Calendar</h3>
+								</div><!--/panel-heading-->
+								<div class="panel-body" style="height:305px;overflow: hidden;">
+									<div id="calendar1" style="width:100%;height:80%;">.....</div>
+									</br></br>
+									<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+									<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+									<span class="pull-right">
+										<p>hello</p>
+									</span><!--/reviewRating-->													
+								</div><!--/panel-body-->
 							</div>
 							
-						</div>
-						
-						<!-- STATUS TAB SECTION -->
-						<div class="tfont">	
-							<div class="row">
-								<div class="col-xs-11 col-sm-11 col-lg-11">
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">Grid Example</h3>
-										</div><!--/panel-heading-->
-											<div class="panel-body" itemprop="reviewBody">
-												<!-- code -->												
-												<div id="grid"></div>
-
-												</br>
-												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-												<span class="pull-right">
-													<p>hello</p>
-												</span><!--/reviewRating-->													
-											</div><!--/panel-body-->
-									</div><!--/panel-body-->
-								</div>
-							</div><!-- end row -->
-						</div>
-						
-						<!-- HELP TAB SECTION -->
-						<div class="tfont">	
-							<div class="row">
-								<div class="col-xs-5 col-sm-5 col-lg-5">
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">Help One</h3>
-										</div><!--/panel-heading-->
-											<div class="panel-body" itemprop="reviewBody">
-												<!-- code -->
-												<div class="col py-2">
-													<div class="video" >	
-														<iframe style="width:100%;" src="https://www.youtube.com/embed/AWdA7hdP4ZA?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
-													</div>
-												</div>
-												
-												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-												<span class="pull-right">
-													<p>hello</p>
-												</span><!--/reviewRating-->													
-											</div><!--/panel-body-->
-									</div><!--/panel-body-->
-									
-								</div>
+							</br>
 								
-								<div class="col-xs-5 col-sm-5 col-lg-5">
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">Help Two</h3>
-										</div><!--/panel-heading-->
-											<div class="panel-body" itemprop="reviewBody">
-												<!-- code -->
-												<div class="col py-2">
-													<div class="video" >	
-														<iframe  style="width:100%;" src="https://www.youtube.com/embed/I39RKjerJss?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
-													</div>
-												</div>
-												
-												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-												<span class="pull-right">
-													<p>hello</p>
-												</span><!--/reviewRating-->													
-											</div><!--/panel-body-->
-									</div><!--/panel-body-->
-									
-								</div>
-							</div><!-- end row -->
+							<div class="panel panel-default"  style="height:350px;">
+								<div class="panel-heading">
+									<span itemscope itemtype="#">
+									<h3 class="panel-title" itemprop="name">XXXXX</h3>
+								</div><!--/panel-heading-->
+								<div class="panel-body" style="height:305px;overflow: hidden;">
+									<div class="k-widget k-grid" id="divGrid2" style="width:100%;"></div>
+									</br>
+									<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+									<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+									<span class="pull-right">
+										<p>hello</p>
+									</span><!--/reviewRating-->													
+								</div><!--/panel-body-->
+							</div>
 						</div>
 						
-						<!-- ADMIN TAB SECTION -->
-						<div class="tfont">	
-							<div class="row">
-								<div class="col-xs-5 col-sm-5 col-lg-5">
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">XXXXe</h3>
-										</div><!--/panel-heading-->
-											<div class="panel-body" itemprop="reviewBody">
-												<!-- code -->
-												
-												
-												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-												<span class="pull-right">
-													<p>hello</p>
-												</span><!--/reviewRating-->													
-											</div><!--/panel-body-->
-									</div><!--/panel-body-->
-									
-								</div>
+						</br>
+							
+						<div class="row" ><!--	row 2 column 2	-->						
+							<div class="col-xs-8 col-sm-8 col-lg-8">
+							
+								<div class="panel panel-default" style="height:350px;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 class="panel-title" itemprop="name">Weather 3 day forcast / On-Board Crew Members</h3>
+									</div><!--/panel-heading-->
+										<div class="panel-body" itemprop="reviewBody" style="height:300px;overflow: hidden;">
+											<a class="weatherwidget-io" href="https://forecast7.com/en/39d11n94d63/kansas-city/?unit=us" data-label_1="KANSAS CITY" data-label_2="WEATHER" data-days="3" data-theme="clear" >KANSAS CITY WEATHER</a>
+											</br>
+											<div class="k-widget k-grid" id="divGrid1" style="width:100%;"></div>
+											
+											<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+											<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+											<span class="pull-right">
+												<p>hello</p>
+											</span><!--/reviewRating-->													
+										</div><!--/panel-body-->
+										
+								</div><!--/panel-->
 								
-								<div class="col-xs-5 col-sm-5 col-lg-5">
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<span itemscope itemtype="#">
-											<h3 class="panel-title" itemprop="name">WWWW</h3>
-										</div><!--/panel-heading-->
-											<div class="panel-body" itemprop="reviewBody">
-												<!-- code -->
-												
-												
-												<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-												<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
-												<span class="pull-right">
-													<p>hello</p>
-												</span><!--/reviewRating-->													
-											</div><!--/panel-body-->
+								</br>
+								
+								<div class="panel panel-default" style="height:350px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 class="panel-title" itemprop="name">Vehicles</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:285px;overflow: hidden;">
+										<!-- vehicle -->
+										<div id="theVehicle" class="box-body table-responsive no-padding" style="height:90%;"></div>										  
+										</br>
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+										<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+										<span class="pull-right">
+											<p>hello</p>
+										</span><!--/reviewRating-->													
 									</div><!--/panel-body-->
-									
-								</div>
-							</div><!-- end row -->
-						</div>
-						<!-- end ADMIN SECTION -->
+								</div><!--/panel-->								
+								
+							</div><!--  -->
+								
+						</div><!-- end row 2 column 2 -->
 						
-					</div>
+						<hr>
+						<!--Row 4 with 4 columns divided -->
+						<div class="row">
+							<div class="col-xs-2 col-sm-2 col-lg-2">
+								<div class="panel panel-default" style="height:250px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 id="secAAA_hdr" class="panel-title" itemprop="name">AAA</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
+										<!-- vehicle -->
+										<div id="secAAA_content" style="height:65%;">xxxxxxx</div>										  
+										</br>
+																							
+									</div><!--/panel-body-->
+								</div><!--/panel-->
+							</div>
+							<div class="col-xs-2 col-sm-2 col-lg-2">
+								<div class="panel panel-default" style="height:250px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 id="secBBB_hdr" class="panel-title" itemprop="name">EEE</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
+										<!-- vehicle -->
+										<div id="secBBB_content" style="height:65%;">xxxxxxx</div>										  
+										</br>
+																							
+									</div><!--/panel-body-->
+								</div><!--/panel-->
+							</div>
+							<div class="col-xs-2 col-sm-2 col-lg-2">
+								<div class="panel panel-default" style="height:250px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 id="secCCC_hdr" class="panel-title" itemprop="name">EEE</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
+										<!-- vehicle -->
+										<div id="secCCC_content" style="height:65%;">xxxxxxx</div>										  
+										</br>													
+									</div><!--/panel-body-->
+								</div><!--/panel-->
+							</div>
+							<div class="col-xs-2 col-sm-2 col-lg-2">
+								<div class="panel panel-default" style="height:250px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 id="secDDD_hdr" class="panel-title" itemprop="name">EEE</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
+										<!-- vehicle -->
+										<div id="secDDD_content" style="height:65%;">xxxxxxx</div>										  
+										</br>
+									</div><!--/panel-->
+								</div>
+							</div>
+							<div class="col-xs-2 col-sm-2 col-lg-2">
+								<div class="panel panel-default" style="height:250px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 id="secEEE_hdr" class="panel-title" itemprop="name">EEE</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
+											<!-- vehicle -->
+											<div id="secEEE_content" style="height:65%;">xxxxxxx</div>										  
+											</br>											
+									</div><!--/panel-->
+								
+								</div>
+							</div>
+						</div><!-- end row 4 -->
+						
+					</div><!-- end tab 1 -->
 					
-					<!-- END TABS -->
-				</div>
-		</div>
+					<div class="row" style="width:100%;height:930px;overflow-y: scroll;"><!-- tab 2 -->						
+						
+						<div class="col-xs-8 col-sm-8 col-lg-8">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<span itemscope itemtype="#">
+									<h3 class="panel-title" itemprop="name">Jobs</h3>
+								</div><!--/panel-heading-->
+								<div class="panel-body" itemprop="reviewBody">
+									<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+									<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+									<span class="pull-right">
+										<p>hello</p>
+									</span><!--/reviewRating-->													
+								</div><!--/panel-body-->
+							</div><!--/panel-body-->
+						</div>
+						
+						<div class="row">
+							<div class="col-xs-3 col-sm-3 col-lg-3">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 class="panel-title" itemprop="name">Crews</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody">
+										<!-- code -->
+										
+										
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+										<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+										<span class="pull-right">
+											<p>hello</p>
+										</span><!--/reviewRating-->													
+									</div><!--/panel-body-->
+								</div><!--/panel-body-->
 
-<!--		
-		<div class="row">
-		  <div class="col-sm-4">.col-sm-4</div>
-		  <div class="col-sm-8">.col-sm-8</div>
-		</div>
+							</div>
+							
+							
+							<div class="col-xs-11 col-sm-11 col-lg-11">
+								<div class="panel panel-default" style="height:450px;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 class="panel-title" itemprop="name">Job Map</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:350px;overflow-y: scroll;">
+										<!-- code -->
+										
+										
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+										<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+										<span class="pull-right">
+											<p>hello</p>
+										</span><!--/reviewRating-->													
+									</div><!--/panel-body-->
+								</div><!--/panel-body-->
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-xs-8 col-sm-8 col-lg-8" >
+								<div class="panel panel-default" style="height: 600px;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 class="panel-title" itemprop="name">Job Calendar</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height: 580px;overflow: hidden;">
+										<div id="scheduler" style="height: 500px;"></div>
+										</br>
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+										<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+										<span class="pull-right">
+											<p>hello</p>
+										</span><!--/reviewRating-->													
+									</div><!--/panel-body-->
+								</div><!--/panel-->
+							</div>
+								
+							<div class="col-xs-3 col-sm-3 col-lg-3">
+								<div class="panel panel-default" style="height: 600px;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 class="panel-title" itemprop="name">Job Details</h3>
+									</div><!--/panel-heading-->
+										<div class="panel-body" itemprop="reviewBody" style="height:90%;overflow: hidden;">
+											<div style="height: 500px;"><p>Hello</p></div>
+										</br>											
+																								
+										</div><!--/panel-body-->
+								</div><!--/panel-body-->								
+							</div>
+						</div>
+							
+						
+					</div><!-- end row -->
+					
+					
+					<div style="height:930px;overflow-y: scroll;"><!-- tab 3 -->
+					
+						<div class="row" >
+							<div class="col-xs-12 col-sm-12 col-lg-12">
+								<div class="panel panel-default" style="height:350px;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 class="panel-title" itemprop="name">Grid Example</h3>
+									</div><!--/panel-heading-->
+										<div class="panel-body" itemprop="reviewBody" style="height:340px;overflow-y: hidden;">
+											<!-- code -->												
+											<div id="grid" ></div>
 
-		<div class="row">
-		  <div class="col-sm-8">
-			.col-sm-8
-			<div class="row">
-			  <div class="col-sm-6">.col-sm-6</div>
-			  <div class="col-sm-6">.col-sm-6</div>
-			</div>
-		  </div>
-		  <div class="col-sm-4">.col-sm-4</div>
-		</div>
-
-		 
-		<div class="row">
-		  <div class="col-xs-9 col-md-7">.col-xs-9 .col-md-7</div>
-		  <div class="col-xs-3 col-md-5">.col-xs-3 .col-md-5</div>
-		</div>
-
-		<div class="row">
-		  <div class="col-xs-6 col-md-10">.col-xs-6 .col-md-10</div>
-		  <div class="col-xs-6 col-md-2">.col-xs-6 .col-md-2</div>
-		</div>
-
-		<div class="row">
-		  <div class="col-xs-6">.col-xs-6</div>
-		  <div class="col-xs-6">.col-xs-6</div>
-		</div>
+											</br>
+											<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+											<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
+											<span class="pull-right">
+												<p>hello</p>
+											</span><!--/reviewRating-->													
+										</div><!--/panel-body-->
+								</div><!--/panel-body-->
+							</div>
+						</div><!-- end row -->
+						
+					</div><!-- end tab 3 -->
+					
+					<div style="height:930px;overflow-y: scroll;"><!-- tab 4 -->
+					
+					</div><!-- end tab 4 -->
+					
+					<div style="height:930px;overflow-y: scroll;"><!-- tab 5 -->
+					
+					</div><!-- end tab 5 -->
+					
+					<div><!-- tab 6 -->
+					
+					</div><!-- end tab 6 -->
+					
+				</div><!-- end tabs -->
+			</div><!-- layout of row -->
+		</div><!-- end row -->
 		
-		  
-
-		<div class="row">
-		  <div class="col-xs-7 col-sm-6 col-lg-8">.col-xs-7 .col-sm-6 .col-lg-8</div>
-		  <div class="col-xs-5 col-sm-6 col-lg-4">.col-xs-5 .col-sm-6 .col-lg-4</div>
-		</div>
-
-		<div class="row">
-		  <div class="col-xs-6 col-sm-8 col-lg-10">.col-xs-6 .col-sm-8 .col-lg-10</div>
-		  <div class="col-xs-6 col-sm-4 col-lg-2">.col-xs-6 .col-sm-4 .col-lg-2</div>
-		</div>
--->		
-<!-- MAIN SCRIPT SECTION -->
-
-<!-- END MAIN SCRIPT SECTION -->
-
-
-    </section><!-- /.content -->
-  </div><!-- /.content-wrapper -->
+		<!--------------------------
+        | Your Page Content Here |
+        -------------------------->
+	
+    </section><!-- end section -->
+  </div><!-- end content-wrapper -->
 
   <!-- Main Footer -->
   <footer class="main-footer" >

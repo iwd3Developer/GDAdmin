@@ -84,7 +84,7 @@ function initKendoCtrls() {
 			},
 			pageSize: 20
 		},
-		height: 550,
+		height: 250,
 		scrollable: true,
 		sortable: true,
 		filterable: true,
