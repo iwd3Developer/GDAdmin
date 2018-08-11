@@ -48,6 +48,7 @@ var rtData;
 }
 
 function dateTime1(a) {
+	alert("OK");
 var rtData;
 var d = new Date();
 	var n = d.getTime();
@@ -95,6 +96,10 @@ var d = new Date();
 	};
 	if ( a == 's') {
 		rtData = "   "+dateF+" @ "+timeF;
+	};
+	if ( a == 'dt') {
+		rtData = curr_year+"-"+curr_month+"-"+curr_date+" "+timeF;
+		alert(rtData);
 	};
 	//alert(timeF+" bb started "+dateF);
 	return rtData

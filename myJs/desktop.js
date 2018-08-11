@@ -369,6 +369,89 @@ function getAlerts(aData) {
 		}
 	});
 }
-function addAlert() {
+/*
+//alerts
+// idx, aDesc, aFrom, aDateTime, aStatus, afranID, aLevel FROM alerts
+// alerts update/query
+	var alertsSend = [];
+	alertsSend[0] = 'Hello World 3';
+	alertsSend[1] = "PENDING";
+	alertsSend[2] = 6;
+	alertsSend[3] = 2;// idx
+	alertsSend[4] = 'X';// I,U,D,X
+	var aData = {franID:'GD00KS',cid:'0532',aDesc:alertsSend[0],aStatus:alertsSend[1],aLevel:alertsSend[2],idx:alertsSend[3],mode:alertsSend[4]};
+	getAlerts(aData);
+	// end alerts
+
+// alerts insert/query
+	// idx, aDesc, aFrom, aDateTime, aStatus, afranID, aLevel FROM alerts
+	var alertsSend = [];
+	alertsSend[0] = 'Hello World 11';//aDesc
+	alertsSend[1] = "PENDING";//aStatus
+	alertsSend[2] = 4;//aLevel
+	alertsSend[3] = 2;// idx
+	alertsSend[4] = 'I';//mode I,U,D,X
+	alertsSend[5] = dateTime2("dt"); //"2018-08-09 09:20:05";//aDateTime
+	alertsSend[6] = "SYSTEM";//aFrom
 	
+	var aData = {afranID:'GD00KS',cid:'0532',aDesc:alertsSend[0],aStatus:alertsSend[1],aLevel:alertsSend[2],idx:alertsSend[3],mode:alertsSend[4],aDateTime:alertsSend[5],aFrom:alertsSend[6]};
+	getAlerts(aData);
+	// end alerts
+	
+*/
+function dateTime2(a) {
+var rtData;
+var d = new Date();
+	var n = d.getTime();
+	// document.getElementById("demo").innerHTML = d.getTime();
+    var curr_date = d.getDate();
+	if (curr_date < 10){
+		curr_date = "0"+curr_date;
+	};
+    var curr_month = d.getMonth() + 1; //Months are zero based
+	if (curr_month < 10){
+		curr_month = "0"+curr_month;
+	};
+    var curr_year = d.getFullYear();
+	
+	if (curr_hour >= 13){
+		curr_hour = curr_hour - 12;
+	};
+	
+	var curr_hour = d.getHours();
+	if (curr_hour < 10){
+		curr_hour = "0"+curr_hour;
+	};
+	if (curr_hour > 12){
+		curr_hour = (curr_hour -12) ;
+	};
+		
+	var curr_minutes = d.getMinutes();
+	if (curr_minutes < 10){
+		curr_minutes = "0"+curr_minutes;
+	};
+	var curr_seconds = d.getSeconds();
+	if (curr_seconds < 10){
+		curr_seconds = "0"+curr_seconds;
+	};
+	
+	
+    var dateF = curr_date + "-" + curr_month + "-" + curr_year;
+	var timeF = curr_hour +":"+ curr_minutes +":"+ curr_seconds;
+	
+	if ( a == 'd') {
+		rtData = dateF;
+	};
+	if ( a == 't') {
+		rtData = timeF;
+	};
+	if ( a == 's') {
+		rtData = "   "+dateF+" @ "+timeF;
+	};
+	if ( a == 'dt') {
+		rtData = curr_year+"-"+curr_month+"-"+curr_date+" "+timeF;
+		//alert(rtData);
+	};
+	//alert(timeF+" bb started "+dateF);
+	return rtData
 }
