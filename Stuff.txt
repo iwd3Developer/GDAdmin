@@ -1,0 +1,200 @@
+
+// main reight menu
+
+		<!-- opt 1 -->
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Opt 1</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="javascript:a_window_2()"><i class="fa fa-circle-o"></i> Opt 1 Blank 1 -win2</a></li>
+            <li><a href="javascript:a_dialog_1()"><i class="fa fa-circle-o"></i> Opt 1 Blank 2</a></li>
+          </ul>
+        </li>
+		<!-- end opt 1 -->
+		<!-- opt 2 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Opt 2</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 2</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 3</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 4</a></li>
+          </ul>
+        </li>
+		<!-- end opt 2 -->
+		<!-- opt 3 -->
+        <li>
+          <a href="#">
+            <i class="fa fa-th"></i> <span>Opt 3</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+        </li>
+		<!-- end opt 3 -->
+		<!-- opt 4 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Opt 4</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 4 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 4 Blank 2</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 4 Blank 3</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 4 Blank 4</a></li>
+          </ul>
+        </li>
+		<!-- end opt 4 -->
+		<!-- opt 5 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Opt 5</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 2</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 3</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 4</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 5</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 5 Blank 6</a></li>
+          </ul>
+        </li>
+		<!-- end opt 5 -->
+		<!-- opt 6 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Opt 6</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 6 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 6 Blank 2</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 6 Blank 3</a></li>
+          </ul>
+        </li>
+		<!-- end opt 6 -->
+		<!-- opt 7 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Opt 7</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 7 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 7 Blank 2</a></li>
+          </ul>
+        </li>
+		<!-- end opt 7 -->
+		<!-- opt 8 -->
+        <li>
+          <a href="#">
+            <i class="fa fa-calendar"></i> <span>Opt 8</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red">3</small>
+              <small class="label pull-right bg-blue">17</small>
+            </span>
+          </a>
+        </li>
+		<!-- end opt 8 -->
+		<!-- opt 9 -->
+        <li>
+          <a href="#">
+            <i class="fa fa-envelope"></i> <span>Opt 9</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-yellow">12</small>
+              <small class="label pull-right bg-green">16</small>
+              <small class="label pull-right bg-red">5</small>
+            </span>
+          </a>
+        </li>
+		<!-- end opt 9 -->
+		<!-- opt 10 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>Opt 10</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 1</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 2</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 3</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 4</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 5</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 6</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 7</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 8</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 10 Blank 9</a></li>
+          </ul>
+        </li>
+		<!-- end opt 10 -->
+		<!-- opt 11 -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Opt 11</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 11 Blank 1</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Opt 11 Blank 2
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Opt 11 Blank 2b</a></li>
+                <li class="treeview">
+                  <a href="#"><i class="fa fa-circle-o"></i>  Opt 11 Blank 2c
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Opt 11 Blank 2c1</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Opt 11 Blank 2c2</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-circle-o"></i>  Opt 11 Blank 7</a></li>
+          </ul>		  
+        </li>
+		<!-- end opt 11 -->
+		<!-- opt 12 -->
+        <li><a href="#"><i class="fa fa-book"></i> <span>Documentation / Help</span></a></li>
+		<!-- change or no uses
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+		-->
+      </ul>
+	  <!-- end opt 12 -->
+		
+// end

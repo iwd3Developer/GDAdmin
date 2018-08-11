@@ -292,3 +292,83 @@ function sec_func() {
 	document.getElementById("secEEE_hdr").innerHTML = "EDSIII";
 	document.getElementById("secEEE_content").innerHTML = "<p> Welcome to my world EEE.</p>";
 }
+
+function upDate_notifications() {
+	document.getElementById("notifications-messages").innerHTML = "9";
+	document.getElementById("notifications-alerts").innerHTML = "8";
+	document.getElementById("notifications-tasks").innerHTML = "7";
+}
+
+function showAlerts() {
+	//alert("showAlerts()");
+	// open window
+	a_window_alerts();
+}
+
+function showalertBar(){
+	//alert("showAlerts()");
+	var str1= "";
+		str1 += '<div class="alert alert-info alert-dismissable">';
+			str1 += '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+			str1 += '<i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!';
+		str1 += '</div>';
+		$("#myAlertBar").html(str1);
+}
+
+function getAlerts(aData) {
+	//var d = 'Hello World';
+	//var d2 = "PENDING";
+	//var d3 = 6;
+	//var d4 = 2;
+	
+	//var aData = {franID:'GD00KS',cid:'0532',aDesc:d,aStatus:d2,aLevel:d3,idx:d4,mode:'U'}
+	//var aData = "";
+	// idx, aDesc, aFrom, aDateTime, aStatus, afranID, aLevel
+
+	
+	//dtAlerts = [];
+	//var aData = {franID:'GD00KS',cid:'0532', mode:'X'};
+	
+    //dataOut = $(this).serialize() + "&" + $.param(dataObj);
+	$.ajax({ 
+    //type: 'GET', 
+	type: 'POST',
+    url: "./scripts/dt_alerts.php", 
+		//data: {franID:'GD00KS',cid:'0532', mode:'X'},
+		data: aData,
+		success: function (data) { 
+			//alert(data.length);
+			//alert("Call Status "+data[0].status);
+			switch (data[0].status) {
+				case 'OK':
+					// create array return data
+					for (var i=0;i<data.length;++i)
+					{
+						dtAlerts.push(data[i]);						
+					};
+					//set count 
+					document.getElementById("notifications-alerts").innerHTML = dtAlerts.length;
+				break;
+				case 'ERROR':
+					alert("No Alerts records found");
+					//set count 
+					document.getElementById("notifications-alerts").innerHTML = 0;
+				break;
+				case 'SECURITY ERROR':
+					alert("Alerts SECURITY ERROR");
+					//set count 
+					document.getElementById("notifications-alerts").innerHTML = 0;
+				break;
+				default:
+					//alert("XXXXX");
+				break;
+			};			
+		},
+		error: function(xhr, textStatus, error) {
+			alert("Alerts State Data Error:1 "+textStatus+" "+error);
+		}
+	});
+}
+function addAlert() {
+	
+}
