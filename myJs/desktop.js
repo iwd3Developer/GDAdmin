@@ -299,20 +299,44 @@ function upDate_notifications() {
 	document.getElementById("notifications-tasks").innerHTML = "7";
 }
 
+function showAlertBar(s,x){
+	//alert("showAlerts()");
+	// alert-info  alert-success  alert-warning  alert-danger
+	var str1= "";
+	switch(x) {
+		case '1':
+			str1 += '<div class="alert alert-info alert-dismissable">';
+		break;
+		case '2':
+			str1 += '<div class="alert alert-success alert-dismissable">';
+		break;
+		case '3':
+			str1 += '<div class="alert alert-warning alert-dismissable">';
+		break;
+		case '4':
+			str1 += '<div class="alert alert-danger alert-dismissable">';
+		break;
+		default:
+			str1 += '<div class="alert alert-info alert-dismissable">';
+		break;
+	};
+	//str1 += '<div class="alert alert-info alert-dismissable">';
+	str1 += '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+	str1 += '<i class="fa fa-info-circle"></i>  <strong>'+s+'</strong>';
+	str1 += '</div>';
+	$("#myAlertBar").html(str1);
+	window.setTimeout(function() {
+		$(".alert").fadeTo(1000, 0).slideUp(500, function(){
+			$(this).remove(); 
+		});
+	}, 4000);	
+	
+}
+
 function showAlerts() {
 	//alert("showAlerts()");
 	// open window
 	a_window_alerts();
-}
-
-function showalertBar(){
-	//alert("showAlerts()");
-	var str1= "";
-		str1 += '<div class="alert alert-info alert-dismissable">';
-			str1 += '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
-			str1 += '<i class="fa fa-info-circle"></i>  <strong>Like SB Admin?</strong> Try out <a href="http://startbootstrap.com/template-overviews/sb-admin-2" class="alert-link">SB Admin 2</a> for additional features!';
-		str1 += '</div>';
-		$("#myAlertBar").html(str1);
 }
 
 function getAlerts(aData) {
@@ -350,7 +374,8 @@ function getAlerts(aData) {
 					document.getElementById("notifications-alerts").innerHTML = dtAlerts.length;
 				break;
 				case 'ERROR':
-					alert("No Alerts records found");
+					//alert("No Alerts records found");
+					showAlertBar("No Alerts records found!",3);
 					//set count 
 					document.getElementById("notifications-alerts").innerHTML = 0;
 				break;
@@ -358,6 +383,7 @@ function getAlerts(aData) {
 					alert("Alerts SECURITY ERROR");
 					//set count 
 					document.getElementById("notifications-alerts").innerHTML = 0;
+					showAlertBar("SECURITY ERROR!",4);
 				break;
 				default:
 					//alert("XXXXX");
@@ -365,12 +391,12 @@ function getAlerts(aData) {
 			};			
 		},
 		error: function(xhr, textStatus, error) {
-			alert("Alerts State Data Error:1 "+textStatus+" "+error);
+			showAlertBar("Alerts State Data Error:1 "+textStatus+" "+error,4);
 		}
 	});
 }
 /*
-//alerts
+//ALERTS
 // idx, aDesc, aFrom, aDateTime, aStatus, afranID, aLevel FROM alerts
 // alerts update/query
 	var alertsSend = [];
@@ -399,6 +425,13 @@ function getAlerts(aData) {
 	// end alerts
 	
 */
+
+function showTasks() {
+	//alert("showTasks()");
+	// open window
+	a_window_tasks();
+}
+
 function dateTime2(a) {
 var rtData;
 var d = new Date();
