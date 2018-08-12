@@ -431,6 +431,48 @@ function showTasks() {
 	// open window
 	a_window_tasks();
 }
+function getTasks(aData) {
+	$.ajax({ 
+    //type: 'GET', 
+	type: 'POST',
+    url: "./scripts/dt_tasks.php", 
+		//data: {franID:'GD00KS',cid:'0532', mode:'X'},
+		data: aData,
+		success: function (data) { 
+			//alert(data.length);
+			//alert("Call Status "+data[0].status);
+			switch (data[0].status) {
+				case 'OK':
+					// create array return data
+					for (var i=0;i<data.length;++i)
+					{
+						dtTasks.push(data[i]);						
+					};
+					//set count 
+					document.getElementById("notifications-tasks").innerHTML = dtTasks.length;
+				break;
+				case 'ERROR':
+					//alert("No Alerts records found");
+					showAlertBar("No Alerts records found!",3);
+					//set count 
+					document.getElementById("notifications-tasks").innerHTML = 0;
+				break;
+				case 'SECURITY ERROR':
+					alert("Alerts SECURITY ERROR");
+					//set count 
+					document.getElementById("notifications-tasks").innerHTML = 0;
+					showAlertBar("SECURITY ERROR!",4);
+				break;
+				default:
+					//alert("XXXXX");
+				break;
+			};			
+		},
+		error: function(xhr, textStatus, error) {
+			showAlertBar("Tasks State Data Error:1 "+textStatus+" "+error,4);
+		}
+	});
+}
 
 function dateTime2(a) {
 var rtData;
