@@ -1,0 +1,113 @@
+<style>
+    /* Some custom styles to beautify this example */
+    .demo-content{
+        padding: 15px;
+        font-size: 18px;
+        min-height: 300px;
+        background: #dbdfe5;
+        margin-bottom: 10px;
+    }
+    .demo-content.bg-alt{
+        background: #abb1b8;
+    }
+</style>
+<div >
+
+    <!-- Open the output in a new blank tab (Click the arrow next to "Show Output" button) and resize the browser window to understand how the Bootstrap responsive grid system works. -->
+    <div class="container" >
+        <!--Row with two equal columns-->
+        <div class="row">
+			<div class="col-xs-5 col-sm-5 col-lg-5" style="height:250px;">
+				
+				<div class="list-group" style="height:235px;overflow-y: scroll;">
+					<div id="alertList">loading....</div>
+					<!--
+					<a href="#" class="list-group-item">
+						<span class="badge">just now</span>
+						<i class="fa fa-fw fa-calendar"></i> Calendar updated
+					</a>
+					<a href="#" class="list-group-item">
+						<span class="badge">4 minutes ago</span>
+						<i class="fa fa-fw fa-comment"></i> Commented on a post
+					</a>
+					<a href="#" class="list-group-item">
+						<span class="badge">23 minutes ago</span>
+						<i class="fa fa-fw fa-truck"></i> Order 392 shipped
+					</a>
+					<a href="#" class="list-group-item">
+						<span class="badge">46 minutes ago</span>
+						<i class="fa fa-fw fa-money"></i> Invoice 653 has been paid
+					</a>
+					<a href="#" class="list-group-item">
+						<span class="badge">1 hour ago</span>
+						<i class="fa fa-fw fa-user"></i> A new user has been added
+					</a>
+					<a href="#" class="list-group-item">
+						<span class="badge">2 hours ago</span>
+						<i class="fa fa-fw fa-check"></i> Completed task: "pick up dry cleaning"
+					</a>
+					<a href="#" class="list-group-item">
+						<span class="badge">yesterday</span>
+						<i class="fa fa-fw fa-globe"></i> Saved the world
+					</a>
+					<a href="#" class="list-group-item">
+						<span class="badge">two days ago</span>
+						<i class="fa fa-fw fa-check"></i> Completed task: "fix error on sales page"
+					</a>
+					-->
+				</div>
+					
+			
+		</div>
+     </div>
+        
+    </div>
+
+</div>
+
+<script>
+
+alerts_init();
+
+function alerts_init() {
+	var str1 = "";
+	var b = "";
+	for (var i=0;i< dtAlerts.length;++i)
+	{
+		str1 += '<a href="#" class="list-group-item"> ';
+		str1 += '<span class="badge">'+dtAlerts[i].aDateTime+'</span> ';
+		switch(dtAlerts[i].aLevel) {
+			case '1':
+			b = 'fa fa-fw fa-calendar';
+			break;
+			case '2':
+			b = 'fa fa-fw fa-comment';
+			break;
+			case '3':
+			b = 'fa fa-fw fa-truck';
+			break;
+			case '4':
+			b = 'fa fa-fw fa-calendar';
+			break;
+			case '5':
+			b = 'fa fa-fw fa-money';
+			break;
+			case '6':
+			b = 'fa fa-fw fa-user';
+			break;
+			case '7':
+			b = 'fa fa-fw fa-check';
+			break;
+
+			default:
+			b = 'fa fa-fw fa-check';
+			break;
+		};
+		str1 += ''+i+' <i class="'+b+'"></i> '+dtAlerts[i].aFrom+' : '+dtAlerts[i].aDesc+' ';
+		str1 += '</a> ';
+	};
+	document.getElementById("alertList").innerHTML = str1;	
+}
+
+
+</script>

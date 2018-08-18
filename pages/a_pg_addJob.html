@@ -1,0 +1,73 @@
+<style type="text/css">
+    /* Some custom styles to beautify this example */
+    .demo-content{
+        padding: 15px;
+        font-size: 18px;
+        min-height: 300px;
+        background: #dbdfe5;
+        margin-bottom: 10px;
+    }
+    .demo-content.bg-alt{
+        background: #abb1b8;
+    }
+</style>
+<div style="height:100%;">
+
+<div class="container-fluid">
+        <!--Row with three equal columns-->
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="demo-content">.col-md-3</div>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            	<div class="demo-content bg-alt">.col-md-3</div>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            	<div class="demo-content">.col-md-3</div>
+            </div>
+        </div>
+        <hr>
+        <!--Row with three columns divided in 1:4:1 ratio-->
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            	<div class="demo-content">.col-md-2</div>
+            </div>
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+            	<div class="demo-content bg-alt">.col-md-7</div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            	<div class="demo-content">.col-md-2</div>
+            </div>
+        </div>
+        <hr>
+        <!--Row with three columns divided unevenly-->
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            	<div class="demo-content">.col-md-3</div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            	<div class="demo-content bg-alt">.col-md-6</div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            	<div class="demo-content">.col-md-2</div>
+            </div>
+        </div>
+    </div>
+	
+</div>
+<script>
+
+//setTimeout(gogo, 300);
+$(document).ready(function(){
+	setTimeout(a_pg3_init, 300);
+
+});
+function myFunction() {
+	alert(tabSelected);
+}
+function a_pg3_init() {
+//$("#calendar2").kendoCalendar();
+//document.getElementById("demo").innerHTML = cUserName;
+
+};
+</script>

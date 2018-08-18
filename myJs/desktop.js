@@ -15,6 +15,18 @@ function initKendoCtrls() {
 	});
 	showHideTab();
 	
+	$("#panelbar1").kendoPanelBar({
+		expandMode: "single",
+		contentUrls: [
+			'./pages/page_1.html',
+			'./pages/page_2.html',
+			'./pages/a_pg2.html',
+			'./pages/a_pg3.html'
+		]
+
+	});
+
+	
 	 //calX();
 	 
 		// scheduler update

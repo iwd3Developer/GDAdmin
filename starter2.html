@@ -807,9 +807,32 @@ transition: all 0.4s ease-in-out;
 						
 					</div><!-- end tab 3 -->
 					
-					<div style="height:930px;overflow-y: scroll;"><!-- tab 4 -->
-					
-					</div><!-- end tab 4 -->
+					<!-- tab 4 -->
+					<div style="height:930px;overflow-y: scroll;">
+						<section id="secPanelBar1" class="well" style="height:90%;">
+							<h4 class="ra-well-title"><abbr title="Frequently Asked Questions">FAQ</abbr></h4>
+
+							<ul id="panelbar1" class="ra-well-overlay" style="height:90%;">
+								<li class="k-state-active">
+									TITLE 1
+									<div></div>
+								</li>
+								<li>
+									TITLE 2
+									<div></div>
+								</li>
+								<li>
+									TITLE 3
+									<div></div>
+								</li>
+								<li>
+									TITLE 4
+									<div></div>
+								</li>
+							</ul>
+						</section>
+					</div>
+					<!-- end tab 4 -->
 					
 					<div style="height:930px;overflow-y: scroll;"><!-- tab 5 -->
 					
@@ -973,7 +996,7 @@ $(document).ready(function(){
 	getAlerts(aData);
 	// end alerts
 	
-	// taskss insert/query
+	// tasks insert/query
 	// idx, tDesc, tUserID, tStatus, tDateTimeIn, tCompDateTime, tCompleteBy, tFranID, tFlg1 FROM tasks
 	var tasksSend = [];
 	alertsSend[0] = 'Hello World 11';//aDesc
