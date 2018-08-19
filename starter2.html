@@ -962,11 +962,13 @@ transition: all 0.4s ease-in-out;
 
 
 $(document).ready(function(){
+//var job1Data = new kendo.data.DataSource();
+//getJobs1Data();
 
 
 
 
-	setTimeout(initKendoCtrls, 200);// local
+	setTimeout(initKendoCtrls, 800);// local
 	//$("#x31").load("./pages/a_pg1.html");
 	//$("#x32").load("./pages/a_pg0.html");
 	//$("#x33").load("./pages/a_pg2.html");//status
@@ -975,7 +977,7 @@ $(document).ready(function(){
 	getAllVehicle();
 	//initComm();
 	upDate_notifications();
-
+	
  
 	var g = {'cid':'0532', 'mode':'G', 'franID':'GD00KS', "id": 0 };
 	getAllEntry(g);
@@ -1010,6 +1012,8 @@ $(document).ready(function(){
 	var tData = {afranID:'GD00KS',cid:'0532',tDesc:alertsSend[0],tStatus:alertsSend[1],mode:alertsSend[4]};
 	getTasks(tData);
 	// end tasks
+
+	
 
 });
 
