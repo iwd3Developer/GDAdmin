@@ -1,3 +1,4 @@
+var dGrid1;
 
 function initKendoCtrls() {
 	// init telerick controls
@@ -150,10 +151,8 @@ function initKendoCtrls() {
 		scrollable: true,
 		sortable: true,
 		filterable: true,
-		pageable: {
-			input: true,
-			numeric: false
-		},
+		pageable: true,
+		selectable: "row",
 		columns: [
 			{ field: "idx", title: "Job No", width: "30px" },
 			{ field: "clientID", title: "Client ID", width: "60px" },
@@ -168,12 +167,25 @@ function initKendoCtrls() {
 			{ field: "phone1", title: "phone1",width: "80px" },
 			{ field: "phone2", title: "phone2",width: "80px" },
 			{ field: "phone3", title: "phone3",width: "80px" }
-		]
+		], change: onChangeGrid1
 	});
+	dGrid1 = $("#divGrid1").data("kendoGrid");
+	
+	var dt = new Date();
+	document.getElementById("divGrid1_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt+'</meta><span class="pull-right"><p>ready</p></span>';
 	// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, fullName, fullAddr, franID
+	
+	function onChangeGrid1(e) {
+		//alert("OK");
+		// https://www.codeproject.com/Articles/606682/Kendo-Grid-In-Action
+		//Selecting Grid
+		//var gview = $("#grid").data("kendoGrid");
+		//Getting selected item
+		var selectedItem = dGrid1.dataItem(dGrid1.select());
+		//accessing selected rows data 
+		//alert(selectedItem.fullName);	
+	}
 	// end grid 1
-	
-	
 	
 	// edit model and columns
 	$("#divGrid2").kendoGrid({
@@ -492,6 +504,7 @@ function getAlerts(aData) {
 			showAlertBar("Alerts State Data Error:1 "+textStatus+" "+error,4);
 		}
 	});
+	
 }
 
 function getTasks(aData) {
@@ -569,6 +582,9 @@ function getJobs1Data() {
 							fullAddr: data[i].fullAddr
 						});
 					};
+					//dGrid1 = $("#divGrid1").data("kendoGrid");		
+					$("#divGrid1").data("kendoGrid").refresh();	
+					$('#divGrid1').data('kendoGrid').dataSource.read();
 				break;
 				case 'ERROR':
 					//alert("No Alerts records found");
@@ -591,6 +607,15 @@ function getJobs1Data() {
 			showAlertBar("Tasks State Data Error:1 "+textStatus+" "+error,4);
 		}
 	});
+	/*
+	// https://www.codeproject.com/Articles/606682/Kendo-Grid-In-Action
+	//Selecting Grid
+var gview = $("#grid").data("kendoGrid");
+//Getting selected item
+var selectedItem = gview.dataItem(gview.select());
+//accessing selected rows data 
+alert(selectedItem.email);
+	*/
 }
 
 // END GET DATA SECTION
