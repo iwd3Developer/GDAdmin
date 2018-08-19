@@ -1,4 +1,4 @@
-var job1Data = new kendo.data.DataSource();
+
 function initKendoCtrls() {
 	// init telerick controls
 	// create Calendar from div HTML element
@@ -117,49 +117,30 @@ function initKendoCtrls() {
 	// end grid
 
 	
-/*	
-	// grid 1
-	function dSource1() {
 
-		
-		//var dataSource= new kendo.data.SchedulerDataSource({
-		  //data: [
-			  //{id: 2,start: new Date("2018/8/6 10:15 AM"),end: new Date("2018/8/6 12:30 PM"),title: "Demo" }
-		  //]
-		//});
-		
-		
-		//var i;
-		//for (i = 0; i < 1; i++) {
-			
-		// OK
-		var dataSource = new kendo.data.SchedulerDataSource();
-		dataSource.add({id: 3,start: new Date("2018/8/8 10:15 AM"),end: new Date("2018/8/8 12:30 PM"),title: "Demo" });
-		dataSource.add({id: 3,start: new Date("2018/8/7 10:15 AM"),end: new Date("2018/8/7 12:30 PM"),title: "Demo" });
-		return dataSource;
-		
-		
-		var dataSource = new kendo.data.SchedulerDataSource();
-		var i;
-		for (i = 0; i < 6; i++) {
-			dataSource.add({JobNo: "AAAA",UnitPrice: "$1.99",UnitsInStock: 3, Discontinued: i });
-		};
-		return dataSource;
-		
-		
-	}
-*/
+
 	//alert("Look "+ getJobs1Data());
 	// edit model and columns
+	// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, franID
 	$("#divGrid1").kendoGrid({
-		dataSource: getJobs1Data(), //dSource1(),
+		dataSource: dSource1(),
 			schema: {
 				model: {
 					fields: {
 						idx: { type: "number" },
 						clientID: { type: "string" },
-						zipcode: { type: "number" },
-						phone1: { type: "number" }
+						FirstName: { type: "string" },
+						LastName: { type: "string" },
+						fullName: { type: "string" },
+						addr1: { type: "string" },
+						fullAddr: { type: "string" },
+						city: { type: "string" },
+						state: { type: "string" },
+						zipcode: { type: "string" },
+						phone1: { type: "string" },
+						phone2: { type: "string" },
+						phone3: { type: "string" }
+						
 					}
 				}
 			},
@@ -174,46 +155,26 @@ function initKendoCtrls() {
 			numeric: false
 		},
 		columns: [
-			{ field: "idx", title: "Job No", width: "130px" },
-			{ field: "clientID", title: "Unit Price", width: "100px" },
-			{ field: "zipcode", title: "Units In Stock", width: "100px" },
-			{ field: "phone1", width: "130px" }
+			{ field: "idx", title: "Job No", width: "30px" },
+			{ field: "clientID", title: "Client ID", width: "60px" },
+			//{ field: "FirstName", title: "FirstName", width: "0px" },
+			//{ field: "LastName", title: "LastName",width: "0px" },
+			{ field: "fullName", title: "Name",width: "100px" },
+			//{ field: "addr1", title: "Address",width: "0px" },
+			{ field: "fullAddr", title: "Address",width: "100px" },
+			//{ field: "city", title: "City",width: "0px" },
+			//{ field: "state", title: "State",width: "0px" },
+			//{ field: "zipcode", title: "zipcode",width: "0px" },
+			{ field: "phone1", title: "phone1",width: "80px" },
+			{ field: "phone2", title: "phone2",width: "80px" },
+			{ field: "phone3", title: "phone3",width: "80px" }
 		]
 	});
-	
+	// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, fullName, fullAddr, franID
 	// end grid 1
 	
 	
-	// grid 2
-	function dSource2() {
-
-		/*
-		var dataSource= new kendo.data.SchedulerDataSource({
-		  data: [
-			  {id: 2,start: new Date("2018/8/6 10:15 AM"),end: new Date("2018/8/6 12:30 PM"),title: "Demo" }
-		  ]
-		});
-		*/
-		
-		//var i;
-		//for (i = 0; i < 1; i++) {
-			/*
-		// OK
-		var dataSource = new kendo.data.SchedulerDataSource();
-		dataSource.add({id: 3,start: new Date("2018/8/8 10:15 AM"),end: new Date("2018/8/8 12:30 PM"),title: "Demo" });
-		dataSource.add({id: 3,start: new Date("2018/8/7 10:15 AM"),end: new Date("2018/8/7 12:30 PM"),title: "Demo" });
-		return dataSource;
-		*/
-		
-		var dataSource = new kendo.data.SchedulerDataSource();
-		var i;
-		for (i = 0; i < 16; i++) {
-			dataSource.add({JobID: "AAAA",UnitPrice: "$5.99"});
-		};
-		return dataSource;
-		
-		
-	}
+	
 	// edit model and columns
 	$("#divGrid2").kendoGrid({
 		dataSource: dSource2(),
@@ -358,6 +319,124 @@ function showAlerts() {
 	a_window_alerts();
 }
 
+/*
+//ALERTS
+// idx, aDesc, aFrom, aDateTime, aStatus, afranID, aLevel FROM alerts
+// alerts update/query
+	var alertsSend = [];
+	alertsSend[0] = 'Hello World 3';
+	alertsSend[1] = "PENDING";
+	alertsSend[2] = 6;
+	alertsSend[3] = 2;// idx
+	alertsSend[4] = 'X';// I,U,D,X
+	var aData = {franID:'GD00KS',cid:'0532',aDesc:alertsSend[0],aStatus:alertsSend[1],aLevel:alertsSend[2],idx:alertsSend[3],mode:alertsSend[4]};
+	getAlerts(aData);
+	// end alerts
+
+// alerts insert/query
+	// idx, aDesc, aFrom, aDateTime, aStatus, afranID, aLevel FROM alerts
+	var alertsSend = [];
+	alertsSend[0] = 'Hello World 11';//aDesc
+	alertsSend[1] = "PENDING";//aStatus
+	alertsSend[2] = 4;//aLevel
+	alertsSend[3] = 2;// idx
+	alertsSend[4] = 'I';//mode I,U,D,X
+	alertsSend[5] = dateTime2("dt"); //"2018-08-09 09:20:05";//aDateTime
+	alertsSend[6] = "SYSTEM";//aFrom
+	
+	var aData = {afranID:'GD00KS',cid:'0532',aDesc:alertsSend[0],aStatus:alertsSend[1],aLevel:alertsSend[2],idx:alertsSend[3],mode:alertsSend[4],aDateTime:alertsSend[5],aFrom:alertsSend[6]};
+	getAlerts(aData);
+	// end alerts
+	
+*/
+
+function showTasks() {
+	//alert("showTasks()");
+	// open window
+	a_window_tasks();
+}
+
+// SET KENDO DATASOURCE	
+	// grid 1
+	function dSource1() {
+		
+		//var dataSource= new kendo.data.SchedulerDataSource({
+		  //data: [
+			  //{id: 2,start: new Date("2018/8/6 10:15 AM"),end: new Date("2018/8/6 12:30 PM"),title: "Demo" }
+		  //]
+		//});
+		
+		
+		//var i;
+		//for (i = 0; i < 1; i++) {
+			
+		// OK
+		//var dataSource = new kendo.data.SchedulerDataSource();
+		//dataSource.add({id: 3,start: new Date("2018/8/8 10:15 AM"),end: new Date("2018/8/8 12:30 PM"),title: "Demo" });
+		//dataSource.add({id: 3,start: new Date("2018/8/7 10:15 AM"),end: new Date("2018/8/7 12:30 PM"),title: "Demo" });
+		//return dataSource;
+		
+		//alert(job1Data.length);
+		//var dataSource = new kendo.data.SchedulerDataSource();
+		var dataSource = new kendo.data.DataSource();
+		var i;
+		for (i = 0; i < job1Data.length; i++) {
+			// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, franID
+			//dataSource.add({idx: job1Data[i].idx, clientID: job1Data[i].clientID, zipcode: job1Data[i].zipcode, phone1: job1Data[i].phone1 });
+			dataSource.add({idx: job1Data[i].idx,
+				clientID: job1Data[i].clientID,			
+				FirstName: job1Data[i].FirstName, 
+				LastName: job1Data[i].LastName, 
+				addr1: job1Data[i].addr1, 
+				city: job1Data[i].city,
+				state: job1Data[i].state,
+				zipcode: job1Data[i].zipcode,
+				phone1: job1Data[i].phone1,
+				phone2: job1Data[i].phone2,
+				phone3: job1Data[i].phone3,
+				fullName: job1Data[i].FirstName+" "+job1Data[i].LastName,
+				fullAddr: job1Data[i].addr1+" "+job1Data[i].city+" "+job1Data[i].state+" "+job1Data[i].zipcode
+			});
+			
+		};
+		return dataSource;
+		
+		
+	}
+	
+	// grid 2
+	function dSource2() {
+
+		/*
+		var dataSource= new kendo.data.SchedulerDataSource({
+		  data: [
+			  {id: 2,start: new Date("2018/8/6 10:15 AM"),end: new Date("2018/8/6 12:30 PM"),title: "Demo" }
+		  ]
+		});
+		*/
+		
+		//var i;
+		//for (i = 0; i < 1; i++) {
+			/*
+		// OK
+		var dataSource = new kendo.data.SchedulerDataSource();
+		dataSource.add({id: 3,start: new Date("2018/8/8 10:15 AM"),end: new Date("2018/8/8 12:30 PM"),title: "Demo" });
+		dataSource.add({id: 3,start: new Date("2018/8/7 10:15 AM"),end: new Date("2018/8/7 12:30 PM"),title: "Demo" });
+		return dataSource;
+		*/
+		
+		var dataSource = new kendo.data.SchedulerDataSource();
+		var i;
+		for (i = 0; i < 16; i++) {
+			dataSource.add({JobID: "AAAA",UnitPrice: "$5.99"});
+		};
+		return dataSource;
+	}
+	
+// END SET KENDO DATASOURCE	
+
+// GET DATA SECTION
+
 function getAlerts(aData) {
 	//var d = 'Hello World';
 	//var d2 = "PENDING";
@@ -414,42 +493,7 @@ function getAlerts(aData) {
 		}
 	});
 }
-/*
-//ALERTS
-// idx, aDesc, aFrom, aDateTime, aStatus, afranID, aLevel FROM alerts
-// alerts update/query
-	var alertsSend = [];
-	alertsSend[0] = 'Hello World 3';
-	alertsSend[1] = "PENDING";
-	alertsSend[2] = 6;
-	alertsSend[3] = 2;// idx
-	alertsSend[4] = 'X';// I,U,D,X
-	var aData = {franID:'GD00KS',cid:'0532',aDesc:alertsSend[0],aStatus:alertsSend[1],aLevel:alertsSend[2],idx:alertsSend[3],mode:alertsSend[4]};
-	getAlerts(aData);
-	// end alerts
 
-// alerts insert/query
-	// idx, aDesc, aFrom, aDateTime, aStatus, afranID, aLevel FROM alerts
-	var alertsSend = [];
-	alertsSend[0] = 'Hello World 11';//aDesc
-	alertsSend[1] = "PENDING";//aStatus
-	alertsSend[2] = 4;//aLevel
-	alertsSend[3] = 2;// idx
-	alertsSend[4] = 'I';//mode I,U,D,X
-	alertsSend[5] = dateTime2("dt"); //"2018-08-09 09:20:05";//aDateTime
-	alertsSend[6] = "SYSTEM";//aFrom
-	
-	var aData = {afranID:'GD00KS',cid:'0532',aDesc:alertsSend[0],aStatus:alertsSend[1],aLevel:alertsSend[2],idx:alertsSend[3],mode:alertsSend[4],aDateTime:alertsSend[5],aFrom:alertsSend[6]};
-	getAlerts(aData);
-	// end alerts
-	
-*/
-
-function showTasks() {
-	//alert("showTasks()");
-	// open window
-	a_window_tasks();
-}
 function getTasks(aData) {
 	$.ajax({ 
     //type: 'GET', 
@@ -491,56 +535,48 @@ function getTasks(aData) {
 			showAlertBar("Tasks State Data Error:1 "+textStatus+" "+error,4);
 		}
 	});
-	
-	
-	
 }
 
-function getJobs1Data() {
-	
+function getJobs1Data() {	
 	$.ajax({ 
     //type: 'GET', 
 	type: 'POST',
     url: "./scripts/dt_jobs1.php", 
-		data: {franID:'GD00KS',cid:'0532', mode:'X'},
+		data: {franID: franID, cid: cid, mode:'X'},
 		//data: aData,
 		success: function (data) { 
 			//alert(data.length);
 			//alert("Call Status "+data[0].status);
+			// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, fullName, fullAddr, franID
 			switch (data[0].status) {
 				case 'OK':
 					//alert("Call Status "+data[0].status);
 					// create array return data
-					var job1Data = new kendo.data.DataSource();
 					for (var i=0;i<data.length;++i)
 					{
-						//dtTasks.push(data[i]);						
-						alert(data[i].idx);
-						//job1Data.push(data[i]);
-						//job1Data.add(data[i]);
-						job1Data.push({idx: 5, clientID: "clientID", zipcode: 3, phone1: i });
+						job1Data.push({idx: data[i].idx, 
+							clientID: data[i].clientID, 
+							FirstName: data[i].FirstName,
+							LastName: data[i].LastName,
+							addr1: data[i].addr1,
+							city: data[i].city,
+							state: data[i].state,
+							zipcode: data[i].zipcode,
+							phone1: data[i].phone1,
+							phone2: data[i].phone2,
+							phone3: data[i].phone3,
+							fullName: data[i].fullName,
+							fullAddr: data[i].fullAddr
+						});
 					};
-					//fofo2();
-					//var dataSource = new kendo.data.SchedulerDataSource();
-					//var i;
-					//for (i = 0; i < 6; i++) {
-						//dataSource.add({JobNo: "AAAA",UnitPrice: "$1.99",UnitsInStock: 3, Discontinued: i });
-					//};
-					//alert("Return");
-					return job1Data;
-					//set count 
-					//document.getElementById("notifications-tasks").innerHTML = dtTasks.length;
 				break;
 				case 'ERROR':
-					//return job1Data;
 					//alert("No Alerts records found");
 					showAlertBar("No Alerts records found!",3);
 					//set count 
 					//document.getElementById("notifications-tasks").innerHTML = 0;
 				break;
 				case 'SECURITY ERROR':
-					//return job1Data;
-					alert("Alerts SECURITY ERROR");
 					//set count 
 					//document.getElementById("notifications-tasks").innerHTML = 0;
 					showAlertBar("SECURITY ERROR!",4);
@@ -555,13 +591,9 @@ function getJobs1Data() {
 			showAlertBar("Tasks State Data Error:1 "+textStatus+" "+error,4);
 		}
 	});
-
-	//$("#divGrid1").data("kendoGrid").dataSource.data(job1Data); 
-	//$("#divGrid1").data("kendoGrid").dataSource.read();
-	//return job1Data;
-	
 }
 
+// END GET DATA SECTION
 
 function dateTime2(a) {
 var rtData;
