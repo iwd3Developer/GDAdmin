@@ -171,7 +171,7 @@ function initKendoCtrls() {
 	});
 	dGrid1 = $("#divGrid1").data("kendoGrid");
 	
-	var dt = new Date();
+	var dt = dateTime2('s');
 	document.getElementById("divGrid1_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt+'</meta><span class="pull-right"><p>ready</p></span>';
 	// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, fullName, fullAddr, franID
 	
@@ -193,8 +193,8 @@ function initKendoCtrls() {
 			schema: {
 				model: {
 					fields: {
-						JobID: { type: "string" },
-						UnitPrice: { type: "number" }
+						Name: { type: "string" },
+						Phone: { type: "string" }
 					}
 				}
 			},
@@ -204,15 +204,19 @@ function initKendoCtrls() {
 		scrollable: true,
 		sortable: true,
 		filterable: true,
+		pageable: true,
 		//pageable: {
 			//input: true,
 			//numeric: false
 		//},
 		columns: [
-			"JobID",
-			{ field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "100px" }
+			{ field: "Name", title: "Name", width: "60px" },
+			{ field: "Phone", title: "Phone", width: "50px" }
 		]
 	});
+	dGrid2 = $("#divGrid2").data("kendoGrid");
+	var dt2 = dateTime2('s');
+	document.getElementById("divGrid2_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
 	
 	// end grid 2
 	
@@ -437,10 +441,10 @@ function showTasks() {
 		return dataSource;
 		*/
 		
-		var dataSource = new kendo.data.SchedulerDataSource();
+		var dataSource = new kendo.data.DataSource();
 		var i;
 		for (i = 0; i < 16; i++) {
-			dataSource.add({JobID: "AAAA",UnitPrice: "$5.99"});
+			dataSource.add({Name: "Bill Smith "+i, Phone: "609-214-3261"});
 		};
 		return dataSource;
 	}
