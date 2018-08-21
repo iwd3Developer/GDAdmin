@@ -57,11 +57,20 @@ function initKendoCtrls() {
 	   +new Date(today.getFullYear(), today.getMonth() - 2, 27)
 	];
 	
+	// #calendar1
+	function onChange_calendar1(e) {
+		console.log("Change :: " + kendo.toString(this.value(), 'd'));		
+	}
+	function onNavigate_calendar1(e) {
+		console.log("Navigate");
+	}
 	$("#calendar1").kendoCalendar({
 		value: today,
 		dates: events,
 		weekNumber: true,
 		//width:250, height:130,
+		change: onChange_calendar1,
+		navigate: onNavigate_calendar1,
 		weekNumber: '<a class="italic">#= data.weekNumber #</a>',
 		month: {
 			// template for dates in month view
@@ -80,8 +89,42 @@ function initKendoCtrls() {
 					 '# } #',
 			weekNumber: '<a class="italic">#= data.weekNumber #</a>'
 		},
-	});
-	
+                dates: [
+                  new Date("1/1/2018"),
+                  new Date("1/19/2018"),
+                  new Date("2/16/2018"),
+                  new Date("4/16/2018"),
+                  new Date("5/10/2018"),
+                  new Date("5/25/2018"),
+                  new Date("6/21/2018"),
+                  new Date("7/3/2018"),
+                  new Date("9/7/2018"),
+                  new Date("10/12/2018"),
+                  new Date("11/11/2018"),
+                  new Date("11/26/2018"),
+                  new Date("11/27/2018"),
+                  new Date("12/25/2018")
+                ],
+                disableDates: function (date) {
+                    var dates = $("#calendar1").data("kendoCalendar").options.dates;
+                    if (date && compareDates(date, dates)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+		});
+		
+		function compareDates(date, dates) {
+			for (var i = 0; i < dates.length; i++) {
+				if (dates[i].getDate() == date.getDate() &&
+					dates[i].getMonth() == date.getMonth() &&
+					dates[i].getYear() == date.getYear()) {
+				  return true
+				}
+			}
+		}
+	// END #calendar1
 	
 	// grid example
 	$("#grid").kendoGrid({
@@ -140,7 +183,8 @@ function initKendoCtrls() {
 						zipcode: { type: "string" },
 						phone1: { type: "string" },
 						phone2: { type: "string" },
-						phone3: { type: "string" }
+						phone3: { type: "string" },
+						moveDate: { type: "moveDate" }
 						
 					}
 				}
@@ -154,8 +198,8 @@ function initKendoCtrls() {
 		pageable: true,
 		selectable: "row",
 		columns: [
-			{ field: "idx", title: "Job No", width: "30px" },
-			{ field: "clientID", title: "Client ID", width: "60px" },
+			{ field: "idx", title: "Job No", width: "90px" },
+			{ field: "clientID", title: "Client ID", width: "110px" },
 			//{ field: "FirstName", title: "FirstName", width: "0px" },
 			//{ field: "LastName", title: "LastName",width: "0px" },
 			{ field: "fullName", title: "Name",width: "100px" },
@@ -164,9 +208,10 @@ function initKendoCtrls() {
 			//{ field: "city", title: "City",width: "0px" },
 			//{ field: "state", title: "State",width: "0px" },
 			//{ field: "zipcode", title: "zipcode",width: "0px" },
-			{ field: "phone1", title: "phone1",width: "80px" },
-			{ field: "phone2", title: "phone2",width: "80px" },
-			{ field: "phone3", title: "phone3",width: "80px" }
+			{ field: "phone1", title: "phone1",width: "110px" },
+			{ field: "phone2", title: "phone2",width: "110px" },
+			{ field: "phone3", title: "phone3",width: "110px" },
+			{ field: "moveDate", title: "moveDate",width: "120px" }
 		], change: onChangeGrid1
 	});
 	dGrid1 = $("#divGrid1").data("kendoGrid");
