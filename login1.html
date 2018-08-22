@@ -9,7 +9,7 @@
 			<!-- <div class="panel-heading">Panel header with panel-primary class</div> -->
 	  
 	  
-				<form class="form-horizontal" role="form" method="POST" action="javascript:gogoA()">
+				<form class="form-horizontal" role="form" method="POST" action="javascript:sendData()" onsubmit="myButton.disabled = true; return true;">
 					<div class="row">
 						<div class="col-md-4"></div>
 						<div class="col-md-6">
@@ -113,8 +113,100 @@
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div><!-- end row -->
 		
 	</div>
-	<script>
-		function gogoA() {
-			$("#pageDiv").load("./starter2.html");
+<script>
+$(document).ready(function () {	
+
+//setDT();
+
+
+
+//setTimeout(setDT, 6000);
+securityNotifi('Welcome!');
+//document.getElementById('loginname').value = "";
+//document.getElementById('pwd').value = "";
+//document.getElementById('acc').value = "";
+
+});
+
+function sendData() {
+	//form.myButton.disabled = true;
+    //return true;
+
+	
+	var a = document.getElementById('login').value;
+	var b = document.getElementById('password').value;
+	var c = document.getElementById('acct').value;
+	//alert(a+" : "+b+" : "+c );
+	jsonMaster1(a,b,c,'0532');
+}
+function jsonMaster1(a,b,c,d) {
+var cid = '0532';
+//var rtData = [];
+//var i=0;
+	// Assign handlers immediately after making the request,
+	// and remember the jqxhr object for this request
+	// https://jsonplaceholder.typicode.com/
+	//alert("a");
+	
+	// works
+	 var data = {
+      'loginName': 'joel',
+	  'pwd':'none',
+	  'franID':'none',
+	  'cid':'0532'
+    };
+    data = $(this).serialize() + "&" + $.param(data);
+	
+	//var data = {};
+	$.ajax({ 
+    //type: 'GET', 
+	type: 'POST',
+    url: "./scripts/userAccess.php", 
+		//data: { },  
+		//data: data,
+		data: {'loginName': a,'pwd':b, 'franID':c, 'cid':d },
+		success: function (data) { 
+			//alert(data.length);
+			//alert("Status "+data[0].status);
+			switch (data[0].status) {
+				case 'OK':
+					//for (var i=0;i<data.length;++i)
+					//{
+						//alert(data[0].FirstName);
+						currentUserData.push(data[0]);
+					//};		
+					//alert(currentUserData.length+" Look: "+currentUserData[0].FirstName);
+					//if ( a.length >= 1 ) {
+						loginA();
+						//return_fuction(rtData,0);
+					//}else{
+						//alert("Login Failure!");
+						//loginfu(currentUserData,1);
+						//return_fuction(rtData,1);
+					//};
+				break;
+				case 'ERROR':
+					alert("Login Failure!");
+					//return_fuction(currentUserData,2);// 0=ok,1-security,2=no records
+				break;
+				case 'SECURITY ERROR':
+					alert("SECURITY ERROR");
+					//return_fuction(currentUserData,1);// 0=ok,1-security,2=no records
+				break;
+				default:
+					//alert("XXXXX");
+				break;
+			};			
+		},
+		error: function(xhr, textStatus, error) {
+			alert("Error:1 "+textStatus+" "+error);
+			//$('#bsAlert3').show();
 		}
-	</script>
+	});
+
+}
+
+function loginA() {
+	$("#pageDiv").load("./starter2.html");
+}
+</script>

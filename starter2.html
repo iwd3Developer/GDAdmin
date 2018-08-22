@@ -264,14 +264,13 @@ transition: all 0.4s ease-in-out;
               <!-- The user image in the navbar-->
               <img src="dist/img/avatar04.png" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">User Name 1</span>
+              <span id="cUserName_1" class="hidden-xs">User Name 1</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="dist/img/avatar04.png" class="img-circle" alt="User Image">
-                <p>
-                  User Name 2 - Title
+                <p ID="cUserName_2">
                   <small>?????</small>
                 </p>
               </li>
@@ -328,7 +327,8 @@ transition: all 0.4s ease-in-out;
           <img src="dist/img/avatar04.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>User Name 3</p>
+          <!-- <p>User Name 3</p> -->
+		  <a href="#" id="cUserName_3"><i class="fa fa-circle text-success"></i> Online</a>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -966,8 +966,10 @@ $(document).ready(function(){
 //var job1Data = new kendo.data.DataSource();
 getJobs1Data();
 
-
-
+var cUserName = currentUserData[0].FirstName+" "+currentUserData[0].LastName;
+document.getElementById("cUserName_3").innerHTML = cUserName;
+document.getElementById("cUserName_1").innerHTML = cUserName;
+document.getElementById("cUserName_2").innerHTML = cUserName;
 
 	setTimeout(initKendoCtrls, 800);// local
 	//$("#x31").load("./pages/a_pg1.html");
