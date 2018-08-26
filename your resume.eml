@@ -1,0 +1,208 @@
+Delivered-To: iwd30532@gmail.com
+Received: by 2002:a19:2282:0:0:0:0:0 with SMTP id i124-v6csp3310325lfi;
+        Fri, 24 Aug 2018 20:34:34 -0700 (PDT)
+X-Google-Smtp-Source: ANB0VdaI10eIJsegp0JX7Pmi4Ei2GycjTSfhgq/d5utKRHpt+3ZZztpRFw82PDUFPs+J5nLmUjis
+X-Received: by 2002:a0c:9967:: with SMTP id i36-v6mr4698258qvd.120.1535168074250;
+        Fri, 24 Aug 2018 20:34:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535168074; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Ep5YQoHuF/PnCZPjg4RSxw88Nfg+ZfPkWSTj+Dhk/eQz/xVX/yKlSKedpzqS9s0zvB
+         Krr2ZBmoXJ/ghf+ZakLV2P+M4j0TAg0odFjNaXFFeAa71i1gZVRPP8QBDtd9hQiVW1Pb
+         lrcEXWkFFq8gZyzorw2anph/IiHoGM+R72iiroANOmlCSDB3BrcKD7ywphURWDxYvTdo
+         YsYUJPNm1Sj7K0vqJ3LMtbx90vqGAcW6oahtWGG+vxdOYbLXurKonVR+cASCK9RDkDsc
+         2eveU57An1q547Qr1jiQqggxHojKHjNZ4l3L/Xs2SB/3+mlYXO2rxkqko1F9gnR6yBrk
+         MfPg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:subject:date:reply-to:to:from:mime-version
+         :message-id:dkim-signature:dkim-signature:arc-authentication-results;
+        bh=ge2DOpvvKQynCEziESn8K0QE70qBK3QHQO5fghj8J/k=;
+        b=WfJzL46W2okaqTi2e8MPb4p2uHbMsnRXVKcT24fkvfiiwj2cqVfHkGEmNkOCUifpC1
+         ZODhyQVIUdLblp4WqoP48gRnYD9ls0VI5wtVTsJYr2JGu7cP5GtkaZ2uJzbIdr+lZsc/
+         0ekTrsG9EsHdR7mufDb99j+PVbzeTBqK66xMZRX6HxXXHt2dIBDZeFwiiQ6oHgWZBL8h
+         hY/ldFjnMBAPAC/fsGNEpHZot/VDi9898HscjT7IZazsXI/EK3MaKaZkJGgF7CGvptfi
+         mRWGZTeTORY2qe4F/HE8cRM0JmTqNJRE5UT5PhoT1YuGi1Ar0u2EjCMBWFRiy3nahPWr
+         68KQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@qikmail.com header.s=smtpapi header.b=egK2URmU;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=O3VL+Jzk;
+       spf=pass (google.com: domain of bounces+75630-98bb-iwd30532=gmail.com@email.qikmail.com designates 208.117.51.1 as permitted sender) smtp.mailfrom="bounces+75630-98bb-iwd30532=gmail.com@email.qikmail.com"
+Return-Path: <bounces+75630-98bb-iwd30532=gmail.com@email.qikmail.com>
+Received: from o2.email.qikmail.com (o2.email.qikmail.com. [208.117.51.1])
+        by mx.google.com with ESMTPS id f37-v6si1629371qtc.65.2018.08.24.20.34.33
+        for <iwd30532@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 24 Aug 2018 20:34:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+75630-98bb-iwd30532=gmail.com@email.qikmail.com designates 208.117.51.1 as permitted sender) client-ip=208.117.51.1;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@qikmail.com header.s=smtpapi header.b=egK2URmU;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=O3VL+Jzk;
+       spf=pass (google.com: domain of bounces+75630-98bb-iwd30532=gmail.com@email.qikmail.com designates 208.117.51.1 as permitted sender) smtp.mailfrom="bounces+75630-98bb-iwd30532=gmail.com@email.qikmail.com"
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=qikmail.com; 
+	h=mime-version:from:to:reply-to:subject:content-type:list-unsubscribe; 
+	s=smtpapi; bh=T1xaltBaOtOz2qHwdNB4Cnlcar4=; b=egK2URmUVCw59ZPZhe
+	oS8cEvgg9DUI4Nztkl5oz52iLzgrYdvshfUtMifJ+efK9kq0e/PWX15uLkNI8vWi
+	KJB+QpthEf501vXN+z1SuTcy1JLPlW9eUeO4JyDQFNDqiSooI89ygYvAuXNeM8hE
+	gfOTH2fVOib+5vjd52QmFzMbw=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=sendgrid.info; 
+	h=mime-version:from:to:reply-to:subject:content-type:list-unsubscribe:x-feedback-id; 
+	s=smtpapi; bh=T1xaltBaOtOz2qHwdNB4Cnlcar4=; b=O3VL+JzknGctIOo9wH
+	HdewKh6sMy6CYMfZig3LzXbMBiuFcj9/MnojZZxGR73ytdO+IBeeo5TE/BUVfFzt
+	dGNEGe7KIskAdE2lMqXk30GVLdTUaUQeGSqwoTr0W5SmEklwMLLsdOCTbQxnHurN
+	fDiIlFE8+nHRLMo3Aogq5NQ94=
+Received: by filter0090p1iad2.sendgrid.net with SMTP id filter0090p1iad2-14078-5B80CE48-A
+        2018-08-25 03:34:32.956365983 +0000 UTC m=+625981.213368164
+Received: from RD0003FF2B9CAB (unknown [13.84.225.97])
+	by ismtpd0002p1sjc2.sendgrid.net (SG) with ESMTP id 6u4DWk5nQE6ZmZflFD0xyg
+	for <iwd30532@gmail.com>; Sat, 25 Aug 2018 03:34:32.781 +0000 (UTC)
+Message-ID: <01f61D43BBF.F3CE1970.68DA7464@qikmail.com>
+MIME-Version: 1.0
+From: "Rick Keller" <rick1@qikmail.com>
+To: iwd30532@gmail.com
+Reply-To: "Rick Keller" <rick@selectingafranchise.com>
+Date: Sat, 25 Aug 2018 03:34:32 +0000 (UTC)
+Subject: your resume
+Content-Type: multipart/alternative;
+ boundary=--boundary_1002986_4a49d716-b875-463b-80ab-05a67ad73c8c
+X-SG-EID: d7yotxTv1uvoAmjRvX+kUP3lVwLzVagX+5INwIIV6viKwCc+vHcKkY4Te8S2LwyH2MxWm5+EpbFAwr
+ tujVkhxbDJ9kmKkEA0zRCmCMHrnct43nksWRsP7V2eazGNm5TVEOA1fwe0ES7YHv8d1wS//Oe15nvL
+ N+1GveRV952ioIKQfK7Qli71JAA9uBJMRq8TRe27qPqesA1iFs3cm6SgUg==
+X-SG-ID: IiOWKOlxum2yJPn2FmgJpd3ziF1rua+pha+yM3emW4v9wbnVscG516oTRSph459+F+AotLC4aYZIaI
+ nm+EABHtDoSHfBRcpGZk9nQ0MWVF+eKD0zUWIKn2lzGlB9Rh/YEzCrDMYOKPcBrnzBXJZ6nz28pFLE
+ bM2uNndOvrrWCPB/BBgId8LEZKsRyF/A4KSllkRvfT0Yq+4At+g+fzmJDaXB8+yAHO9TVYMkCEOacT
+ 6lqn/gcTt1JaZL7tpHN+xO
+X-Feedback-ID: 75630:EfFymbPQdWP5+zeUWjhSC7mp+YVpVP/5Vab29ncbfss=:qM7+xA8EH99B+SujgqU4w8DwFfIw3axyKJCLIAMb00cSO3nD4LdOiyroCqpYB9a4nvC4qDqS+6IIvHdpvyJmAw==:SG
+List-Unsubscribe: <mailto:unsubscribe@email.qikmail.com?subject=http://link.qikmail.com/wf/unsubscribe*q*upn=oyCWNkgCmVCu7ob6vV-2BkICerFNwIUGiJYeF9qyyKPlyVa1MiNcu2OnskCFqYE9ZwYurhXpbK9eJuJ8YfpoLMDg4dGgHYmoF73v1aqF7GJZ-2FqxNQrNU-2Brb6cBZepNIrXnADCG5XQu-2FLTRt-2FsOXS-2Bg6PqLsyi4GsDzRDdxfN4zg4uA-2Fx4a5-2B0AlY5J49GlejhAkvwxwEmhihJ-2FW5HZdPoDpBY52Tu8Gor3GLgoHav21EOnjRSUcFKgSEEc9iFewKiAiEq73bZl3Et0Uuy3AOHzYWr71FWIhaHxPMwhbxMbuWulXM5vTaA3Mj0qcXvI8squKOkTIrUBXDTe6zLx2a2lu9lfn-2BkpOo1JRJzQonljZIKz-2FHP6-2Bcw04pVGyn9POK1aqkJEUXNhPv-2F-2Fyjrr1dWn66clLJ1b9eW39aWOcGP0PxP7vvrkesT-2F-2FaIRUfoMtSi9xo9PaVsp4QlWi677LOZBag-3D-3D>
+
+----boundary_1002986_4a49d716-b875-463b-80ab-05a67ad73c8c
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Additional options available to you
+
+We found your information on Nexxt.com and based on your background and exp=
+erience you may be a good fit. We have been hired to recruit individuals wh=
+o have worked in corporate America and are now interested in the option of =
+owning their own business.=20
+
+Here is why, looking back at 2017, approximately 80-85% of the new franchis=
+e business owners are corporate professionals. (15%-20% are existing busine=
+ss owners looking to add to their business portfolio) Candidates are leavin=
+g their corporate jobs and discovering the benefits of franchise business o=
+wnership and 10-20% of these new franchise business owners keep their job, =
+while owning a business on the side, building equity and monthly revenue. (=
+Semi Absentee Franchise Ownership)=20
+
+There=E2=80=99s nothing like a sudden shift in your job plans to force you =
+to rethink your perception of security. As I recall one candidate whose wif=
+e asked him one question that changed his mindset completely, =E2=80=9CIt d=
+oesn't cost anything to look, plus you learn about different businesses and=
+ open your mind to successful options.=E2=80=9D
+
+If you've ever thought about business ownership, we can help.
+
+Our network of franchise recruiters/consultants represent hundreds of major=
+ franchise businesses and place qualified individuals in various franchise =
+industries that fit within the realm of their previous work history and acq=
+uired talents.=20
+
+Please take a look at the website Franchise Career Advisors (http://franchi=
+secareeradvisors.com/business-ownership/?SRC=3DNew_Lead_31). Once there, co=
+mplete the request form to receive an article on the "Top Fast Growing Fran=
+chise Industries".
+
+When we receive your information, we will give you a call within 48 hours t=
+o discuss the next steps towards business ownership.
+
+Best Regards,=20
+Rick=20
+
+Rick Keller=20
+Franchise Career Advisor=20
+rick@selectingafranchise.com (mailto:rick@selectingafranchise.com)
+Franchise Coordinator & Recruiter
+FCA | 999 Vanderbilt Road, Suite 200 | Naples, FL 34108
+
+If you never want to hear from us about business ownership - no worries - b=
+elow is the place to unsubscribe.
+
+To remove your name from consideration, unsubscribe here. (http://link.qikm=
+ail.com/wf/unsubscribe?upn=3DoyCWNkgCmVCu7ob6vV-2BkICerFNwIUGiJYeF9qyyKPlyV=
+a1MiNcu2OnskCFqYE9ZwP48mz7FhVkwEHFXQKunPcWWtwb3LD7ZuIQkN83hn0IB2WwOkMTFPGQG=
+tRkFxl5WhzuEmQ2GyZL8umyKG2XRZexMUD-2ByF-2BrgTuxoWY7R0MCRX7F1IabtTX4Q9lwmchD=
+z49TtQVyOW-2Fwphi-2BWbLQYxD-2B-2BeA-2FCLgi94yXvQ-2BCPNlzOdZL7H4pp7s0l-2BrWk=
+j-2Facm83p19k4lwVcShZi2Wn8hyh7PqQlPSqQCz-2BcBk9Z-2BEUTlAPD3KzMTuJIf2jVJAce-=
+2B0kDv4jDju2iQdk8s5eEruWVOYXvcjUG3haoGXONqBUU9WWEmBrLWltCNSuqjaybI-2BC0-2FO=
+esQLMCYnMO-2BRiZHyN7o0sg3-2BP6yIHGOrdlHC2N6hbHCjU5UQkmezrksRKg4IyFVrwXPP6L4=
+FOCcZd7QAw-3D-3D)=
+
+----boundary_1002986_4a49d716-b875-463b-80ab-05a67ad73c8c
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<HTML><BODY><DIV>Additional options available to you</DIV><DIV><SPAN>&nbsp;=
+</SPAN></DIV><DIV>We found your information on <SPAN>Nexxt.com</SPAN> and b=
+ased on your background and experience you may be a good fit.  We have been=
+ hired to recruit individuals who have worked in corporate America and are =
+now interested in the option of owning their own business. </DIV><DIV><SPAN=
+>&nbsp;</SPAN></DIV><DIV>Here is why, looking back at 2017, approximately 8=
+0-85% of the new franchise business owners are corporate professionals. (15=
+%-20% are existing business owners looking to add to their business portfol=
+io) Candidates are leaving their corporate jobs and discovering the benefit=
+s of franchise business ownership and 10-20% of these new franchise busines=
+s owners keep their job, while owning a business on the side, building equi=
+ty and monthly revenue. (Semi Absentee Franchise Ownership) </DIV><DIV><SPA=
+N>&nbsp;</SPAN></DIV><DIV>There=E2=80=99s nothing like a sudden shift in yo=
+ur job plans to force you to rethink your perception of security. As I reca=
+ll one candidate whose wife asked him one question that changed his mindset=
+ completely, =E2=80=9CIt doesn't cost anything to look, plus you learn abou=
+t different businesses and open your mind to successful options.=E2=80=9D</=
+DIV><DIV><SPAN>&nbsp;</SPAN></DIV><DIV>If you've ever thought about busines=
+s ownership, we can help.</DIV><DIV><SPAN>&nbsp;</SPAN></DIV><DIV>Our netwo=
+rk of franchise recruiters/consultants represent hundreds of major franchis=
+e businesses and place qualified individuals in various franchise industrie=
+s that fit within the realm of their previous work history and acquired tal=
+ents. </DIV><DIV><SPAN>&nbsp;</SPAN></DIV><DIV>Please take a look at the we=
+bsite <SPAN STYLE=3D"font-weight:bold;"><a href=3D"http://franchisecareerad=
+visors.com/business-ownership/?SRC=3DNew_Lead_31" target=3D"_blank">Franchi=
+se Career Advisors</a></SPAN>. Once there, complete the request form to rec=
+eive an article on the "Top Fast Growing Franchise Industries".</DIV><DIV><=
+SPAN>&nbsp;</SPAN></DIV><DIV>When we receive your information, we will give=
+ you a call within 48 hours to discuss the next steps towards business owne=
+rship.</DIV><DIV><SPAN>&nbsp;</SPAN></DIV><DIV>Best Regards,</DIV>=0D
+<DIV>Rick</DIV>=0D
+<DIV><SPAN>&nbsp;</SPAN></DIV>=0D
+<DIV><SPAN STYLE=3D"font-weight:bold;">Rick Keller</SPAN></DIV>=0D
+<DIV>Franchise Career Advisor</DIV>=0D
+<DIV><SPAN STYLE=3D"font-weight:bold;" /><SPAN STYLE=3D"font-weight:bold;">=
+<a href=3D"mailto:rick@selectingafranchise.com" target=3D"_blank">rick@sele=
+ctingafranchise.com</a></SPAN></DIV><DIV>Franchise Coordinator &amp; Recrui=
+ter</DIV><DIV>FCA | 999 Vanderbilt Road, Suite 200 | Naples, FL 34108</DIV>=
+<DIV><SPAN>&nbsp;</SPAN></DIV><DIV>If you never want to hear from us about =
+business ownership - no worries - below is the place to unsubscribe.</DIV><=
+DIV><SPAN>&nbsp;</SPAN></DIV><DIV><SPAN><a href=3D"http://link.qikmail.com/=
+wf/unsubscribe?upn=3DoyCWNkgCmVCu7ob6vV-2BkICerFNwIUGiJYeF9qyyKPlyVa1MiNcu2=
+OnskCFqYE9ZwYOHCiV3SEGM-2F8uROjFFhNp60RXlCCrHSDCrkI6pqsHmYoMCW8u3eu5WU8vzu9=
+RXK8xHJ7r6lx-2FrTT1OIiKovF4x5mEr2C5nPDTL9-2BdrR5nLapyYc-2FES6bsbYymNo6sGndE=
+Xw8sLErOY3c8r7PngF4yEIDhyFU4nh4IV8HL2QGHpJaRDAD01dfFc4lVxwzLCEco9MqRsC4JvDe=
+W3PrtJupMfxgxShKbW2RRJEO-2BnGBkgAoUccmehZpL5Srv72t7qInv8hgqIM4s-2BMElS5Gl7A=
+91rLpjDRxuqgMK4p1KFQ4944Mw9uf7z6wfssRWVRKRVEk0UtW67uCTYRDPoPoAigx-2Bu8kw2ty=
+sovkoxRtG5hpgP85c-2B4EmXmqu8Fo5o0Ui4ObxU6wmi2nl2Hg9jVm019qA-3D-3D" target=
+=3D"_blank">To remove your name from consideration, unsubscribe here.</a></=
+SPAN></DIV><DIV><SPAN>&nbsp;</SPAN></DIV><DIV><SPAN>&nbsp;</SPAN></DIV>
+<img src=3D"http://link.qikmail.com/wf/open?upn=3DoyCWNkgCmVCu7ob6vV-2BkICe=
+rFNwIUGiJYeF9qyyKPlyVa1MiNcu2OnskCFqYE9Zwvq-2BjWBklbmeQeaR7SVDgTKv4cjRw-2Bd=
+SpfEUibqUmEeeOxdcFlqJLHZj-2FpeFU86IkAjADIurEiscyr-2BBn2nTfIMI470JmMhbv753WC=
+IeDyogAKFXTW37eJjmY88nuCVZThVGy08hjosWanaW0myb5S6wI5kvutOVNGHk65rmr5xrtNnaR=
+tTYCSs3uTcZSIapRltSrmzUsmIpgG4-2BGgIs2vowygHsFDGit7o3X3Je1evPkDVoDZAWo5ey8I=
+lWSveITeBmPOJdCsw0LrsfvWdc4kUGAKLvBGuZWAzIsU-2F7I2OJwTvzDHzRNgALhlfR3pjNlD9=
+u1zrYHmFx0leVqt03JwFWf8r7Im-2B-2FECTvlzfEFrvjROYlYMvM03Nf0oqt-2BTx1U4J0dpmq=
+2ZQBGsNZ05gnZ4g-3D-3D" alt=3D"" width=3D"1" height=3D"1" border=3D"0" style=
+=3D"height:1px !important;width:1px !important;border-width:0 !important;ma=
+rgin-top:0 !important;margin-bottom:0 !important;margin-right:0 !important;=
+margin-left:0 !important;padding-top:0 !important;padding-bottom:0 !importa=
+nt;padding-right:0 !important;padding-left:0 !important;"/>
+</BODY></HTML>
+
+----boundary_1002986_4a49d716-b875-463b-80ab-05a67ad73c8c--
+
+

@@ -1,0 +1,276 @@
+
+  <style>
+.container {
+        width: 90%;
+        height: 80%;
+        /* background-color: blue; */
+
+        position:absolute; /*it can be fixed too*/
+        left:0; right:0;
+        top:0; bottom:0;
+        margin:auto;
+
+        /*this to solve "the content will not be cut when the window is smaller than the content": */
+        max-width:100%;
+        max-height:100%;
+        overflow:auto;
+    }
+</style>  
+
+    
+    <div class="container-fluid">
+        <div class="row">
+        </div>
+    </div>
+	
+    <div class="row" style="position: fixed; bottom:20px; width: 100%;"  align="center">
+		<div class="progress progress-striped active" style="width:90%;">
+			<div class="progress-bar" role="progressbar" style="width: 1%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div id="pb_start"></div></div>
+		</div>
+	</div>
+	<div class="row" style="position: fixed; bottom:10px; width: 100%;"  align="center">
+		<div id="msg1"></div>
+	</div>
+
+<button onclick="javascript:test1();">START</button>
+<button onclick="javascript:test2();">END</button>
+
+
+    <script src="http://protostrap.com/Assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    
+    <script src="http://protostrap.com/Assets/inputmask/js/jquery.inputmask.js" type="text/javascript"></script>
+
+
+<script>
+var g_pb1_inc_value = 10; 
+var valeur = 0;
+var valeurB = 0;
+var tick1 = 10;
+var pb1b_interval;
+//var pb1_interval = setInterval( pb1, 300);
+
+function pb1_tick(x){
+pb1b_interval = setInterval( pb1b, 1000, x);
+}
+function test2() {
+	//pb1b(15);// perform a load call this
+	pb1b_end();
+}
+function test1() {
+	//pb1b(tick1);// perform a load call this
+	//pb1_tick(2);
+	var aData = "{franID:'GD00KS',cid:'0532', mode:'X'}";
+	getAlerts();
+	//getTasks(aData);
+	
+}
+function pb1b(x) {	
+	valeurB = valeurB + x;
+	//alert("OK "+valeurB);
+	document.getElementById("pb_start").innerHTML = valeurB+"%";
+	$('.progress-bar').css('width', valeurB+'%').attr('aria-valuenow', valeurB);
+	if ( valeurB >= 100 ) {  pb1b_end();  };
+	document.getElementById("msg1").innerHTML = "Working...";
+}
+function pb1() {
+	valeur = valeur + g_pb1_inc_value;
+	document.getElementById("pb_start").innerHTML = valeur+"%";
+	$('.progress-bar').css('width', valeur+'%').attr('aria-valuenow', valeur);
+	if ( valeur >= 100 ) {  pb1_end();  };
+	document.getElementById("msg1").innerHTML = "Working...";
+}
+function pb1b_end() {
+clearInterval(pb1b_interval);
+	document.getElementById("msg1").innerHTML = "Done...";
+	document.getElementById("pb_start").innerHTML = "Done";
+	$('.progress-bar').css('width', '100%').attr('aria-valuenow', 100);
+	setTimeout(fofoB, 1500);
+	function fofoB() {
+		valeurB = 0;
+		$('.progress-bar').css('width', '0%').attr('aria-valuenow', 0);
+		document.getElementById("msg1").innerHTML = "";
+		document.getElementById("pb_start").innerHTML = "";
+		// go some where or do something
+	}
+}
+function pb1_end() {
+	clearInterval(pb1_interval); 
+	document.getElementById("msg1").innerHTML = "Done...";
+	document.getElementById("pb_start").innerHTML = "Done";
+	setTimeout(fofo, 1500);
+	function fofo() {
+		valeur = 0;
+		$('.progress-bar').css('width', '0%').attr('aria-valuenow', 0);
+		document.getElementById("msg1").innerHTML = "";
+		document.getElementById("pb_start").innerHTML = "";
+		// go some where or do something
+		// $("#pageDiv").load("./login1.html");
+	}
+}
+/* LOAD DATA HERE */
+
+// GET DATA SECTION
+
+function getAlerts() {
+pb1b(tick1);
+	$.ajax({ 
+    //type: 'GET', 
+	type: 'POST',
+    url: "./scripts/dt_alerts.php", 
+		data: {franID:'GD00KS',cid:'0532', mode:'X'},
+		//data: aData,
+		success: function (data) { 
+			//alert(data.length);
+			//alert("Call Status "+data[0].status);
+			switch (data[0].status) {
+				case 'OK':
+					// create array return data
+					for (var i=0;i<data.length;++i)
+					{
+						dtAlerts.push(data[i]);						
+					};
+					//set count 
+					//document.getElementById("notifications-alerts").innerHTML = dtAlerts.length;
+					pb1b(tick1);
+					//getTasks(aData);
+				break;
+				case 'ERROR':
+					//alert("No Alerts records found");
+					//showAlertBar("No Alerts records found!",3);
+					//set count 
+					document.getElementById("notifications-alerts").innerHTML = 0;
+				break;
+				case 'SECURITY ERROR':
+					alert("Alerts SECURITY ERROR");
+					//set count 
+					//document.getElementById("notifications-alerts").innerHTML = 0;
+					showAlertBar("SECURITY ERROR!",4);
+				break;
+				default:
+					//alert("XXXXX");
+				break;
+			};			
+		},
+		error: function(xhr, textStatus, error) {
+			//showAlertBar("Alerts State Data Error:1 "+textStatus+" "+error,4);
+		}
+	});
+	
+}
+
+function getTasks(aData) {
+	pb1b(10);// perform a load call this
+	$.ajax({ 
+    //type: 'GET', 
+	type: 'POST',
+    url: "./scripts/dt_tasks.php", 
+		//data: {franID:'GD00KS',cid:'0532', mode:'X'},
+		data: aData,
+		success: function (data) { 
+			//alert(data.length);
+			//alert("Call Status "+data[0].status);
+			switch (data[0].status) {
+				case 'OK':
+					// create array return data
+					for (var i=0;i<data.length;++i)
+					{
+						pb1b(i);//
+						dtTasks.push(data[i]);						
+					};
+					//set count 
+					//document.getElementById("notifications-tasks").innerHTML = dtTasks.length;
+					pb1b(90);//
+				break;
+				case 'ERROR':
+					//alert("No Alerts records found");
+					//showAlertBar("No Alerts records found!",3);
+					//set count 
+					//document.getElementById("notifications-tasks").innerHTML = 0;
+				break;
+				case 'SECURITY ERROR':
+					alert("Alerts SECURITY ERROR");
+					//set count 
+					//document.getElementById("notifications-tasks").innerHTML = 0;
+					//showAlertBar("SECURITY ERROR!",4);
+				break;
+				default:
+					//alert("XXXXX");
+				break;
+			};			
+		},
+		error: function(xhr, textStatus, error) {
+			//showAlertBar("Tasks State Data Error:1 "+textStatus+" "+error,4);
+		}
+	});
+}
+
+function getJobs1Data() {	
+	$.ajax({ 
+    //type: 'GET', 
+	type: 'POST',
+    url: "./scripts/dt_jobs1.php", 
+		data: {franID: franID, cid: cid, mode:'X'},
+		//data: aData,
+		success: function (data) { 
+			//alert(data.length);
+			//alert("Call Status "+data[0].status);
+			// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, fullName, fullAddr, franID
+			switch (data[0].status) {
+				case 'OK':
+					//alert("Call Status "+data[0].status);
+					// create array return data
+					for (var i=0;i<data.length;++i)
+					{
+						job1Data.push({idx: data[i].idx, 
+							clientID: data[i].clientID, 
+							FirstName: data[i].FirstName,
+							LastName: data[i].LastName,
+							addr1: data[i].addr1,
+							city: data[i].city,
+							state: data[i].state,
+							zipcode: data[i].zipcode,
+							phone1: data[i].phone1,
+							phone2: data[i].phone2,
+							phone3: data[i].phone3,
+							fullName: data[i].fullName,
+							fullAddr: data[i].fullAddr
+						});
+					};
+					//dGrid1 = $("#divGrid1").data("kendoGrid");		
+					$("#divGrid1").data("kendoGrid").refresh();	
+					$('#divGrid1').data('kendoGrid').dataSource.read();
+				break;
+				case 'ERROR':
+					//alert("No Alerts records found");
+					showAlertBar("No Alerts records found!",3);
+					//set count 
+					//document.getElementById("notifications-tasks").innerHTML = 0;
+				break;
+				case 'SECURITY ERROR':
+					//set count 
+					//document.getElementById("notifications-tasks").innerHTML = 0;
+					showAlertBar("SECURITY ERROR!",4);
+				break;
+				default:
+					//alert("XXXXX");
+				break;
+			};			
+		},
+		error: function(xhr, textStatus, error) {
+			//return job1Data;
+			showAlertBar("Tasks State Data Error:1 "+textStatus+" "+error,4);
+		}
+	});
+	/*
+	// https://www.codeproject.com/Articles/606682/Kendo-Grid-In-Action
+	//Selecting Grid
+var gview = $("#grid").data("kendoGrid");
+//Getting selected item
+var selectedItem = gview.dataItem(gview.select());
+//accessing selected rows data 
+alert(selectedItem.email);
+	*/
+}
+	 
+
+</script>
