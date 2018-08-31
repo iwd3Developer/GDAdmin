@@ -488,8 +488,8 @@ function showTasks() {
 		
 		var dataSource = new kendo.data.DataSource();
 		var i;
-		for (i = 0; i < 16; i++) {
-			dataSource.add({Name: "Bill Smith "+i, Phone: "609-214-3261"});
+		for (i = 0; i < allUserData.length; i++) {
+			dataSource.add({Name: allUserData[i].FirstName+" "+allUserData[i].LastName, Phone: allUserData[i].phone1});
 		};
 		return dataSource;
 	}
@@ -599,63 +599,188 @@ function getTasks(aData) {
 	});
 }
 
-function getJobs1Data() {	
-	$.ajax({ 
-    //type: 'GET', 
-	type: 'POST',
-    url: "./scripts/dt_jobs1.php", 
-		data: {franID: franID, cid: cid, mode:'X'},
-		//data: aData,
-		success: function (data) { 
-			//alert(data.length);
-			//alert("Call Status "+data[0].status);
-			// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, fullName, fullAddr, franID
-			switch (data[0].status) {
-				case 'OK':
-					//alert("Call Status "+data[0].status);
-					// create array return data
-					for (var i=0;i<data.length;++i)
-					{
-						job1Data.push({idx: data[i].idx, 
-							clientID: data[i].clientID, 
-							FirstName: data[i].FirstName,
-							LastName: data[i].LastName,
-							addr1: data[i].addr1,
-							city: data[i].city,
-							state: data[i].state,
-							zipcode: data[i].zipcode,
-							phone1: data[i].phone1,
-							phone2: data[i].phone2,
-							phone3: data[i].phone3,
-							fullName: data[i].fullName,
-							fullAddr: data[i].fullAddr
-						});
-					};
-					//dGrid1 = $("#divGrid1").data("kendoGrid");		
-					$("#divGrid1").data("kendoGrid").refresh();	
-					$('#divGrid1').data('kendoGrid').dataSource.read();
-				break;
-				case 'ERROR':
-					//alert("No Alerts records found");
-					showAlertBar("No Alerts records found!",3);
-					//set count 
-					//document.getElementById("notifications-tasks").innerHTML = 0;
-				break;
-				case 'SECURITY ERROR':
-					//set count 
-					//document.getElementById("notifications-tasks").innerHTML = 0;
-					showAlertBar("SECURITY ERROR!",4);
-				break;
-				default:
-					//alert("XXXXX");
-				break;
-			};			
-		},
-		error: function(xhr, textStatus, error) {
-			//return job1Data;
-			showAlertBar("Tasks State Data Error:1 "+textStatus+" "+error,4);
-		}
-	});
+function getEmpData() {
+	// dSource2()	
+	
+	var dbParam, xmlhttp, myObj, x, txt = "";
+	var i2 = 1;
+	var data = new FormData();
+	//EDIT AS NEEDED IT
+	data.append("franID", "GD00KS");//MUST!!
+	data.append("cid", "0532");//MUST!!
+	data.append("mode", "x");//MUST!!
+	//data.append("limit", 40);
+
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.synchronous = false;
+	//EVENTS
+	xmlhttp.addEventListener("progress", updateProgress);
+	xmlhttp.addEventListener("load", transferComplete);
+	xmlhttp.addEventListener("error", transferFailed);
+	xmlhttp.addEventListener("abort", transferCanceled);
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			myObj = JSON.parse(this.responseText);
+			allUserData = myObj;
+			/*
+			for (x in myObj) {
+				//txt += i2+" - "+myObj[x].name + "<br>";
+
+				job1Data.push({idx: myObj[x].idx, 
+					clientID: myObj[x].clientID, 
+					FirstName: myObj[x].FirstName,
+					LastName: myObj[x].LastName,
+					addr1: myObj[x].addr1,
+					city: myObj[x].city,
+					state: myObj[x].state,
+					zipcode: myObj[x].zipcode,
+					phone1: myObj[x].phone1,
+					phone2: myObj[x].phone2,
+					phone3: myObj[x].phone3,
+					fullName: myObj[x].fullName,
+					fullAddr: myObj[x].fullAddr
+				});
+				i2++;
+			};
+			*/
+		};
+	};
+
+	//xmlhttp.open("GET", "./scripts/dt_users.php" + dbParam, true);
+	//xmlhttp.send();
+
+	xmlhttp.open("POST", "./scripts/dt_users.php");//, false);//false-synchronous, true-asynchronously
+	xmlhttp.send(data);
+	
+	// progress on transfers from the server to the client (downloads)
+	function updateProgress (oEvent) {
+	  if (oEvent.lengthComputable) {
+		var percentComplete = oEvent.loaded / oEvent.total * 100;
+		console.log(percentComplete);
+		//document.getElementById("msg1").innerHTML = " "+percentComplete;
+	  } else {
+		console.log("Unable to compute progress information since the total size is unknown");
+	  }
+	}
+
+	function transferComplete(evt) {
+	  console.log("The transfer is complete.");
+	  //document.getElementById("msg1").innerHTML = "loading complete. ";
+		//dGrid1 = $("#divGrid1").data("kendoGrid");		
+		//$("#divGrid1").data("kendoGrid").refresh();	
+		//$('#divGrid2').data('kendoGrid').dataSource.read();
+		//setTimeout(localCleanUp(),10000);
+	}
+
+	function transferFailed(evt) {
+	  console.log("An error occurred while transferring the file.");
+	}
+
+	function transferCanceled(evt) {
+	  console.log("The transfer has been canceled by the user.");
+	}
+
+
+	
+	/*
+	// https://www.codeproject.com/Articles/606682/Kendo-Grid-In-Action
+	//Selecting Grid
+var gview = $("#grid").data("kendoGrid");
+//Getting selected item
+var selectedItem = gview.dataItem(gview.select());
+//accessing selected rows data 
+alert(selectedItem.email);
+	*/
+}
+
+
+
+
+function getJobs1Data() {
+	// dSource1()	
+	
+	var dbParam, xmlhttp, myObj, x, txt = "";
+	var i2 = 1;
+	var data = new FormData();
+	//EDIT AS NEEDED IT
+	data.append("franID", "GD00KS");//MUST!!
+	data.append("cid", "0532");//MUST!!
+	data.append("mode", "x");//MUST!!
+	//data.append("limit", 40);
+
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.synchronous = false;
+	//EVENTS
+	xmlhttp.addEventListener("progress", updateProgress);
+	xmlhttp.addEventListener("load", transferComplete);
+	xmlhttp.addEventListener("error", transferFailed);
+	xmlhttp.addEventListener("abort", transferCanceled);
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			myObj = JSON.parse(this.responseText);
+			job1Data = myObj;
+			/*
+			for (x in myObj) {
+				//txt += i2+" - "+myObj[x].name + "<br>";
+
+				job1Data.push({idx: myObj[x].idx, 
+					clientID: myObj[x].clientID, 
+					FirstName: myObj[x].FirstName,
+					LastName: myObj[x].LastName,
+					addr1: myObj[x].addr1,
+					city: myObj[x].city,
+					state: myObj[x].state,
+					zipcode: myObj[x].zipcode,
+					phone1: myObj[x].phone1,
+					phone2: myObj[x].phone2,
+					phone3: myObj[x].phone3,
+					fullName: myObj[x].fullName,
+					fullAddr: myObj[x].fullAddr
+				});
+				i2++;
+			};
+			*/
+		};
+	};
+
+	//xmlhttp.open("GET", "./scripts/dt_jobs1.php" + dbParam, true);
+	//xmlhttp.send();
+
+	xmlhttp.open("POST", "./scripts/dt_jobs1.php");//, false);//false-synchronous, true-asynchronously
+	xmlhttp.send(data);
+	
+	// progress on transfers from the server to the client (downloads)
+	function updateProgress (oEvent) {
+	  if (oEvent.lengthComputable) {
+		var percentComplete = oEvent.loaded / oEvent.total * 100;
+		console.log(percentComplete);
+		//document.getElementById("msg1").innerHTML = " "+percentComplete;
+	  } else {
+		console.log("Unable to compute progress information since the total size is unknown");
+	  }
+	}
+
+	function transferComplete(evt) {
+	  console.log("The transfer is complete.");
+	  //document.getElementById("msg1").innerHTML = "loading complete. ";
+		//dGrid1 = $("#divGrid1").data("kendoGrid");		
+		//$("#divGrid1").data("kendoGrid").refresh();	
+		//$('#divGrid1').data('kendoGrid').dataSource.read();
+		//setTimeout(localCleanUp(),10000);
+	}
+
+	function transferFailed(evt) {
+	  console.log("An error occurred while transferring the file.");
+	}
+
+	function transferCanceled(evt) {
+	  console.log("The transfer has been canceled by the user.");
+	}
+
+
+	
 	/*
 	// https://www.codeproject.com/Articles/606682/Kendo-Grid-In-Action
 	//Selecting Grid

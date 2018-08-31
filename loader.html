@@ -42,6 +42,11 @@
 
 
 <script>
+/* global data */
+var dataArray1 [];
+var outDataA = [{"A":"xx", "B":"zz" }];	
+
+
 var g_pb1_inc_value = 10; 
 var valeur = 0;
 var valeurB = 0;
@@ -64,6 +69,16 @@ function test1() {
 	//getTasks(aData);
 	
 }
+
+/* start */
+
+var param1 = "https://jsonplaceholder.typicode.com/posts";
+var outDataA = [{"A":"xx", "B":"zz" }];		
+getDataMaster(param1, dataArray1, outDataA, 0);
+	
+
+
+
 function pb1b(x) {	
 	valeurB = valeurB + x;
 	//alert("OK "+valeurB);
@@ -272,5 +287,82 @@ alert(selectedItem.email);
 	*/
 }
 	 
+function getDataMaster(myUrl, myRtData, myInData, cnt){
+pb1b(10);// perform a load call this
+/*
+var param1 = "https://jsonplaceholder.typicode.com/posts";
+	var param2 = [{"A":"xx", "B":"zz" }];	
+	getDataMaster(param1, dataArray1, param2);
+	//document.getElementById("xc1").innerHTML = "Look "+dataArray1[0].title;
+
+	var param1a = "https://jsonplaceholder.typicode.com/albums";
+	var param2a = [{"A":"xx", "B":"zz" }];	
+	getDataMaster(param1a, dataArray2, param2a);
+	//document.getElementById("xc2").innerHTML = "Look "+dataArray2[0].titl
+*/
+
+	$.ajax({
+		type: "GET",
+		contentType: 'application/json; charset=UTF-8',
+		crossDomain: true,
+		//dataType: 'jsonp',
+		dataType: "json",
+		url: myUrl,
+		//async: false,
+		cache: false,
+		//data: myInData,
+		timeout: 4000,
+		success: function(result)
+		{
+			//alert("A "+result[0].userId);
+			/*
+			for (var i in result)
+			{
+				//alert(result[i].title);
+				$('#xc2').append('<li>'+result[i].id+" "+result[i].title+'</li>');// debug
+				//myRtData.push({name:result[i].name, provider:result[i].provider, url:result[i].url});// add to object Array
+				myRtData.push(result[i]);
+			}
+			*/
+						
+			// or
+			$.each(result,function(i,data){
+				//$('#xc2').append('<li>'+result[i].id+" "+result[i].title+'</li>');
+				myRtData.push(result[i]);
+			});
+		},
+		complete: function(jqXHR, textStatus) {
+			//alert("XXX");
+			getNext(cnt);
+		},
+		beforeSend: function(jqXHR, textStatus) {
+			//alert("AAA");
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+            //alert('ERROR', textStatus, errorThrown);
+        }
+	});
+}
+
+function getNext(x){
+	pb1b(15);// perform a load call this
+	xx++;
+	// get next
+	switch(x) {
+		case 1:
+			// loading ?? data
+			var paramA = "https://jsonplaceholder.typicode.com/posts";
+			var outDataA = [{"A":"xx", "B":"zz" }];	
+			getDataMaster(paramA, dataArray1, outDataA);
+		break;
+		
+		case default:
+		// go some where or do something
+		// $("#pageDiv").load("./starter2.html");
+		break;
+		
+	};
+	
+}
 
 </script>

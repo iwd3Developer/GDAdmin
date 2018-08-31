@@ -97,7 +97,7 @@
 							<div class="row" style="padding-top: 1rem">
 								<div class="col-md-2"></div>
 								<div class="col-md-5">
-									<button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Login</button>
+									<button type="submit" id="myButton" class="btn btn-success"><i class="fa fa-sign-in"></i> Login</button>
 									<!-- <a class="btn btn-link" href="/password/reset">Forgot Your Password?</a> -->
 									</br>
 								</div>
@@ -125,7 +125,7 @@ $(document).ready(function () {
 
 
 //setTimeout(setDT, 6000);
-securityNotifi('Welcome!');
+//securityNotifi('Welcome!');
 //document.getElementById('loginname').value = "";
 //document.getElementById('pwd').value = "";
 //document.getElementById('acc').value = "";
@@ -177,25 +177,25 @@ var cid = '0532';
 				case 'OK':
 					for (var i=0;i<data.length;++i)
 					{
-						//alert(data[0].FirstName);
+						franID = data[0].franID;
 						currentUserData.push(data[0]);
 					};		
 					//alert(currentUserData.length+" Look: "+currentUserData[0].FirstName);
-					//if ( a.length >= 1 ) {
+					if ( a.length >= 1 ) {
 						loginA();
 						//return_fuction(rtData,0);
-					//}else{
+					}else{
 						//alert("Login Failure!");
-						//loginfu(currentUserData,1);
+						loginfu();
 						//return_fuction(rtData,1);
-					//};
+					};
 				break;
 				case 'ERROR':
 					//alert("Login Failure, Access Denied!");
 					document.getElementById('login').value = "";
 					document.getElementById('password').value = "";
 					document.getElementById('acct').value = "";
-					document.getElementById('login_footer').innerHTML("<p>Login Failure, Access Denied!</p>");
+					//document.getElementById('login_footer').innerHTML("<p>Login Failure, Access Denied!</p>");
 					//return_fuction(currentUserData,2);// 0=ok,1-security,2=no records
 				break;
 				case 'SECURITY ERROR':
@@ -218,5 +218,11 @@ var cid = '0532';
 function loginA() {
 //alert("Here");
 	$("#pageDiv").load("./starter2.html");
+}
+function loginfu(){
+document.getElementById('login').value = "";
+document.getElementById('password').value = "";
+document.getElementById('acct').value = "";
+//document.getElementById('login_footer').innerHTML("<p>Login Failure, Access Denied!</p>");
 }
 </script>
