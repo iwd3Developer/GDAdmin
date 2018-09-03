@@ -140,13 +140,12 @@ function initKendoCtrls() {
 		}
 	// END #calendar1
 	
-	// divGrid1
-	
+	// divGridJobs	
 	//alert("Look "+ getJobs1Data());
 	// edit model and columns
 	// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, franID
-	$("#divGrid1").kendoGrid({
-		dataSource: dSource1(),
+	$("#divGridJobs").kendoGrid({
+		dataSource: divGridJobs_Source(),
 			schema: {
 				model: {
 					fields: {
@@ -172,7 +171,7 @@ function initKendoCtrls() {
 			},
 		
 		pageSize: 20,
-		height: 150,
+		height: 250,
 		scrollable: true,
 		sortable: true,
 		filterable: true,
@@ -195,26 +194,28 @@ function initKendoCtrls() {
 			{ field: "moveDate", title: "moveDate",width: "120px" },
 			{ field: "gpsLat", title: "gpsLat",width: "60px" },
 			{ field: "gpsLog", title: "gpsLog",width: "60px" }
-		], change: onChangeGrid1
+		], change: onChange_divGridJobs
 	});
-	dGrid1 = $("#divGrid1").data("kendoGrid");
+	dGrid1 = $("#divGridJobs").data("kendoGrid");
 	
 	var dt = dateTime2('s');
 	document.getElementById("divGrid1_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt+'</meta><span class="pull-right"><p>ready</p></span>';
 	// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, fullName, fullAddr, franID
 	
-	function onChangeGrid1(e) {
+	function onChange_divGridJobs(e) {
 		//alert("OK");
 		// https://www.codeproject.com/Articles/606682/Kendo-Grid-In-Action
 		//Selecting Grid
 		//var gview = $("#grid").data("kendoGrid");
 		//Getting selected item
 		var selectedItem = dGrid1.dataItem(dGrid1.select());
+		cJobNo = selectedItem.idx;
 		//accessing selected rows data 
-		//alert(selectedItem.fullName);	
+		//alert(cJobNo);
+		showDetailsA();
 	}
-	function dSource1() {	
-		
+	function divGridJobs_Source() {	
+
 		//var dataSource = new kendo.data.SchedulerDataSource();
 		var dataSource = new kendo.data.DataSource();
 		var i;
@@ -296,7 +297,7 @@ function initKendoCtrls() {
 			},
 		
 		pageSize: 20,
-		height: 245,
+		height: 135,
 		scrollable: true,
 		sortable: true,
 		filterable: true,
@@ -326,6 +327,7 @@ function initKendoCtrls() {
 		cTruckID = selectedItem.idx;
 		cTruckNo = selectedItem.trucknumber;
 		//alert(selectedItem.truckname);	
+		
 	}
 	function divGridVehicle_Source() {	
 		
@@ -847,7 +849,6 @@ function getJobs1Data() {
 	xmlhttp.addEventListener("load", transferComplete);
 	xmlhttp.addEventListener("error", transferFailed);
 	xmlhttp.addEventListener("abort", transferCanceled);
-console.log("getJobs1Data()");
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			myObj = JSON.parse(this.responseText);
@@ -894,11 +895,13 @@ console.log("getJobs1Data()");
 	}
 
 	function transferComplete(evt) {
-	  console.log("The transfer is complete.");
+	  console.log("The transfer is complete getJobs1Data.");
 	  //document.getElementById("msg1").innerHTML = "loading complete. ";
-		//dGrid1 = $("#divGrid1").data("kendoGrid");		
-		//$("#divGrid1").data("kendoGrid").refresh();	
-		//$('#divGrid1').data('kendoGrid').dataSource.read();
+	  //var dataSource = new kendo.data.DataSource();
+
+		//dGrid1 = $("#divGridJobs").data("kendoGrid");		
+		//$("#divGridJobs").data("kendoGrid").refresh();	
+		//$('#divGridJobs').data('kendoGrid').dataSource.read();
 		//setTimeout(localCleanUp(),10000);
 	}
 

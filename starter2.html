@@ -524,7 +524,7 @@ transition: all 0.4s ease-in-out;
 						
 						<div class="col-xs-3 col-sm-3 col-lg-3">
 								
-							<div class="panel panel-default"  style="height:355px;">
+							<div class="panel panel-default"  style="height:360px;">
 								<div class="panel-heading">
 									<span itemscope itemtype="#">
 									<h3 class="panel-title" itemprop="name">Quick Calendar</h3>
@@ -562,22 +562,18 @@ transition: all 0.4s ease-in-out;
 						<div class="row" ><!--	row 2 column 2	-->						
 							<div class="col-xs-8 col-sm-8 col-lg-8">
 							
-								<div class="panel panel-default" style="height:355px;">
+								<div class="panel panel-default" style="height:360px;">
 									<div class="panel-heading">
 										<span itemscope itemtype="#">
-										<h3 class="panel-title" itemprop="name">Weather 3 day forcast / On-Board Crew Members</h3>
+										<h3 class="panel-title" itemprop="name">Weather 3 day forcast / Vehicles</h3>
 									</div><!--/panel-heading-->
 										<div class="panel-body" itemprop="reviewBody" style="height:300px;overflow: hidden;">
 											<a class="weatherwidget-io" href="https://forecast7.com/en/39d11n94d63/kansas-city/?unit=us" data-label_1="KANSAS CITY" data-label_2="WEATHER" data-days="3" data-theme="clear" >KANSAS CITY WEATHER</a>
-											</br>
-											<div class="k-widget k-grid" id="divGrid1" style="width:100%;"></div>
 											
-											<!-- <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-											<meta itemprop="datePublished" content="01-01-2016">???</meta> -->
-											<div id="divGrid1_meta"></div>
-											<!-- <span class="pull-right">
-												<p>ready</p>
-											</span> --><!--/reviewRating-->													
+											<p><h4><b>Vehicles</b></h4></p>
+											<div id="divGridVehicle"></div>																			
+											
+											<div id="divVehicle_meta"></div>					
 										</div><!--/panel-body-->
 										
 								</div><!--/panel-->
@@ -587,27 +583,45 @@ transition: all 0.4s ease-in-out;
 								<div class="panel panel-default" style="height:350px;overflow: hidden;">
 									<div class="panel-heading">
 										<span itemscope itemtype="#">
-										<h3 class="panel-title" itemprop="name">Vehicles</h3>
+										<h3 class="panel-title" itemprop="name">Jobs</h3>
 									</div><!--/panel-heading-->
 									<div class="panel-body" itemprop="reviewBody" style="height:285px;overflow: hidden;">
 										<!-- vehicle -->
 										<!-- <div id="theVehicle" class="box-body table-responsive no-padding" style="height:90%;"></div> -->										  
-										<div id="divGridVehicle"></div>										
-																				
+										
+										<div class="k-widget k-grid" id="divGridJobs" style="width:100%;"></div>
+										</br>
+										<div id="divGrid1_meta"></div>
+										<!--
+										<div id="divGridVehicle"></div>																				
 										</br>
 										<div id="divVehicle_meta"></div>
-																							
+										-->													
 									</div><!--/panel-body-->
 								</div><!--/panel-->								
 								
 							</div><!--  -->
 								
 						</div><!-- end row 2 column 2 -->
-						<!-- BOTTOM ROW -->
-						
+						<!-- BOTTOM ROW -->						
+						<hr>
+						<div class="row" ><!--	row 2 column 2	-->						
+							<div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+								<div class="panel panel-default" style="height:250px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 class="panel-title" itemprop="name">DETAILS</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:285px;overflow: hidden;">
+										<div id="showDetails_dt"></div>		
+									</div><!--/panel-body-->
+								</div><!--/panel-->
+							</div>	
+						</div>
 						<hr>
 						
 					</div><!-- end tab 1 -->
+					<!-- end tab 1 -->
 					
 					<div class="row" style="width:100%;height:930px;overflow-y: scroll;"><!-- tab 2 -->						
 						
@@ -877,6 +891,7 @@ transition: all 0.4s ease-in-out;
 <script src="myJs/win-alerts.js"></script>
 <script src="myJs/win-tasks.js"></script>
 <script src="myJs/win-jobs.js"></script>
+<script src="myJs/showDetails1.js"></script>
 <!--		
 <script src="myJs/desktop.js"></script>
 
@@ -902,8 +917,8 @@ transition: all 0.4s ease-in-out;
 
 getJobs1Data();
 getAllVehicle();
-var g = {'cid':'0532', 'mode':'G', 'franID':'GD00KS', "id": 0 };
-getAllEntry(g);
+//var g = {'cid':'0532', 'mode':'G', 'franID':'GD00KS', "id": 0 };
+//getAllEntry(g);
 // bottom row currently removed sec_func();
 getEmpData();
 
@@ -912,7 +927,7 @@ getEmpData();
 //document.getElementById("cUserName_1").innerHTML = cUserName;
 //document.getElementById("cUserName_2").innerHTML = cUserName;
 
-setTimeout(initKendoCtrls, 800);
+setTimeout(initKendoCtrls, 2000);
 //setTimeout(showHideTab, 2400);
 //showHideTab();
 
