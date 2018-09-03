@@ -3,6 +3,8 @@
 function showDetailsA(s) {
 	// showDetails_dt jobs details here
 	// get more data if needed
+	var myObj = [];
+	
 	switch(s) {
 		case 0:
 			setupA();
@@ -39,14 +41,40 @@ function showDetailsA(s) {
 				myObj = JSON.parse(this.responseText);
 				//dtAlerts = myObj;
 				//idx, jobID, orderSeq, startAddr1, startCity, startState, startZip, gpsLat, gpsLon
+				var str2 = '<p><b>Route Details</b></p>';
+				str2 += '<ul class="list-group">';
+				var routeNo = 1;
 				var str3 = '<p><b>Job Pickup/Droup Off Leg(s)</b></p>';
 				str3 += '<ul class="list-group">';
+				var cnt = 0;
+				var tr ;
 				for (x in myObj) {
-					// right panel	
+					// right panel
+					if ( cnt == 0 ) {
+						str3 += '<li class="list-group-item">Route #'+routeNo+'</li>';
+					};
 					str3 += '<li class="list-group-item">'+myObj[x].orderSeq+' '+myObj[x].startAddr1+' '+myObj[x].startCity+' '+myObj[x].startState+' '+myObj[x].startZip+'</li>';
-					//i2++;
+					cnt++;
+					if ( cnt == 2 ) {
+						cnt = 0;
+						
+						str3 += '<li class="list-group-item">End Route #'+routeNo+'</li>';
+						str3 += '<hr>';
+						// center
+						var e = myObj[x].vehicleIds;
+						tr = e.replace("|", ", ");
+						str2 += '<li class="list-group-item">Job ID: '+myObj[x].jobID+'</br>Location Type: '+myObj[x].locationType+',</br>Status: '+myObj[x].routeStatus+', Route #'+routeNo+' Mileage: '+myObj[x].routeDistance+'</br>ArivalTime: '+myObj[x].arivalTime+'</br>DepartureTime: '+myObj[x].departureTime+'</br>Vehicles: '+tr+'</br>';	
+						str2 += 'Crew: ';
+						str2 += '<hr>';
+						str2 += '</li>';
+						routeNo ++;
+					};
+					
+					
 				};
+				str2 += '</ul>';
 				str3 += '</ul>';
+				document.getElementById("center-pane").innerHTML = str2;
 				document.getElementById("right-pane").innerHTML = str3;
 			};
 		};
@@ -97,6 +125,7 @@ function showDetailsA(s) {
 		document.getElementById("left-pane").innerHTML = str1;
 		*/
 		
+/*		
 		// center-pane
 		document.getElementById("center-pane").innerHTML = "loading... ";
 		var str2 = "";	
@@ -105,7 +134,7 @@ function showDetailsA(s) {
 		str2 += '	<p>Resizable and collapsible.</p>';
 		str2 += '</div>';
 		document.getElementById("center-pane").innerHTML = str2;
-
+*/
 		
 		
 	} 

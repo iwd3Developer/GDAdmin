@@ -14,7 +14,7 @@ $cid			= "0532";
 if ( $cid == $appCid ) {
 
 	// edit query here 
-	$SQL_query = "SELECT idx, jobID, orderSeq, startAddr1, startCity, startState, startZip, gpsLat, gpsLon  FROM jobp2 WHERE jobID = '$jobID' AND delflg = 0 ORDER BY orderSeq;"; 	
+	$SQL_query = "SELECT idx, jobID, orderSeq, startAddr1, startCity, startState, startZip, gpsLat, gpsLon, routeDistance, routeStatus, locationType, arivalTime, departureTime, vehicleIds  FROM jobp2 WHERE jobID = '$jobID' AND delflg = 0 ORDER BY orderSeq;"; 	
 	
 	$DB_link = mysqli_connect($host, $user, $pass, $database) or die("Could not connect to host.");
 	$connection = mysqli_connect($host, $user, $pass, $database) or die ("Could not find or access the database.");
@@ -39,6 +39,12 @@ if ( $cid == $appCid ) {
 		  'startZip' 	=> $row['startZip'],
 		  'gpsLat' 		=> $row['gpsLat'],
 		  'gpsLon' 		=> $row['gpsLon'],
+		  'routeDistance' => $row['routeDistance'],
+		  'routeStatus' => $row['routeStatus'],
+		  'locationType' => $row['locationType'],
+		  'arivalTime' => $row['arivalTime'], 
+		  'departureTime' => $row['departureTime'],
+		  'vehicleIds'  => $row['vehicleIds'],
 
 		  'status'   => 'OK'
 
