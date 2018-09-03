@@ -140,6 +140,16 @@ function initKendoCtrls() {
 		}
 	// END #calendar1
 	
+	// spliter
+	$("#horizontal").kendoSplitter({
+		panes: [
+			{ collapsible: true },
+			{ collapsible: false },
+			{ collapsible: true}
+		]
+	});
+	// end spliter
+	
 	// divGridJobs	
 	//alert("Look "+ getJobs1Data());
 	// edit model and columns
