@@ -141,11 +141,14 @@ function initKendoCtrls() {
 	// END #calendar1
 	
 	// spliter
-	$("#horizontal").kendoSplitter({
+	$("#detail_pane").kendoSplitter({
 		panes: [
-			{ collapsible: true },
-			{ collapsible: false },
-			{ collapsible: true}
+			//{ collapsible: true },
+			//{ collapsible: false },
+			// default loader pages
+			{ collapsible: false, contentUrl: "./pages/a_pg2.html" },
+			{ collapsible: false, contentUrl: "./pages/page_1.html" }
+			//{ collapsible: true}
 		]
 	});
 	// end spliter
@@ -222,7 +225,7 @@ function initKendoCtrls() {
 		cJobNo = selectedItem.idx;
 		//accessing selected rows data 
 		//alert(cJobNo);
-		showDetailsA();
+		showDetailsA(0);
 	}
 	function divGridJobs_Source() {	
 

@@ -7,14 +7,14 @@ require './Required/phpDBConfig.php';
 require './Required/phpSecurity.php';
 
 
-$franID			= $_POST["franID"];
-$cid			= $_POST["cid"]; 
-//$cid			= "0532";
+$jobID			= 1;//$_POST["jobID"];
+//$cid			= $_POST["cid"]; 
+$cid			= "0532";
 
 if ( $cid == $appCid ) {
 
 	// edit query here 
-	$SQL_query = "SELECT idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, moveDate, gpsLoc, franID FROM jobp1 WHERE franID = '$franID' AND delflg = 0 ;"; 	
+	$SQL_query = "SELECT idx, jobID, orderSeq, startAddr1, startCity, startState, startZip, gpsLat, gpsLon  FROM jobp2 WHERE jobID = '$jobID' AND delflg = 0 ORDER BY orderSeq;"; 	
 	
 	$DB_link = mysqli_connect($host, $user, $pass, $database) or die("Could not connect to host.");
 	$connection = mysqli_connect($host, $user, $pass, $database) or die ("Could not find or access the database.");
@@ -31,22 +31,15 @@ if ( $cid == $appCid ) {
 		array_push($someArray, [
 		  'idx'   => $row['idx'],
 		  
-		  'clientID' 	=> $row['clientID'],
-		  'FirstName' 	=> $row['FirstName'],
-		  'LastName' 	=> $row['LastName'],
-		  
-		  'addr1' 	=> $row['addr1'],
-		  'city' 		=> $row['city'],
-		  'state' 		=> $row['state'],
-		  'zipcode' 	=> $row['zipcode'],
-		  'phone1' 		=> $row['phone1'],
-		  'phone2' 		=> $row['phone2'],
-		  'phone3' 		=> $row['phone3'],
-		  'moveDate' 	=> $row['moveDate'],
-		  'gpsLoc' 		=> $row['gpsLoc'],
+		  'jobID' 		=> $row['jobID'],
+		  'orderSeq' 	=> $row['orderSeq'],
+		  'startAddr1' 	=> $row['startAddr1'],		  
+		  'startCity' 	=> $row['startCity'],
+		  'startState' 	=> $row['startState'],
+		  'startZip' 	=> $row['startZip'],
+		  'gpsLat' 		=> $row['gpsLat'],
+		  'gpsLon' 		=> $row['gpsLon'],
 
-		  'franID'      => $row['franID'],
-		  //'edate' 		=> $row['edate'],
 		  'status'   => 'OK'
 
 		  // end add columns	
