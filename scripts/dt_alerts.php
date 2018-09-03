@@ -1,13 +1,15 @@
 <?php
-header('Content-Type: application/json');
-
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+//header('Content-Type: application/json');
+header("Content-type: application/jsonp", true);
 require './Required/phpDBConfig.php';
 require './Required/phpSecurity.php';
 
-$afranID		= $_POST["afranID"];
-$cid			= $_POST["cid"]; 
-$userID			= 0 ; //$_POST["userID"];
-$mode			= $_POST["mode"]; // I-insert, U-update, D-delete, S-select (default)
+$franID		= "GD00KS";//$_POST["franID"];
+$cid			= "0532";//$_POST["cid"]; 
+$userID			= 0;//$_POST["cUserID"];
+$mode			= "x";//$_POST["mode"]; // I-insert, U-update, D-delete, S-select (default)
 
 if ( $cid == $appCid ) {
 	
@@ -57,7 +59,7 @@ if ( $cid == $appCid ) {
 	
 	// return data here
 	// edit query here 
-	$SQL_query = "SELECT idx, aDesc, aFrom, aDateTime, aStatus, afranID, aLevel FROM alerts WHERE afranID = '".$afranID."' AND aFlg1 = 0 ;"; 	
+	$SQL_query = "SELECT idx, aDesc, aFrom, aDateTime, aStatus, afranID, aLevel FROM alerts WHERE afranID = '$franID' AND aFlg1 = 0 ;"; 	
 	// Query to run
 	$query = mysqli_query($connection,$SQL_query);	
 	// Create empty array to hold query results
@@ -78,7 +80,7 @@ if ( $cid == $appCid ) {
 				'aLevel'      	=> $row['aLevel'],
 
 				// keep
-				'status'   		=> 'OK',
+				'status'   		=> 'OK'
 			]);
 		}
 

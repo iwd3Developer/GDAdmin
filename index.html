@@ -46,19 +46,27 @@
 
 
 <script>
+// MAP
 var map, map2;
 var markers = [];
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
+
 // mySetValues
 var vehicleStatCode;
+
+// JOBS
+var job1Data = [];
+var jobLocData = [];
+
+// CURRENT JOB
 var cJobNo = "SX123";
 var cJobStatus;
 var cJobType;
-var jobLocData = [];
-
 var cJobLocID;
 var cJobLocID_hover;
+
+// CURRENT CLIENT
 var cClientID;
 var cClientName;
 var cClientAddr;
@@ -68,66 +76,81 @@ var cClientPhone
 var cMessageID;
 var cDate;
 var cTime;
+
+// CREW
 var crewData = [];
 var cCrewID;
 var cCrewMemberID;
 var cCrewPhone;
 var cCrewDriveName;
 var cCrewDriverID;
+
 //Vehicles
+var vehicleData = [];
+var currentVehicleData = [];
 var cTruckID;
+var cTruckNo;
+
+//TAB
 var cTab;
-var cUserID;
+var tabSelected;
+
+// CURRENT USER
+var currentUserData = [];
+var cUserID = 0;//EDS
 var cUserType;
-var cUserName;
-var franID ;//EDS
+var cUserName = "Dean Sanders";//EDS
+var franID = "GD00KS" ;//EDS
 var cid = '0532';//EDS
+var allUserData = [];
+var currentEmployeeData = [];
+
+// SYSTEM
 //var capPath = configData[0].cappath; //"http://localhost/GD/winCode/cap/"; //EDS Config
 var winCodePath;
 var cMessageLog = [];
 var cWinId = [];
-var currentUserData = [];
-var allUserData = [];
-var mainGridData = [] ;
-var JCom_History = [];
-var calCurrentData = [];
-var scheduler;
-var currentVehicleData = [];
-var vehicleData = [];
-var testTblData = [];
-var currentEmployeeData = [];
-
-var stateData = [];
-var stateOptions;
-//var stateDataObj = { 'idx':0 };
-//getStates();
-var cUserName = "Dean Sanders";
-var selectedGPS;
 var capPath ;
 var parmArray = [];	
 var activeForm1 = null;
 var activeFormRecId = null;
-var tabSelected;
-var job1Data = [];
 
+// DT CALENDAR
+var calCurrentData = [];
+
+var mainGridData = [] ;
+var JCom_History = [];
+
+// Scheduler
+var scheduler;
+
+var testTblData = [];
+
+// STATES
+var stateData = [];
+var stateOptions;
+//getStates();
+
+// GPS
+var selectedGPS;
 
 // windows name status
 var windowsAddJobs = false;
 
-// desktop data
+// ALERTS
 var alertsWin = false;
 var dtAlerts = []; // application alerts
+
+// TASKS
 var dtTasks = []; // application tasks
-
-
 	
 	//siteConfig();
 	//getUrlParameter2('uid');
 	
 
 	
-	//$("#pageDiv").load("./starter2.html");
-	$("#pageDiv").load("./login1.html");
+	$("#pageDiv").load("./starter2.html");
+	//$("#pageDiv").load("./login1.html");
 	//$("#pageDiv").load("./loader.html");
 	
 	

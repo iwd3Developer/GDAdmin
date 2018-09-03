@@ -1,16 +1,20 @@
 <?php
-header('Content-Type: application/json');
-
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+//header('Content-Type: application/json');
+header("Content-type: application/jsonp", true);
 require './Required/phpDBConfig.php';
 require './Required/phpSecurity.php';
 
-//$franID			= $_POST["franID"];
-$cid			= "0532"; //$_POST["cid"]; 
+$franID			= $_POST["franID"];
+$cid			= $_POST["cid"]; 
+//$userID			= $_POST["cUserID"];
+$mode			= "x";//$_POST["mode"]; // I-insert, U-update, D-delete, S-select (default) 
 
 if ( $cid == $appCid ) {
 
 	// edit query here 
-	$SQL_query = "SELECT idx, trucknumber, truckname, franID  FROM vehicle "; //WHERE franID = '".$franID."' AND delflg = 0 ;"; 	
+	$SQL_query = "SELECT idx, trucknumber, truckname, franID FROM vehicle WHERE franID = '$franID' AND delflg = 0 ;"; 	
 	
 	$DB_link = mysqli_connect($host, $user, $pass, $database) or die("Could not connect to host.");
 	$connection = mysqli_connect($host, $user, $pass, $database) or die ("Could not find or access the database.");

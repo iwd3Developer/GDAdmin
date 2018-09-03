@@ -1,4 +1,4 @@
-//var dGrid1;
+var dGrid1;
 
 function updateMap(){
 	// 500 N.W. Barry Rd Kansas City, MO 64155
@@ -7,42 +7,69 @@ function updateMap(){
 //	39.044083|-94.61802
 	//mkMarkers();//OK
 	
-	for (i = 0; i < 2; i++) {
+	// job1Data[i]
+	for (i = 0; i < job1Data.length; i++) {
 		var gps1=[];
 		var st = job1Data[i].gpsLoc;
 		gps1 = st.split("|");
-		
-		var locationToStringed = "("+gps1[0]+", "+gps1[0]+")";
-		var input = locationToStringed.replace('(', '');
-		var latlngStr = input.split(",", 2);
-		var lat = parseFloat(latlngStr[0]);
-		var lng = parseFloat(latlngStr[1]);
-		var parsedPosition = new google.maps.LatLng(gps1[0], gps1[1]);
-		
-		LatLngLiteral = i;
+		//var pos = {lat: 38.9822282, lng:  -94.6707917};
+		alert(gps1[0]+" : "+gps1[1]+" "+job1Data[i].FirstName+" "+job1Data[i].LastName+" "+job1Data[i].addr1+);
+		var pos = {lat: gps1[0], lng: gps1[1]};
+		var lab = "XXX";//job1Data[i].FirstName+" "+job1Data[i].LastName;
+		var cont = '<div id="content">'+
+	            '<div id="siteNotice">'+
+	            '</div>'+
+	            '<h3 id="firstHeading" class="firstHeading">xxxx</h3>'+
+	            '<div id="bodyContent">'+
+	            '<p><b>Overland Park</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+	            'sandstone rock formation in the southern part of the Heritage Site.</p>'+
+	            '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+	            'https://en.wikipedia.org/w/index.php?title=Uluru</a></p>'+
+	            '</div></div>';
 
-		var pos = parsedPosition; 
-		//var pos = {lat:38.9822282, lng:-94.6707917};
-		//alert(parsedPosition+" "+job1Data[i].FirstName);//+" "+job1Data[i].LastName+" "+job1Data[i].addr1+);
-		var lab = job1Data[i].FirstName+" "+job1Data[i].LastName;//job1Data[i].FirstName+" "+job1Data[i].LastName;
-		var cont = "Job #"+job1Data[i].clientID+'</br>'+job1Data[i].addr1+'</br>'+job1Data[i].city+" "+job1Data[i].state+' '+job1Data[i].zipcode;
-
-		addMk2(gps1[0],gps1[1],lab,cont);
+		addMk1(pos,lab,cont);
 	}
-	
 }
+
+function desktopFooters(q){
+	/*
+	switch(q) {
+		case "divCal_meta":
+			//desktopFooters("divCal_meta");
+			var dt2 = dateTime2('s');
+			document.getElementById("divCal_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
+		break;
+		case "divVehicle_meta":
+			//desktopFooters("divVehicle_meta");
+			var dt2 = dateTime2('s');
+			document.getElementById("divVehicle_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
+		break;
+		case "divMap_meta":
+			//desktopFooters("divMap_meta");
+			var dt2 = dateTime2('s');
+			document.getElementById("divMap_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
+		break;
+	};
+	*/
+}
+
 function initKendoCtrls() {
-	
+	// init telerick controls
+	// create Calendar from div HTML element
+	alert("Yes");
+
+			
 	$("#tabstrip").kendoTabStrip({
 		activate: onActivate,
-		//show: onShow,
-		//select: onSelect,
+		show: onShow,
+		select: onSelect,
 		animation:  {
 			open: {
 				effects: "fadeIn"
 			}
 		}
 	});
+	//showHideTab();
 	
 	$("#panelbar1").kendoPanelBar({
 		expandMode: "single",
@@ -53,10 +80,21 @@ function initKendoCtrls() {
 			'./pages/a_pg3.html'
 		]
 	});
-	// END panelbar1
+
 	
-	// #calendar1
-	desktopFooters("divCal_meta");
+	 //calX();
+	 //showCal(data2,d);
+		// scheduler update
+		//scheduler = $("#scheduler").data("kendoScheduler");		
+		//$("#scheduler").data("kendoScheduler").refresh();	
+		//$('#scheduler').data('kendoScheduler').dataSource.read();
+	
+	//EXAMPLE $("#calendar").kendoCalendar();
+	
+	var popupNotification = $("#popupNotification").kendoNotification().data("kendoNotification");
+	var d = new Date();
+	popupNotification.show(kendo.toString(d, 'HH:MM:ss.') + kendo.toString(d.getMilliseconds(), "000"), "error");       
+
 	var today = new Date(),
 	events = [
 	   +new Date(today.getFullYear(), today.getMonth(), 8),
@@ -71,6 +109,9 @@ function initKendoCtrls() {
 	   +new Date(today.getFullYear(), today.getMonth() - 2, 22),
 	   +new Date(today.getFullYear(), today.getMonth() - 2, 27)
 	];
+	
+	// #calendar1
+	//desktopFooters("divCal_meta");
 	function onChange_calendar1(e) {
 		console.log("Change :: " + kendo.toString(this.value(), 'd'));
 		desktopFooters("divCal_meta");
@@ -140,8 +181,43 @@ function initKendoCtrls() {
 		}
 	// END #calendar1
 	
-	// divGrid1
+	// grid example
+	$("#grid").kendoGrid({
+		dataSource: {
+			data: products,
+			schema: {
+				model: {
+					fields: {
+						ProductName: { type: "string" },
+						UnitPrice: { type: "number" },
+						UnitsInStock: { type: "number" },
+						Discontinued: { type: "boolean" }
+					}
+				}
+			},
+			pageSize: 20
+		},
+		height: 250,
+		scrollable: true,
+		sortable: true,
+		filterable: true,
+		pageable: {
+			input: true,
+			numeric: false
+		},
+		columns: [
+			"ProductName11",
+			{ field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "130px" },
+			{ field: "UnitsInStock", title: "Units In Stock", width: "130px" },
+			{ field: "Discontinued", width: "130px" }
+		]
+	});
 	
+	// end grid
+
+	
+
+
 	//alert("Look "+ getJobs1Data());
 	// edit model and columns
 	// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, franID
@@ -213,39 +289,6 @@ function initKendoCtrls() {
 		//accessing selected rows data 
 		//alert(selectedItem.fullName);	
 	}
-	function dSource1() {	
-		
-		//var dataSource = new kendo.data.SchedulerDataSource();
-		var dataSource = new kendo.data.DataSource();
-		var i;
-		for (i = 0; i < job1Data.length; i++) {
-			// idx, clientID, FirstName, LastName, addr1, city, state, zipcode, phone1, phone2, phone3, franID
-			//dataSource.add({idx: job1Data[i].idx, clientID: job1Data[i].clientID, zipcode: job1Data[i].zipcode, phone1: job1Data[i].phone1 });
-			var gps1=[];
-			var st = job1Data[i].gpsLoc;
-			gps1 = st.split("|");
-			//alert(gps1[0]+" : "+gps1[1]);
-			
-			dataSource.add({idx: job1Data[i].idx,
-				clientID: job1Data[i].clientID,			
-				FirstName: job1Data[i].FirstName, 
-				LastName: job1Data[i].LastName, 
-				addr1: job1Data[i].addr1, 
-				city: job1Data[i].city,
-				state: job1Data[i].state,
-				zipcode: job1Data[i].zipcode,
-				phone1: formatPhoneNumber( job1Data[i].phone1 ),
-				phone2: formatPhoneNumber( job1Data[i].phone2 ),
-				phone3: formatPhoneNumber( job1Data[i].phone3 ),
-				fullName: job1Data[i].FirstName+" "+job1Data[i].LastName,
-				fullAddr: job1Data[i].addr1+" "+job1Data[i].city+" "+job1Data[i].state+" "+job1Data[i].zipcode,
-				gpsLat: gps1[0],
-				gpsLog: gps1[1]
-			});
-		};
-
-		return dataSource;
-	}
 	// end grid 1
 	
 	// edit model and columns
@@ -275,77 +318,62 @@ function initKendoCtrls() {
 			{ field: "Phone", title: "Phone", width: "70px" }
 		]
 	});
-	//dGrid2 = $("#divGrid2").data("kendoGrid");
+	dGrid2 = $("#divGrid2").data("kendoGrid");
 	var dt2 = dateTime2('s');
 	document.getElementById("divGrid2_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
 	
 	// end grid 2
 	
-	// Vehicle
-	//idx, trucknumber, truckname, franID, edate
-	$("#divGridVehicle").kendoGrid({
-		dataSource: divGridVehicle_Source(),
-			schema: {
-				model: {
-					fields: {
-						idx: { type: "number" },
-						trucknumber: { type: "string" },
-						truckname: { type: "string" }
-					}
-				}
-			},
+				
+		/*
+		// OK
+		kendo.alert("String to alert");
+		kendo.confirm("Continue?");
+		kendo.prompt("enter value", "123"); //123 is the default value
 		
-		pageSize: 20,
-		height: 245,
-		scrollable: true,
-		sortable: true,
-		filterable: true,
-		pageable: true,
-		selectable: "row",
-		columns: [
-			{ field: "idx", title: "##", width: "30px" },
-			{ field: "trucknumber", title: "Truck No", width: "60px" },
-			{ field: "truckname", title: "Name", width: "90px" }
-		], change: onChange_divGridVehicle
-	});
-	vehicleGrid1 = $("#divGridVehicle").data("kendoGrid");
+		kendo.confirm("Continue?")
+		.done(function() { console.log("Ok") })
+		.fail(function() { console.log("Cancel") });
+		kendo.prompt("enter value")
+		.done(function(value) { console.log(value); })
+		.fail(function() { console.log("Cancel") });
 	
-	var dt = dateTime2('s');
-	document.getElementById("divGrid1_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt+'</meta><span class="pull-right"><p>ready</p></span>';
-	
-	// idx
-	
-	function onChange_divGridVehicle(e) {
-		//alert("OK");
-		// https://www.codeproject.com/Articles/606682/Kendo-Grid-In-Action
-		//Selecting Grid
-		//var gview = $("#grid").data("kendoGrid");
-		//Getting selected item
-		var selectedItem = vehicleGrid1.dataItem(vehicleGrid1.select());
-		//accessing selected rows data 
-		cTruckID = selectedItem.idx;
-		cTruckNo = selectedItem.trucknumber;
-		//alert(selectedItem.truckname);	
-	}
-	function divGridVehicle_Source() {	
-		
-		var dataSource = new kendo.data.DataSource();
-		var i;
-		for (i = 0; i < vehicleData.length; i++) {
-			// idx
-			dataSource.add({idx: vehicleData[i].idx,
-				trucknumber: vehicleData[i].trucknumber,
-				truckname: vehicleData[i].truckname
-			});
-		};
+		*/
 
-		return dataSource;
-	}
-	// end divGridVehicle grid
-	
-	// end Vehicle
+		//setTimeout(a_pg1_init, 300);// calling newly loaded page
+		//document.getElementById("demo").innerHTML = cUserName;
+		
+		//document.getElementById("tabstrip").style.visibility = "visible"; //object.style.visibility = "visible|hidden|collapse|initial|inherit"
+
+	// each dialog and its content here
+	/*
+	// test dialog
+	var dialog_1_content = "<p>...A new version of <strong>Kendo UI</strong> is available. Would you like to download and install it now?<p>";
+	$("#dialog_1").kendoDialog({
+		width: "400px",
+		title: "Software Update",
+		buttonLayout: "stretched",
+		visible: false,
+		content: dialog_1_content,
+		actions: [
+			{ 	text: 'Skip this version' },
+			{ 	text: 'Remind me later' },
+			{
+				text: 'Install update',
+				primary: true,
+				action: function (e) {
+					alert("Install update action was clicked");
+					// Returning false will prevent the closing of the dialog
+					return true;
+				},
+			}
+		],
+	});
+	// end of the above dialog
+	*/
+
 }
-// END initKendoCtrls(
+/* end initKendoCtrls() */
 
 function sec_func() {
 
@@ -508,7 +536,7 @@ function showTasks() {
 // GET DATA SECTION
 
 // ALERTS
-function getAlerts() {
+function getAlerts(sendData) {
 	// alerts insert/query
 	// idx, aDesc, aFrom, aDateTime, aStatus, afranID, aLevel FROM alerts
 	/*
@@ -525,7 +553,7 @@ function getAlerts() {
 	*/
 	
 	var dbParam, xmlhttp, myObj, x, txt = "";
-	//var i2 = 1;
+	var i2 = 1;
 	var data = new FormData();
 	//EDIT AS NEEDED IT
 	data.append("franID", franID);//MUST!!
@@ -847,7 +875,7 @@ function getJobs1Data() {
 	xmlhttp.addEventListener("load", transferComplete);
 	xmlhttp.addEventListener("error", transferFailed);
 	xmlhttp.addEventListener("abort", transferCanceled);
-console.log("getJobs1Data()");
+
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			myObj = JSON.parse(this.responseText);
@@ -923,30 +951,6 @@ alert(selectedItem.email);
 	*/
 }
 // END JOBS1 
-
-
-function desktopFooters(q){
-	
-	switch(q) {
-		case "divCal_meta":
-			//desktopFooters("divCal_meta");
-			var dt2 = dateTime2('s');
-			document.getElementById("divCal_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
-		break;
-		case "divVehicle_meta":
-			//desktopFooters("divVehicle_meta");
-			var dt2 = dateTime2('s');
-			document.getElementById("divVehicle_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
-		break;
-		case "divMap_meta":
-			//desktopFooters("divMap_meta");
-			var dt2 = dateTime2('s');
-			document.getElementById("divMap_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
-		break;
-	};
-	
-}
-
 
 // END GET DATA SECTION
 

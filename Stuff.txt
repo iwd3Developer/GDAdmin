@@ -198,3 +198,79 @@
 	  <!-- end opt 12 -->
 		
 // end
+
+// desktop bottom row
+<!--Row 4 with 4 columns divided -->
+						<div class="row">
+							<div class="col-xs-2 col-sm-2 col-lg-2">
+								<div class="panel panel-default" style="height:250px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 id="secAAA_hdr" class="panel-title" itemprop="name">AAA</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
+										<!-- vehicle -->
+										<div id="secAAA_content" style="height:65%;">xxxxxxx</div>										  
+										</br>
+																							
+									</div><!--/panel-body-->
+								</div><!--/panel-->
+							</div>
+							<div class="col-xs-2 col-sm-2 col-lg-2">
+								<div class="panel panel-default" style="height:250px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 id="secBBB_hdr" class="panel-title" itemprop="name">EEE</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
+										<!-- vehicle -->
+										<div id="secBBB_content" style="height:65%;">xxxxxxx</div>										  
+										</br>
+																							
+									</div><!--/panel-body-->
+								</div><!--/panel-->
+							</div>
+							<div class="col-xs-2 col-sm-2 col-lg-2">
+								<div class="panel panel-default" style="height:250px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 id="secCCC_hdr" class="panel-title" itemprop="name">EEE</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
+										<!-- vehicle -->
+										<div id="secCCC_content" style="height:65%;">xxxxxxx</div>										  
+										</br>													
+									</div><!--/panel-body-->
+								</div><!--/panel-->
+							</div>
+							<div class="col-xs-2 col-sm-2 col-lg-2">
+								<div class="panel panel-default" style="height:250px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 id="secDDD_hdr" class="panel-title" itemprop="name">EEE</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
+										<!-- vehicle -->
+										<div id="secDDD_content" style="height:65%;">xxxxxxx</div>										  
+										</br>
+									</div><!--/panel-->
+								</div>
+							</div>
+							<div class="col-xs-2 col-sm-2 col-lg-2">
+								<div class="panel panel-default" style="height:250px;overflow: hidden;">
+									<div class="panel-heading">
+										<span itemscope itemtype="#">
+										<h3 id="secEEE_hdr" class="panel-title" itemprop="name">EEE</h3>
+									</div><!--/panel-heading-->
+									<div class="panel-body" itemprop="reviewBody" style="height:240px;overflow: hidden;">
+											<!-- vehicle -->
+											<div id="secEEE_content" style="height:65%;">xxxxxxx</div>										  
+											</br>											
+									</div><!--/panel-->
+								
+								</div>
+							</div>
+						</div>
+						<!-- end row 4 -->
+						
+// end

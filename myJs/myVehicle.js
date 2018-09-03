@@ -93,53 +93,114 @@ function upDateVehicle(x,a,b) {
 	};
 	vehicleUpdate(dataObj,i,mode );
 }
+
 function getAllVehicle() {
+	
+	// idx, trucknumber, truckname, franID, edate
+	vehicleData = [];
+    //dataOut = $(this).serialize() + "&" + $.param(dataObj);
+		
+	var dbParam, xmlhttp, myObj, x, txt = "";
+	var i = 0;
+	var data = new FormData();
+	//EDIT AS NEEDED IT
+	data.append("franID", franID);//MUST!!
+	data.append("cid", cid);//MUST!!
+	data.append("mode", "x");//MUST!!
+	//data.append("limit", 40);
+
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.synchronous = false;
+	//EVENTS
+	xmlhttp.addEventListener("progress", updateProgress);
+	xmlhttp.addEventListener("load", transferComplete);
+	xmlhttp.addEventListener("error", transferFailed);
+	xmlhttp.addEventListener("abort", transferCanceled);
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			myObj = JSON.parse(this.responseText);
+			vehicleData = myObj;			
+		};
+	};
+
+	//xmlhttp.open("GET", "./scripts/vehicle.php" + dbParam, true);
+	//xmlhttp.send();
+
+	xmlhttp.open("POST", "./scripts/vehicle.php");//, false);//false-synchronous, true-asynchronously
+	xmlhttp.send(data);
+	
+	// progress on transfers from the server to the client (downloads)
+	function updateProgress (oEvent) {
+	  if (oEvent.lengthComputable) {
+		var percentComplete = oEvent.loaded / oEvent.total * 100;
+		console.log(percentComplete);
+		//document.getElementById("msg1").innerHTML = " "+percentComplete;
+	  } else {
+		console.log("Unable to compute progress information since the total size is unknown");
+	  }
+	}
+
+	function transferComplete(evt) {
+	  console.log("The transfer is complete divVehicle.");
+	  desktopFooters("divVehicle_meta");		
+		//$("#divGridVehicle").data("kendoGrid").refresh();	
+		//$('#divGridVehicle').data('kendoGrid').dataSource.read();
+
+	}
+
+	function transferFailed(evt) {
+	  console.log("An error occurred while transferring the file.");
+	}
+
+	function transferCanceled(evt) {
+	  console.log("The transfer has been canceled by the user.");
+	}
+
+
+}
+
+function getAllVehicle2() {
+/*
+	
 	document.getElementById("theVehicle").innerHTML = "<div class='list-group'>loading....</div>";
 	// idx, trucknumber, truckname, franID, edate
 	
 	var str1 = "";
-	/*
-	str1 += '<table class="table table-hover" width="100%" > ';
-	str1 += '<tr> ';
-	str1 += '<th width="100">ID</th> ';
-	str1 += '<th>Name</th> ';
-	str1 += '<th width="100">Date</th> ';
-	str1 += '<th>Status</th> ';
-	str1 += '<th>Notes</th> ';
-	str1 += '</tr> ';
-	*/
-	
+		
 	// list group
 	str1 += '<div class="list-group">';
 
 	vehicleData = [];
     //dataOut = $(this).serialize() + "&" + $.param(dataObj);
-	$.ajax({ 
-    //type: 'GET', 
-	type: 'POST',
-    url: "./scripts/vehicle.php", 
-		data: {franID:'GD00KS',cid:0532},
-		success: function (data) { 
-			//alert(data.length);
-			//alert("Call Status "+data[0].status);
-			switch (data[0].status) {
-				case 'OK':
-					// create array return data
-					for (var i=0;i<data.length;++i)
-					{
-						/*
-						vehicleData.push({
-							'idx':data[i].idx,
-							'trucknumber': data[i].trucknumber,
-							'truckname':data[i].truckname,
+	
+	
+	var dbParam, xmlhttp, myObj, x, txt = "";
+	var i = 0;
+	var data = new FormData();
+	//EDIT AS NEEDED IT
+	data.append("franID", franID);//MUST!!
+	data.append("cid", cid);//MUST!!
+	data.append("mode", "x");//MUST!!
+	//data.append("limit", 40);
 
-							'status': 'OK',
-						});
-						*/
-						vehicleData.push(data[i]);
-						// add to table
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.synchronous = false;
+	//EVENTS
+	xmlhttp.addEventListener("progress", updateProgress);
+	xmlhttp.addEventListener("load", transferComplete);
+	xmlhttp.addEventListener("error", transferFailed);
+	xmlhttp.addEventListener("abort", transferCanceled);
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			myObj = JSON.parse(this.responseText);
+			vehicleData = myObj;
+			
+			for (x in myObj) {
+				// add to table
 						str1 += '<a href="#" class="list-group-item">';
-							str1 += '<h4 class="list-group-item-heading">'+i+' Name: '+data[i].truckname+'<br/></h4>';
+							str1 += '<h4 class="list-group-item-heading">'+i+' Name: '+myObj[x].truckname+'<br/></h4>';
 							
 							str1 += '<table class="table table-hover" width="100%"> ';
 							
@@ -152,15 +213,15 @@ function getAllVehicle() {
 								str1 += '</tr> ';
 							
 								str1 += '<tr> ';
-									str1 += '<td>'+data[i].trucknumber+'</td> ';
-									str1 += '<td>'+data[i].truckname+'</td> ';
+									str1 += '<td>'+myObj[x].trucknumber+'</td> ';
+									str1 += '<td>'+myObj[x].truckname+'</td> ';
 									str1 += '<td>11-7-2017</td> ';
 									str1 += '<td><span class="label label-success">Approved</span></td> ';
 									str1 += '<td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td> ';
 								str1 += '</tr>';
 							str1 += '</table> ';
 							
-							//str1 += '<p class="list-group-item-text">Time Total: '+data[i].timeTotal+'</p>';
+							//str1 += '<p class="list-group-item-text">Time Total: '+myObj[x].timeTotal+'</p>';
 													
 							str1 += '<button type="button" onclick="javascript:getVehicleSelected('+i+');" class="btn btn-default btn-sm"> ';
 							str1 += '  <span class="glyphicon glyphicon-edit"></span> Edit  ';
@@ -179,44 +240,53 @@ function getAllVehicle() {
 							str1 += '</button> ';
 												
 						str1 += '</a>';
-					};
-					
-					//str1 += '</table> ';
-					str1 += '</div>';
-					
-					document.getElementById("theVehicle").innerHTML = str1;
-				break;
-				case 'ERROR':
-					alert("No records found");
-					vehicleData.push({
-						'idx':0,
-						'trucknumber':'0',
-						'truckname':'0',
-						'truckcolor':'0',
-						'status': 'ERROR',
-					});
-					//return stateData;// 0=ok,1-security,2=no records
-				break;
-				case 'SECURITY ERROR':
-					alert("SECURITY ERROR");
-					vehicleData.push({
-						'idx':0,
-						'trucknumber':'0',
-						'truckname':'0',
-						'truckcolor':'0',
-						'status': 'ERROR'
-					});
-					//return vehicleData;// 0=ok,1-security,2=no records
-				break;
-				default:
-					//alert("XXXXX");
-				break;
-			};			
-		},
-		error: function(xhr, textStatus, error) {
-			alert(" State Data Error:1 "+textStatus+" "+error);
-		}
-	});
+				//alert(myObj[x].aFrom+' : '+myObj[x].aDesc);
+				i++;
+			};
+			
+		};
+	};
+
+	//xmlhttp.open("GET", "./scripts/vehicle.php" + dbParam, true);
+	//xmlhttp.send();
+
+	xmlhttp.open("POST", "./scripts/vehicle.php");//, false);//false-synchronous, true-asynchronously
+	xmlhttp.send(data);
+	
+	// progress on transfers from the server to the client (downloads)
+	function updateProgress (oEvent) {
+	  if (oEvent.lengthComputable) {
+		var percentComplete = oEvent.loaded / oEvent.total * 100;
+		console.log(percentComplete);
+		//document.getElementById("msg1").innerHTML = " "+percentComplete;
+	  } else {
+		console.log("Unable to compute progress information since the total size is unknown");
+	  }
+	}
+
+	function transferComplete(evt) {
+	  console.log("The transfer is complete.");
+	  str1 += '</div>';
+	  document.getElementById("theVehicle").innerHTML = str1;
+	  desktopFooters("divVehicle_meta");
+	  //document.getElementById("msg1").innerHTML = "loading complete. ";
+		//document.getElementById("notifications-alerts").innerHTML = dtAlerts.length;		
+		//$("#divGrid1").data("kendoGrid").refresh();	
+		//$('#divGrid2').data('kendoGrid').dataSource.read();
+		//setTimeout(localCleanUp(),10000);
+	}
+
+	function transferFailed(evt) {
+	  console.log("An error occurred while transferring the file.");
+	}
+
+	function transferCanceled(evt) {
+	  console.log("The transfer has been canceled by the user.");
+	}
+*/
+
+
+	
 	
 /*
 // get all	

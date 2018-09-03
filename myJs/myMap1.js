@@ -18,7 +18,7 @@ var labelIndex = 0;
           //center: uluru
           center: {lat: 39.114053, lng: -94.6274636}
         });
-        addMarker(uluru, map);
+        //addMarker(uluru, map);
 		//map1Menu();
 		//google.maps.event.trigger(map, 'resize');
 		//var center = new google.maps.LatLng(39.11,-94.62);
@@ -36,6 +36,7 @@ var labelIndex = 0;
 		*/
 		
 		google.maps.event.trigger(map, 'resize');
+		desktopFooters("divMap_meta");
     }
 	  
 	  function dodo() {
@@ -47,7 +48,8 @@ var labelIndex = 0;
         map: map
       });  
       */
-      addMarker({lat: 38.9924282, lng: -94.6908917}, map);   
+      //addMarker({lat: 38.9924282, lng: -94.6908917}, map); 
+		addMarker({lat: 39.246475, lng: -94.58622}, map); 
     }
     function dodo2() {
       //alert("ok");
@@ -69,17 +71,40 @@ var labelIndex = 0;
         });
       var marker = new google.maps.Marker({
         position: {lat: 38.9822282, lng:  -94.6707917},
+		//position: {lat: 39.246475, lng: -94.58622},
         label: 'xxxx',
         map: map
       }); 
       marker.addListener('click', function() {
           infowindow.open(map, marker);
-        });
+      });
 
       //addMarker({lat: 38.9822282, lng:  -94.6707917}, map);
 	  addMarker(marker);
     }
 
+	// https://developer.here.com/signup/geocoding?cid=Geocoding-Google-MM-T1-Dev-Generic-BMM&utm_source=Google&utm_medium=ppc&utm_campaign=Dev_PaidSearch_DevPortal_AlwaysOn
+
+
+function addMk2(pos1,pos2,lab,cont) {
+      //alert("ok");
+	  var contentString = cont;
+      var infowindow = new google.maps.InfoWindow({
+          content: contentString
+      });
+		var parsedPosition = new google.maps.LatLng(pos1, pos2);
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(pos1, pos2),
+        label: lab,
+        map: map
+		
+      }); 
+      marker.addListener('click', function() {
+          infowindow.open(map, marker);
+      });
+
+	  addMarker(marker);
+}
 	
 function addMk1(pos,lab,cont) {
       //alert("ok");
