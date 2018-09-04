@@ -203,7 +203,9 @@ transition: all 0.4s ease-in-out;
 
 /* end */
 
-
+.k-menu-scroll-wrapper.horizontal li.k-item.k-last {
+        border-right-width: 0;
+    }
 </style>
 
 <div class="wrapper" >
@@ -349,97 +351,50 @@ transition: all 0.4s ease-in-out;
 	  -->
       <!-- /.search form -->
 
-      <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header" style="color: white;">HEADER</li>
-		
-        <!-- Optionally, you can add icons to the links -->
-		
-        <li class="active"><a href="#"><i class="fa fa-th"></i> <span>Link</span></a></li>
-		
-        <li><a href="#"><i class="fa fa-link"></i> <span>Logout</span></a></li>
-        
-		<!-- TRAINING OPTIONS -->
-		<li class="treeview">
-          <a href="#"><i class="fa fa-th"></i> <span>Training</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">help 1</a></li>
-            <li><a href="#">help 2</a></li>
-          </ul>
-        </li>
-		<!-- END TRAINING OPTIONS -->
-		
-		<!-- AREA MAP OPTIONS -->
-		<li class="treeview">
-          <a href="javascript:updateMap()"><i class="fa fa-th"></i> <span>AREA MAP</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="javascript:updateMap()">Current Jobs Locations</a></li>
-			<li><a href="#">Current Jobs Status/Locations</a></li>
-            <li><a href="#">This Week Jobs Locations</a></li>
-			<li><a href="#">This Month Jobs Locations</a></li>			
-          </ul>
-        </li>
-		<!-- END AREA MAP OPTIONS -->
-		
-		<!-- JOB Grid OPTIONS -->
-		<li class="treeview">
-          <a href="#"><i class="fa fa-dashboard"></i> <span>Job Board</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Todays Jobs</a></li>
-			<li><a href="#">Todays Jobs Status View</a></li>
-			<li><a href="#">Todays Jobs Crew View</a></li>
-			<li><a href="#">This Week Jobs</a></li>
-			<li><a href="#">This Month Jobs</a></li>			
-          </ul>
-        </li>
-		<!-- END JOB GRID OPTIONS -->
-		
-		<!-- JOB MGMNT OPTIONS -->
-		<li class="treeview">
-          <a href="#"><i class="fa fa-dashboard"></i> <span>Job Management</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Edit Selected Jobs</a></li>
-			<li><a href="#">Delete Selected Jobs</a></li>
-			<li><a href="javascript:a_window_newJob()">Create New Jobs</a></li>
-			<li><a href="#">View Job Details</a></li>
-			<li><a href="#">Job Management Help</a></li>			
-          </ul>
-        </li>
-		<!-- END JOB MGMNT OPTIONS -->
-		
-		<li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Job Logs</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 1</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 2</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 3</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Opt 2 Blank 4</a></li>
-          </ul>
-        </li>
-		
-      </ul>
+      <!-- Sidebar Menu background-color:lightblue opacity: 1.0;  -->
+		<div>
+			
+			<ul id="verticalMenu" style="width:98%; background-color:#333; color:white; height:250px;align:center; display:none;">
+				
+				<li>
+					Update Desktop Lists
+					<ul>
+						<li>Todays Jobs List</li>
+						<li>Weather Forcast</li>
+						<li>Vehicles List</li>
+						<li>Staff and Employees List</li>
+					</ul>
+				</li>
+				<li>
+					Ladies
+					<ul>
+						<li>Jackets and Coats</li>
+						<li>Jeans</li>
+						<li>Knitwear</li>
+						<li>Shirts</li>
+						<li>Belts</li>
+						<li>Socks</li>
+						<li>Fan Zone</li>
+					</ul>
+				</li>
+				<li>
+					Maps
+					<ul>
+						<li>Current Job Locations</li>
+						<li>This week Job Locations</li>
+						<li>This Month Job Locations</li>
+						<li>Selected Job Details</li>
+					</ul>
+				</li>
+				<li>Alerts</li>
+				<li>Training</li>
+				<li>News</li>
+				<li>About us</li>
+
+			</ul>
+			
+		</div>
+
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
@@ -472,12 +427,15 @@ transition: all 0.4s ease-in-out;
 						<li>
 							Job Board
 						</li>
+						<!--
 						<li>
 							Status
 						</li>
+						
 						<li>
 							Help
 						</li>
+						-->
 						<li >
 							Admin
 						</li>
@@ -743,8 +701,9 @@ transition: all 0.4s ease-in-out;
 						
 					</div><!-- end row -->
 					
-					
-					<div style="height:930px;overflow-y: scroll;"><!-- tab 3 -->
+					<!-- tab 3 -->
+					<!--
+					<div style="height:930px;overflow-y: scroll;">
 					
 						<div class="row" >
 							<div class="col-xs-12 col-sm-12 col-lg-12">
@@ -752,9 +711,9 @@ transition: all 0.4s ease-in-out;
 									<div class="panel-heading">
 										<span itemscope itemtype="#">
 										<h3 class="panel-title" itemprop="name">Grid Example</h3>
-									</div><!--/panel-heading-->
+									</div>
 										<div class="panel-body" itemprop="reviewBody" style="height:340px;overflow-y: hidden;">
-											<!-- code -->												
+																							
 											<div id="grid" ></div>
 
 											</br>
@@ -762,15 +721,17 @@ transition: all 0.4s ease-in-out;
 											<meta itemprop="datePublished" content="01-01-2016">07:30 am - 01-08-2018</meta>													  
 											<span class="pull-right">
 												<p>hello</p>
-											</span><!--/reviewRating-->													
-										</div><!--/panel-body-->
-								</div><!--/panel-body-->
+											</span>													
+										</div>
+								</div>
 							</div>
-						</div><!-- end row -->
-						
-					</div><!-- end tab 3 -->
+						</div>						
+					</div>
+					-->
+					<!-- end tab 3 -->
 					
 					<!-- tab 4 -->
+					<!--
 					<div style="height:930px;overflow-y: scroll;">
 						<section id="secPanelBar1" class="well" style="height:90%;">
 							<h4 class="ra-well-title"><abbr title="Frequently Asked Questions">FAQ</abbr></h4>
@@ -795,6 +756,7 @@ transition: all 0.4s ease-in-out;
 							</ul>
 						</section>
 					</div>
+					-->
 					<!-- end tab 4 -->
 					
 					<div style="height:930px;overflow-y: scroll;"><!-- tab 5 -->
@@ -896,6 +858,7 @@ transition: all 0.4s ease-in-out;
 <div id="window_jobs"></div>
 <div id="window_alerts"></div>
 <div id="window_tasks"></div>
+<div id="window_help"></div>
 
 <span id="popupNotification"></span>
 <span id="staticNotification"></span>
@@ -915,6 +878,7 @@ transition: all 0.4s ease-in-out;
 <script src="myJs/win-tasks.js"></script>
 <script src="myJs/win-jobs.js"></script>
 <script src="myJs/showDetails1.js"></script>
+<script src="myJs/win-help1.js"></script>
 <!--		
 <script src="myJs/desktop.js"></script>
 
@@ -1003,6 +967,15 @@ function showHideTab() {
         x.style.display = "none";
     }
 }	
+// verticalMenu
+function showHideMenu() {
+    var x = document.getElementById("verticalMenu");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
 	
 	// tab events
 	function onSelect(e) {

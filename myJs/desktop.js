@@ -32,7 +32,62 @@ function updateMap(){
 	
 }
 function initKendoCtrls() {
-	
+	/*
+	function onOpen(e) {
+		kendoConsole.log("Opened: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
+	}
+
+	function onClose(e) {
+		kendoConsole.log("Closed: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
+	}
+
+	function onSelect(e) {
+		kendoConsole.log("Selected: " + $(e.item).children(".k-link").text());
+	}
+
+	function onActivate(e) {
+		kendoConsole.log("Activated: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
+	}
+
+	function onDeactivate(e) {
+		kendoConsole.log("Deactivated: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
+	}
+	*/
+	function onSelect_menu(e) {
+		//alert("Selected: " + $(e.item).children(".k-link").text());
+		// #358
+		switch($(e.item).children(".k-link").text()){
+			case "Current Job Locations":
+				updateMap();
+			break;
+			case "Alters":
+				showAlerts();
+			break;
+			case "Tasks":
+				showTasks();
+			break;
+			case "Training":
+				a_window_help();
+			break;
+		};
+		
+		// javascript:updateMap()
+		// javascript:showAlerts()
+		// javascript:showTasks()
+		// javascript:a_window_help()
+	}
+	$("#verticalMenu").kendoMenu({
+            scrollable: true,
+            orientation: "vertical",
+			 select: onSelect_menu
+			//open: onOpen,
+			//close: onClose,
+			//activate: onActivate,
+			//deactivate: onDeactivate
+    });
+		
+
+		
 	$("#tabstrip").kendoTabStrip({
 		activate: onActivate,
 		//show: onShow,
@@ -359,6 +414,8 @@ function initKendoCtrls() {
 	// end divGridVehicle grid
 	
 	// end Vehicle
+	
+		showHideMenu();
 }
 // END initKendoCtrls(
 
@@ -961,6 +1018,55 @@ function desktopFooters(q){
 		break;
 	};
 	
+}
+
+// setMenu
+function setUpMenu() {
+	alert("X");
+	var str1 = "";
+	
+str1 += '<ul id="verticalMenu" style="width:98%; background-color:#333; color:white; height:250px;align:center"> ';
+str1 += '	<li> ';
+str1 += '		Update Desktop Lists ';
+str1 += '		<ul> ';
+str1 += '			<li>Todays Jobs List</li> ';
+str1 += '			<li>Weather Forcast</li> ';
+str1 += '			<li>Vehicles List</li> ';
+str1 += '			<li>Staff and Employees List</li> ';
+str1 += '		</ul> ';
+str1 += '	</li> ';
+/*
+	<li>
+		Ladies
+		<ul>
+			<li>Jackets and Coats</li>
+			<li>Jeans</li>
+			<li>Knitwear</li>
+			<li>Shirts</li>
+			<li>Belts</li>
+			<li>Socks</li>
+			<li>Fan Zone</li>
+		</ul>
+	</li>
+*/
+
+str1 += '	<li> ';
+str1 += '		Maps ';
+str1 += '		<ul> ';
+str1 += '			<li>Current Job Locations</li> ';
+str1 += '			<li>This week Job Locations</li> ';
+str1 += '			<li>This Month Job Locations</li> ';
+str1 += '			<li>Selected Job Details</li> ';
+str1 += '		</ul> ';
+str1 += '	</li> ';
+str1 += '	<li>Alerts</li> ';
+str1 += '	<li>Training</li> ';
+str1 += '	<li>News</li> ';
+str1 += '	<li>About us</li> ';
+str1 += '</ul> ';
+
+document.getElementById("sideBarMenuContent").innerHTML = str1;
+
 }
 
 
