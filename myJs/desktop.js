@@ -60,13 +60,13 @@ function initKendoCtrls() {
 			case "Current Job Locations":
 				updateMap();
 			break;
-			case "Alters":
+			case "Alerts":
 				showAlerts();
 			break;
 			case "Tasks":
 				showTasks();
 			break;
-			case "Training":
+			case "Application Overview":
 				a_window_help();
 			break;
 		};

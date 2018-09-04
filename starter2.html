@@ -365,6 +365,7 @@ transition: all 0.4s ease-in-out;
 						<li>Staff and Employees List</li>
 					</ul>
 				</li>
+				<!--
 				<li>
 					Ladies
 					<ul>
@@ -377,6 +378,7 @@ transition: all 0.4s ease-in-out;
 						<li>Fan Zone</li>
 					</ul>
 				</li>
+				-->
 				<li>
 					Maps
 					<ul>
@@ -387,10 +389,28 @@ transition: all 0.4s ease-in-out;
 					</ul>
 				</li>
 				<li>Alerts</li>
-				<li>Training</li>
-				<li>News</li>
-				<li>About us</li>
-
+				<li>On-Line Training
+					<ul>
+						<li>Job Board</li>
+						<li>Admin</li>
+					</ul>
+				</li>
+				<li><i class="fa fa-dashboard"></i> Tasks</li>
+				
+				<li>
+					On-Line Help
+					<ul>
+						<li>Application Overview</li>
+						<li>Area Map (Desktop)</li>
+						<li>Quick Calendar (Desktop)</li>
+						<li>Weather 3 day forcast (Desktop)</li>
+						<li>Staff / Employees (Desktop)</li>
+						<li>Jobs (Desktop)</li>
+						<li>Details Display (Desktop)</li>
+						<li>Chat (Desktop)</li>
+					</ul>
+				</li>
+				<li>Support</li>
 			</ul>
 			
 		</div>
@@ -568,7 +588,7 @@ transition: all 0.4s ease-in-out;
 								<div class="panel panel-default" style="height:250px;overflow: hidden;">
 									<div class="panel-heading">
 										<span itemscope itemtype="#">
-										<h3 class="panel-title" itemprop="name">DETAILS</h3>
+										<h3 class="panel-title" itemprop="name">Dynamic Details Displays</h3>
 									</div><!--/panel-heading-->
 									<div class="panel-body" itemprop="reviewBody" style="height:285px;overflow: hidden;">
 										
@@ -909,10 +929,10 @@ getAllVehicle();
 // bottom row currently removed sec_func();
 getEmpData();
 
-//var cUserName = currentUserData[0].FirstName+" "+currentUserData[0].LastName;
-//document.getElementById("cUserName_3").innerHTML = cUserName;
-//document.getElementById("cUserName_1").innerHTML = cUserName;
-//document.getElementById("cUserName_2").innerHTML = cUserName;
+var cUserName = currentUserData[0].FirstName+" "+currentUserData[0].LastName;
+document.getElementById("cUserName_3").innerHTML = cUserName;
+document.getElementById("cUserName_1").innerHTML = cUserName;
+document.getElementById("cUserName_2").innerHTML = cUserName;
 
 setTimeout(initKendoCtrls, 2000);
 //setTimeout(showHideTab, 2400);
