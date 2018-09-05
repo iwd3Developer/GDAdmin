@@ -33,27 +33,27 @@ function updateMap(){
 }
 function initKendoCtrls() {
 	/*
-	function onOpen(e) {
+	function onOpen_mainMenu(e) {
 		kendoConsole.log("Opened: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
 	}
 
-	function onClose(e) {
+	function onClose_mainMenu(e) {
 		kendoConsole.log("Closed: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
 	}
 
-	function onSelect(e) {
+	function onSelect_mainMenu(e) {
 		kendoConsole.log("Selected: " + $(e.item).children(".k-link").text());
 	}
 
-	function onActivate(e) {
+	function onActivate_mainMenu(e) {
 		kendoConsole.log("Activated: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
 	}
 
-	function onDeactivate(e) {
+	function onDeactivate_mainMenu(e) {
 		kendoConsole.log("Deactivated: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
 	}
 	*/
-	function onSelect_menu(e) {
+	function onSelect_mainMenu(e) {
 		//alert("Selected: " + $(e.item).children(".k-link").text());
 		// #358
 		switch($(e.item).children(".k-link").text()){
@@ -70,22 +70,42 @@ function initKendoCtrls() {
 				a_window_help();
 			break;
 		};
-		
-		// javascript:updateMap()
-		// javascript:showAlerts()
-		// javascript:showTasks()
-		// javascript:a_window_help()
 	}
-	$("#verticalMenu").kendoMenu({
+	$("#mainMenu").kendoMenu({
             scrollable: true,
             orientation: "vertical",
-			 select: onSelect_menu
+			 select: onSelect_mainMenu
 			//open: onOpen,
 			//close: onClose,
 			//activate: onActivate,
 			//deactivate: onDeactivate
     });
-		
+	// END MAIN MENU
+	// FRAN MENU
+	function onSelect_franMenu(e) {
+		//alert("Selected: " + $(e.item).children(".k-link").text());
+		switch($(e.item).children(".k-link").text()){
+			case "x":
+				//updateMap();
+			break;
+		};
+	}
+	$("#franMenu").kendoMenu({
+            scrollable: true,
+            orientation: "vertical",
+			 select: onSelect_franMenu
+			//open: onOpen,
+			//close: onClose,
+			//activate: onActivate,
+			//deactivate: onDeactivate
+    });
+	// END FRAN MENU
+	// SUBMENU A
+	
+	// END SUBMENU A
+	// SUBMENU B
+	
+	// END SUBMENU B
 
 		
 	$("#tabstrip").kendoTabStrip({
@@ -201,8 +221,8 @@ function initKendoCtrls() {
 			//{ collapsible: true },
 			//{ collapsible: false },
 			// default loader pages
-			{ collapsible: false, contentUrl: "./pages/a_pg2.html" },
-			{ collapsible: false, contentUrl: "./pages/page_1.html" }
+			{ collapsible: false, contentUrl: "./pages/dt_detail1.html" },
+			{ collapsible: false, contentUrl: "./pages/dt_detail2.html" }
 			//{ collapsible: true}
 		]
 	});
@@ -415,7 +435,10 @@ function initKendoCtrls() {
 	
 	// end Vehicle
 	
-		showHideMenu();
+		showHideMainMenu();
+		showHideFranMenu();
+		sideBarA();
+		sideBarB();
 }
 // END initKendoCtrls(
 
@@ -1020,54 +1043,6 @@ function desktopFooters(q){
 	
 }
 
-// setMenu
-function setUpMenu() {
-	alert("X");
-	var str1 = "";
-	
-str1 += '<ul id="verticalMenu" style="width:98%; background-color:#333; color:white; height:250px;align:center"> ';
-str1 += '	<li> ';
-str1 += '		Update Desktop Lists ';
-str1 += '		<ul> ';
-str1 += '			<li>Todays Jobs List</li> ';
-str1 += '			<li>Weather Forcast</li> ';
-str1 += '			<li>Vehicles List</li> ';
-str1 += '			<li>Staff and Employees List</li> ';
-str1 += '		</ul> ';
-str1 += '	</li> ';
-/*
-	<li>
-		Ladies
-		<ul>
-			<li>Jackets and Coats</li>
-			<li>Jeans</li>
-			<li>Knitwear</li>
-			<li>Shirts</li>
-			<li>Belts</li>
-			<li>Socks</li>
-			<li>Fan Zone</li>
-		</ul>
-	</li>
-*/
-
-str1 += '	<li> ';
-str1 += '		Maps ';
-str1 += '		<ul> ';
-str1 += '			<li>Current Job Locations</li> ';
-str1 += '			<li>This week Job Locations</li> ';
-str1 += '			<li>This Month Job Locations</li> ';
-str1 += '			<li>Selected Job Details</li> ';
-str1 += '		</ul> ';
-str1 += '	</li> ';
-str1 += '	<li>Alerts</li> ';
-str1 += '	<li>Training</li> ';
-str1 += '	<li>News</li> ';
-str1 += '	<li>About us</li> ';
-str1 += '</ul> ';
-
-document.getElementById("sideBarMenuContent").innerHTML = str1;
-
-}
 
 
 // END GET DATA SECTION

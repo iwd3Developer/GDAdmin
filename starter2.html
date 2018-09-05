@@ -354,7 +354,7 @@ transition: all 0.4s ease-in-out;
       <!-- Sidebar Menu background-color:lightblue opacity: 1.0;  -->
 		<div>
 			
-			<ul id="verticalMenu" style="width:98%; background-color:#333; color:white; height:250px;align:center; display:none;">
+			<ul id="mainMenu" style="width:98%; background-color:#333; color:white; height:250px;align:center; display:none;">
 				
 				<li>
 					Update Desktop Lists
@@ -412,7 +412,23 @@ transition: all 0.4s ease-in-out;
 				</li>
 				<li>Support</li>
 			</ul>
-			
+			</hr>
+			<!-- FRAN MENU -->
+			<ul id="franMenu" style="width:98%; background-color:#333; color:white; height:250px;align:center; display:none;">
+				
+				<li>
+					Franchise
+					<ul>
+						<li>Todays Jobs List</li>
+						<li>Weather Forcast</li>
+						<li>Vehicles List</li>
+						<li>Staff and Employees List</li>
+					</ul>
+				</li>
+				<li>Alerts</li>				
+				<li>Support</li>
+			</ul>
+			<!-- END FRAN MENU -->
 		</div>
 
       <!-- /.sidebar-menu -->
@@ -820,31 +836,8 @@ transition: all 0.4s ease-in-out;
       <!-- Home tab content -->
       <div class="tab-pane active" id="control-sidebar-home-tab">
         <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-              </h4>
-            </a>
-          </li>
-        </ul>
+		<div id="control-sidebar-menuA"></div>
+		
         <!-- /.control-sidebar-menu -->
 
       </div>
@@ -853,12 +846,12 @@ transition: all 0.4s ease-in-out;
       <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
       <!-- /.tab-pane -->
       <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <p>
+		<div class="tab-pane" id="control-sidebar-settings-tab">
+			<p>
               Some information about this general settings option
-            </p>
-      <!-- /.tab-pane -->
-    </div>
+            </p>      
+		</div>
+		<!-- /.tab-pane -->
   </aside>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
@@ -899,6 +892,7 @@ transition: all 0.4s ease-in-out;
 <script src="myJs/win-jobs.js"></script>
 <script src="myJs/showDetails1.js"></script>
 <script src="myJs/win-help1.js"></script>
+<script src="myJs/mySideBar.js"></script>
 <!--		
 <script src="myJs/desktop.js"></script>
 
@@ -987,15 +981,28 @@ function showHideTab() {
         x.style.display = "none";
     }
 }	
-// verticalMenu
-function showHideMenu() {
-    var x = document.getElementById("verticalMenu");
+// mainMenu
+function showHideMainMenu() {
+    var x = document.getElementById("mainMenu");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
         x.style.display = "none";
     }
 }
+// franMenu
+function showHideFranMenu() {
+    var x = document.getElementById("franMenu");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+// subMenuA
+// subMenuB
+
+
 	
 	// tab events
 	function onSelect(e) {
