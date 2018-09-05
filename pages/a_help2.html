@@ -1,0 +1,57 @@
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="demo-section k-content wide" style="max-width: 644px;">
+		<div id="mediaplayer2" style="height:360px"></div>
+	</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+	$("#mediaplayer2").kendoMediaPlayer({
+		autoPlay: false,
+		navigatable: true,
+		
+		play: onPlay2,
+		pause: onPause2,
+		end: onEnd2,
+		ready: onReady2,
+		timeChange: onTimeChange2,
+		volumeChange: onVolumeChange2,
+		/*
+		media: {
+			title: "Recap of Progress Ringing The Bell at Nasdaq (2016)",
+			source: "https://www.youtube.com/watch?v=tc3xhD24iTU"
+		}
+		*/
+		media: {
+			title: media2_title,
+			source: media2_url
+		}
+	});
+	function onPlay2() {
+		console.log("event :: play");
+	}
+
+	function onPause2() {
+		console.log("event :: pause");
+	}
+
+	function onEnd2() {
+		console.log("event :: end");
+	}
+
+	function onReady2() {
+		console.log("event :: ready");
+	}
+
+	function onTimeChange2() {
+		console.log("event :: timeChange");
+	}
+
+	function onVolumeChange2() {
+		console.log("event :: volumeChange");
+	}
+		
+});	
+</script>

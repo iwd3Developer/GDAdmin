@@ -1,1 +1,105 @@
-<p><h4><b>News and Information</b></h4></p>
+<!-- <p><h4><b>News and Information</b></h4></p> -->
+<div class="container-fluid">
+	<div class="row">
+		<div id="chart"></div>
+
+	</div>
+</div>
+<script>
+var internetUsers = [
+            {
+                "country": "Great Day Kansas",
+                "month": "Jan",
+                "value": 4.9
+            },
+            {
+                "country": "Great Day Kansas",
+                "month": "Feb",
+                "value": 9.2
+            },
+            {
+                "country": "Great Day Kansas",
+                "month": "Mar",
+                "value": 8.4
+            },
+            {
+                "country": "Great Day Kansas",
+                "month": "Apr",
+                "value": 6.6
+            },
+			
+			
+            {
+                "country": "Great Day Kansas",
+                "month": "May",
+                "value": 3.1
+            },
+            {
+                "country": "Great Day Kansas",
+                "month": "Jun",
+                "value": 5.9
+            },
+            {
+                "country": "Great Day Kansas",
+                "month": "Jul",
+                "value": 4.1
+            },
+            {
+                "country": "Great Day Kansas",
+                "month": "Aug",
+                "value": 8.2
+            },
+            {
+                "country": "Great Day Kansas",
+                "month": "Sep",
+                "value": 2.0
+            }
+        ];
+
+        function createChart() {
+            $("#chart").kendoChart({
+                dataSource: {
+                    data: internetUsers
+                },
+                title: {
+                    text: "Sales "
+                },
+                legend: {
+                    visible: true
+                },
+				// line data
+                seriesDefaults: {
+                    type: "line",
+                    labels: {
+                        visible: true,
+                        //format: "{0}%",
+						format: "{0}",
+                        background: "transparent"
+                    }
+                },
+                series: [{
+                    field: "value",
+                    categoryField: "month",
+                    name: "Great Day Kansas"
+                }],
+				// left labesls
+                valueAxis: {
+                    labels: {
+                        //format: "{0}%"
+						format: "{0}"
+                    },
+                    line: {
+                        visible: false
+                    }
+                },
+                categoryAxis: {
+                    majorGridLines: {
+                        visible: false
+                    }
+                }
+            });
+        }
+
+        $(document).ready(createChart);
+        $(document).bind("kendo:skinChange", createChart);
+</script>

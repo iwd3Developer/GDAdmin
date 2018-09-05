@@ -1,4 +1,5 @@
 //var dGrid1;
+// https://www.w3schools.com/icons/icons_reference.asp
 
 function updateMap(){
 	// 500 N.W. Barry Rd Kansas City, MO 64155
@@ -67,7 +68,14 @@ function initKendoCtrls() {
 				showTasks();
 			break;
 			case "Application Overview":
+				help_win_title = "Application Overview HELP";
 				a_window_help();
+			break;
+			case "Quick Calendar (Desktop)":
+				help_win_title = "HELP!";
+				media2_title = "XXX";
+				media2_url = "https://www.youtube.com/watch?v=tc3xhD24iTU";
+				b_window_help();
 			break;
 		};
 	}
