@@ -1,13 +1,15 @@
 <?php
-header('Content-Type: application/json');
-// https://davidwalsh.name/format-date-mysql-date_format
-
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+//header('Content-Type: application/json');
+header("Content-type: application/jsonp", true);
 require './Required/phpDBConfig.php';
 require './Required/phpSecurity.php';
 
-$cid 		= $_POST["cid"];
-$mode 		= $_POST["mode"];
-$franID		= $_POST["franID"];
+
+$cid 		= "0532";//$_POST["cid"];
+$mode 		= "X";//$_POST["mode"];
+$franID		= "GD00KS";//$_POST["franID"];
 //EDS EDIT HERE
 //$cid 		= '0532';
 //$mode 		= 'X';

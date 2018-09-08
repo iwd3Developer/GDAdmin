@@ -138,6 +138,8 @@ function initKendoCtrls() {
 	});
 	// END panelbar1
 	
+	
+	
 	// #calendar1
 	desktopFooters("divCal_meta");
 	var today = new Date(),
@@ -235,6 +237,223 @@ function initKendoCtrls() {
 		]
 	});
 	// end spliter
+
+/*	
+	// cal
+	
+	function scheduler_dataBinding(e) {
+        console.log("dataBinding");
+    }
+
+    function scheduler_dataBound(e) {
+        console.log("dataBound");
+    }
+
+    function scheduler_save(e) {
+		e.preventDefault();
+		console.log("save ");
+    }
+
+    function scheduler_remove(e) {
+        console.log("remove");
+    }
+
+    function scheduler_cancel(e) {
+        console.log("cancel");
+    }
+
+    function scheduler_change(e) {
+        var start = e.start; //selection start date
+        var end = e.end; //selection end date
+        var slots = e.slots; //list of selected slots
+        var events = e.events; //list of selected Scheduler events
+
+        var message = "change:: selection from {0:g} till {1:g}";
+		selectedSD = start;
+		selectedED = end;
+		selectedCalID = e.id;
+        if (events.length) {
+			// entry exists
+            message += ". The selected event is '" + events[events.length - 1].title + "'";
+			selectedSD = start;
+			selectedED = end;
+			//alert( selectedSD+" : "+ selectedED );
+        }
+		a_window_Cal1();
+        console.log(kendo.format(message, start, end));
+    }
+
+    function scheduler_edit(e) {
+		e.preventDefault();
+        console.log("edit");
+		console.log(selectedSD+" edit Opend window use this data "+selectedED );
+    }
+
+    function scheduler_add(e) {
+        console.log(selectedSD+" add Opend window use this data "+selectedED );
+    }
+
+    function scheduler_moveStart(e) {
+        console.log("moveStart");
+    }
+
+    function scheduler_move(e) {
+        console.log("move");
+    }
+
+    function scheduler_moveEnd(e) {
+        console.log("moveEnd");
+    }
+
+    function scheduler_resizeStart(e) {
+        console.log("resizeStart");
+    }
+
+    function scheduler_resize(e) {
+        console.log("resize");
+    }
+
+    function scheduler_resizeEnd(e) {
+        console.log("resizeEnd");
+    }
+
+    function scheduler_navigate(e) {
+        console.log(kendo.format("navigate:: action:{0}; view:{1}; date:{2:d};", e.action, e.view, e.date));
+    }
+
+	//var dataSource = new kendo.data.SchedulerDataSource();
+	//dataSource.add({id: 3,start: new Date("2018/8/8 10:15 AM"),end: new Date("2018/8/8 12:30 PM"),title: "Demo" });
+	//dataSource.add({id: 2,start: new Date("2018/8/7 10:15 AM"),end: new Date("2018/8/7 12:30 PM"),title: "Demo" });
+
+function scheduler_foo() {
+	//var g = {'cid':'0532', 'mode':'X', 'franID':'GD00KS', 'id': 0 };//EDS
+	//var observableData = new kendo.data.ObservableArray(calCurrentData);
+	var str1 = "";
+	alert(calCurrentData[0].start+" A "+calCurrentData2[0].start);
+	//alert(calCurrentData[0].start);
+	
+	for (var i=0;i<calCurrentData.length;++i){
+		str1 += '{ ';
+		str1 += '  id: 1,';
+		str1 += '  taskId: 2344,';
+		str1 += '  title: "Interview-'+i+'",';
+		str1 += '  start: new Date("2018-09-1'+i+' 11:00 AM"),';
+		str1 += '  end: new Date("2018-09-16 1'+i+':30 AM"),';			  
+		str1 += '  startTimezone: null,';
+		str1 += '  endTimezone: null,';
+		str1 += '  description: "my description",';
+		str1 += '  recurrenceId: null,';
+		str1 += '  recurrenceRule: null,';
+		str1 += '  recurrenceException: null,';
+		str1 += '  ownerId: null,';
+		str1 += '  isAllDay: false';
+		str1 += '}	';	
+		//alert(str1);
+		break;
+	};
+	
+	
+	$("#scheduler").kendoScheduler({
+        date: new Date("2018/9/13"),
+        startTime: new Date("2018/9/13 7:00"),
+        height: 600,
+        views: [
+            "day",
+            //{ type: "week", selected: true },
+			{ type: "month", selected: true },
+			"week",
+            "month",
+            "agenda",
+            "timeline"
+        ],
+        selectable: true,
+		editable: {
+				add: true,
+				update: true,
+				destroy: false,
+				edit: true
+			  },
+        //dataBinding: scheduler_dataBinding,
+        //dataBound: scheduler_dataBound,
+        save: scheduler_save,
+        //remove: scheduler_remove,
+        edit: scheduler_edit,
+        add: scheduler_add,
+        //cancel: scheduler_cancel,
+        change: scheduler_change,
+        //moveStart: scheduler_moveStart,
+        //move: scheduler_move,
+        //moveEnd: scheduler_moveEnd,
+        //resizeStart: scheduler_resizeStart,
+        //resize: scheduler_resize,
+        //resizeEnd: scheduler_resizeEnd,
+        //navigate: scheduler_navigate,
+		// calCurrentData  observableData
+		dataSource: [
+			{
+				id: 0,
+				taskId: 0,
+				title: "New Year",
+				start: new Date("2018-01-01 12:01 AM"),
+				end: new Date("2018-01-01 12:02 AM"),			  
+				startTimezone: null,
+				endTimezone: null,
+				description: "my description",
+				recurrenceId: null,
+				recurrenceRule: null,
+				recurrenceException: null,
+				ownerId: null,
+				isAllDay: false
+			}		
+			],
+            schema: {
+                model: {
+                    id: "taskID",
+                    fields: {
+                        taskID: { from: "TaskID", type: "number" },
+                        title: { from: "Title", defaultValue: "No title", validation: { required: true } },
+                        start: { type: "date", from: "Start" },
+                        end: { type: "date", from: "End" },
+                        startTimezone: { from: "StartTimezone" },
+                        endTimezone: { from: "EndTimezone" },
+                        description: { from: "Description" },
+                        recurrenceId: { from: "RecurrenceID" },
+                        recurrenceRule: { from: "RecurrenceRule" },
+                        recurrenceException: { from: "RecurrenceException" },
+                        ownerId: { from: "OwnerID", defaultValue: 1 },
+                        isAllDay: { type: "boolean", from: "IsAllDay" }
+                    }
+                }
+            }
+    });
+	//$("#scheduler").data("kendoScheduler").refresh();
+}
+	//$("#scheduler").data("kendoScheduler").refresh();	
+	//$('#scheduler').data('kendoScheduler').dataSource.read();
+	$("#create").click(function() {	
+		scheduler_foo();
+	});
+	
+	
+	//$("#create").click(function() {
+	  //$("#scheduler").data("kendoScheduler").addEvent({
+		//start: new Date("2018/9/13"),
+		//end: new Date("2018/9/13")
+	  //});
+	//});
+	
+	$("#scheduler").on("dblclick", ".k-event", function(e){
+          var scheduler = $("#scheduler").getKendoScheduler();
+          var event = scheduler.occurrenceByUid($(this).data("uid"));
+          if(scheduler.viewName() == "month"){
+            scheduler.editEvent(event);
+          }else{
+            alert(event.title);
+          }        
+        });
+		
+	// end cal
+	*/
 	
 	// divGridJobs	
 	//alert("Look "+ getJobs1Data());
@@ -447,6 +666,13 @@ function initKendoCtrls() {
 		showHideFranMenu();
 		sideBarA();
 		sideBarB();
+		
+		jobBoardInit();
+		
+		// JOB Calendar
+
+
+	// END JOB Calendar
 }
 // END initKendoCtrls(
 
@@ -1047,11 +1273,129 @@ function desktopFooters(q){
 			var dt2 = dateTime2('s');
 			document.getElementById("divMap_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
 		break;
+		
+		// JOB BOARD
+		case "jbJobs_meta":
+			//desktopFooters("jbJobs_meta");
+			var dt2 = dateTime2('s');
+			document.getElementById("jbJobs_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
+		break;
+		case "jbCrews_meta":
+			//desktopFooters("jbCrews_meta");
+			var dt2 = dateTime2('s');
+			document.getElementById("jbCrews_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
+		break;
+		case "jbDetails_meta":
+			//desktopFooters("jbDetails_meta");
+			var dt2 = dateTime2('s');
+			document.getElementById("jbDetails_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
+		break;
+		case "jbLegMap_meta":
+			//desktopFooters("jbLegMap_meta");
+			var dt2 = dateTime2('s');
+			document.getElementById("jbLegMap_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
+		break;
+		case "jbSPItems_meta":
+			//desktopFooters("jbSPItems_meta");
+			var dt2 = dateTime2('s');
+			document.getElementById("jbSPItems_meta").innerHTML = '<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><meta itemprop="datePublished" content="01-01-2016"> '+dt2+'</meta><span class="pull-right"><p>ready</p></span>';
+		break;
 	};
 	
 }
 
+function getAllEntry(g) {
+	var dbParam, xmlhttp, myObj, x, txt = "";
+	var i2 = 1;
+	var data = new FormData();
+	//EDIT AS NEEDED IT
+	data.append("franID", "GD00KS");//MUST!!
+	data.append("cid", "0532");//MUST!!
+	data.append("mode", "x");//MUST!!
+	//data.append("limit", 40);
 
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.synchronous = false;
+	//EVENTS
+	xmlhttp.addEventListener("progress", updateProgress);
+	xmlhttp.addEventListener("load", transferComplete);
+	xmlhttp.addEventListener("error", transferFailed);
+	xmlhttp.addEventListener("abort", transferCanceled);
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			myObj = JSON.parse(this.responseText);
+			calCurrentData2 = new kendo.data.SchedulerDataSource();
+			//calCurrentData = new kendo.data.SchedulerDataSource();
+			//calCurrentData3 = new kendo.data.ObservableArray(this.responseText);
+			//calCurrentData2 = myObj;
+			//calCurrentData = myObj;
+			//calCurrentData2.add({id: 3,start: new Date("2018/9/8 10:15 AM"),end: new Date("2018/9/8 11:30 PM"),title: "Demo" });
+			//calCurrentData2.add({id: 4,start: new Date("2018/9/9 11:15 AM"),end: new Date("2018/9/9 12:30 PM"),title: "Demo" });
+
+			//alert(myObj[0].title+" : "+calCurrentData2[0].title);
+			
+			for (x in myObj) {
+				//txt += i2+" - "+myObj[x].name + "<br>";
+				// OK
+				//calCurrentData2.add({id: myObj[x].id,start: new Date(myObj[x].startD),end: new Date(myObj[x].endD),title: myObj[x].title });
+				calCurrentData2.add({id: myObj[x].id, 
+					taskId: myObj[x].taskId, 
+					title: myObj[x].title,
+					start: new Date(myObj[x].startD),
+					end: new Date(myObj[x].endD),
+					startTimezone: myObj[x].startTimezone,
+					description: myObj[x].description,
+					recurrenceId: myObj[x].recurrenceId,
+					recurrenceRule: myObj[x].recurrenceRule,
+					recurrenceException: myObj[x].recurrenceException,
+					ownerId: myObj[x].ownerId,
+					isAllDay: myObj[x].isAllDay
+				});
+				i2++;
+			};
+		};
+	};
+
+	//xmlhttp.open("GET", "./scripts/calendarFull.php" + dbParam, true);
+	//xmlhttp.send();
+
+	xmlhttp.open("POST", "./scripts/calendarFull.php");//, false);//false-synchronous, true-asynchronously
+	xmlhttp.send(data);
+	
+	// progress on transfers from the server to the client (downloads)
+	function updateProgress (oEvent) {
+	  if (oEvent.lengthComputable) {
+		var percentComplete = oEvent.loaded / oEvent.total * 100;
+		console.log(percentComplete);
+		//document.getElementById("msg1").innerHTML = " "+percentComplete;
+	  } else {
+		console.log("Unable to compute progress information since the total size is unknown");
+	  }
+	}
+
+	function transferComplete(evt) {
+	  console.log("The transfer is complete CALENDAR.");
+	  //calCurrentData = myObj;
+	  //alert(calCurrentData);
+	  //alert(calCurrentData.length);
+	  //document.getElementById("msg1").innerHTML = "loading complete. ";
+	  //var dataSource = new kendo.data.DataSource();
+		showMyCal(calCurrentData2);
+		//dGrid1 = $("#divGridJobs").data("kendoGrid");		
+		//$("#divGridJobs").data("kendoGrid").refresh();	
+		//$('#divGridJobs').data('kendoGrid').dataSource.read();
+		//setTimeout(localCleanUp(),10000);
+	}
+
+	function transferFailed(evt) {
+	  console.log("An error occurred while transferring the file.");
+	}
+
+	function transferCanceled(evt) {
+	  console.log("The transfer has been canceled by the user.");
+	}
+
+}
 
 // END GET DATA SECTION
 
