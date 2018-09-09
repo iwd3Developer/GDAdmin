@@ -206,6 +206,22 @@ transition: all 0.4s ease-in-out;
 .k-menu-scroll-wrapper.horizontal li.k-item.k-last {
         border-right-width: 0;
     }
+	
+/* video */
+.cn {
+  display: table-cell;
+  width: 500px;
+  height: 500px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.inner {
+  display: inline-block;
+  width: 200px; height: 200px;
+}
+/* end video */
+
 </style>
 
 <div class="wrapper" >
@@ -226,7 +242,7 @@ transition: all 0.4s ease-in-out;
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" onclick="javascript:hideMenu1();">
         <span class="sr-only">Toggle navigation</span>
       </a>
       <!-- Navbar Right Menu -->
@@ -333,105 +349,74 @@ transition: all 0.4s ease-in-out;
           <!-- <p>User Name 3</p> -->
 		  <a href="#" id="cUserName_3"><i class="fa fa-circle text-success"></i> Online</a>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>		
-		
-		    <!-- Sidebar Menu background-color:lightblue opacity: 1.0;  -->
-			<div style="align:left;">				
-				<ul id="mainMenu" style="width:98%; background-color:#333; color:white; height:250px;align:center; display:none;">
-					
-					<li>
-						<i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;Update Desktop Lists
-						<ul>
-							<li>Todays Jobs List</li>
-							<li>Weather Forcast</li>
-							<li>Vehicles List</li>
-							<li>Staff and Employees List</li>
-						</ul>
-					</li>
-					<!--
-					<li>
-						Ladies
-						<ul>
-							<li>Jackets and Coats</li>
-							<li>Jeans</li>
-							<li>Knitwear</li>
-							<li>Shirts</li>
-							<li>Belts</li>
-							<li>Socks</li>
-							<li>Fan Zone</li>
-						</ul>
-					</li>
-					-->
-					<li>
-						<i class="fa fa-map"></i>&nbsp; &nbsp; &nbsp; Maps
-						<ul>
-							<li>Current Job Locations</li>
-							<li>This week Job Locations</li>
-							<li>This Month Job Locations</li>
-							<li>Selected Job Details</li>
-						</ul>
-					</li>
-					<li><i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;Alerts</li>
-					<li><i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;On-Line Training
-						<ul>
-							<li>Job Board</li>
-							<li>Admin</li>
-						</ul>
-					</li>
-					<li><i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp; Tasks</li>
-					
-					<li>
-						 <i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;On-Line Help
-						<ul>
-							<li><i class="fa fa-file-video-o"></i> Application Overview.</li>
-							<li><i class="fa fa-map"></i> Area Map (Desktop)</li>
-							<li>Quick Calendar (Desktop)</li>
-							<li>Weather 3 day forcast (Desktop)</li>
-							<li>Staff / Employees (Desktop)</li>
-							<li>Jobs (Desktop)</li>
-							<li>Details Display (Desktop)</li>
-							<li>Chat (Desktop)</li>
-						</ul>
-					</li>
-					<li><i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;Support</li>
-				</ul>
-				</hr>
-				<!-- FRAN MENU -->
-				<ul id="franMenu" style="width:98%; background-color:#333; color:white; height:250px;align:center; display:none;">
-					
-					<li>
-						 <i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;Franchise Only
-						<ul>
-							<li>Todays Jobs List</li>
-							<li>Weather Forcast</li>
-							<li>Vehicles List</li>
-							<li>Staff and Employees List</li>
-						</ul>
-					</li>
-				</ul>
-				<!-- END FRAN MENU -->
-			</div>
-			<!-- END MENU -->		
-		
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>  
+        </div>			    		
 		
       </div>
-
-      <!-- search form (Optional) -->
-	  <!--
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-              </button>
-            </span>
-        </div>
-      </form>
-	  -->
-      <!-- /.search form -->
-
-
+		
+		<!-- Sidebar Menu background-color:lightblue opacity: 1.0;  -->	
+				
+		<div id="xMenu" style="align:left;">				
+			<ul id="mainMenu" style="width:98%; background-color:#333; color:white; height:250px;align:center; display:none;">
+				
+				<li>
+					<i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;Update Desktop Lists
+					<ul>
+						<li>Todays Jobs List</li>
+						<li>Weather Forcast</li>
+						<li>Vehicles List</li>
+						<li>Staff and Employees List</li>
+					</ul>
+				</li>
+				<li>
+					<i class="fa fa-map"></i>&nbsp; &nbsp; &nbsp; Maps
+					<ul>
+						<li>Current Job Locations</li>
+						<li>This week Job Locations</li>
+						<li>This Month Job Locations</li>
+						<li>Selected Job Details</li>
+					</ul>
+				</li>
+				<li><i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;Alerts</li>
+				<li><i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;On-Line Training
+					<ul>
+						<li>Job Board</li>
+						<li>Admin</li>
+					</ul>
+				</li>
+				<li><i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp; Tasks</li>
+				
+				<li>
+					 <i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;On-Line Help
+					<ul>
+						<li><i class="fa fa-file-video-o"></i> Application Overview.</li>
+						<li><i class="fa fa-map"></i> Area Map (Desktop)</li>
+						<li>Quick Calendar (Desktop)</li>
+						<li>Weather 3 day forcast (Desktop)</li>
+						<li>Staff / Employees (Desktop)</li>
+						<li>Jobs (Desktop)</li>
+						<li>Details Display (Desktop)</li>
+						<li>Chat (Desktop)</li>
+					</ul>
+				</li>
+				<li><i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;Support</li>
+			</ul>
+			</hr>
+			<!-- FRAN MENU -->
+			<ul id="franMenu" style="width:98%; background-color:#333; color:white; height:250px;align:center; display:none;">
+				
+				<li>
+					 <i class="fa fa-dashboard"></i>&nbsp; &nbsp; &nbsp;Franchise Only
+					<ul>
+						<li>Todays Jobs List</li>
+						<li>Weather Forcast</li>
+						<li>Vehicles List</li>
+						<li>Staff and Employees List</li>
+					</ul>
+				</li>
+			</ul>
+			<!-- END FRAN MENU -->
+		</div><!-- END MENU -->
 
       <!-- /.sidebar-menu -->
     </section>
@@ -454,12 +439,15 @@ transition: all 0.4s ease-in-out;
 		</br>
 		<div id="myAlertBar"></div><!-- ALERT BAR -->
 
-		<div id="s32" class="row" >
+		<div id="s32" class="row" style="display:none;">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<!-- TABS -->
 				<div id="tabstrip" >
 					<ul>
 						<li class="k-state-active">
+							Welcome
+						</li>
+						<li>
 							Desktop
 						</li>
 						<li>
@@ -477,6 +465,18 @@ transition: all 0.4s ease-in-out;
 						</li>
 					</ul>
 					
+					<div class="row" style="height:930px;overflow: hidden;"><!-- tab 1 -->
+						<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+							<p>Please addjust speakers and or headphones for this training video, WELCOME</p>							
+									
+							<div class="cn">
+								<div class="inner">
+									<div id="mediaplayer0" style="width:740px; height: 460px;">VIDEO</div>							
+								</div>
+							</div>
+						</div>						
+					</div><!-- end row 0 column 0 -->
+						
 					<div class="row" style="height:930px;overflow-y: scroll;"><!-- tab 1 -->
 						<div class="col-xs-7 col-sm-7 col-lg-7">
 							<div class="panel panel-default" style="height:350px;">
@@ -524,8 +524,8 @@ transition: all 0.4s ease-in-out;
 									<h3 class="panel-title" itemprop="name">Quick Calendar</h3>
 								</div><!--/panel-heading-->
 								<div class="panel-body" style="height:305px;overflow: hidden;">
-									<div id="calendar1" style="width:100%;height:80%;">.....</div>
-									</br>
+									<div id="calendar1" style="width:100%;height:85%;">.....</div>
+									</br></br>
 									<div id="divCal_meta"></div>																						
 								</div><!--/panel-body-->
 							</div>
@@ -674,9 +674,12 @@ transition: all 0.4s ease-in-out;
 										<span itemscope itemtype="#">
 										<h3 class="panel-title" itemprop="name">Crews</h3>
 									</div><!--/panel-heading-->
-									<div class="panel-body" itemprop="reviewBody" style="height:410px;overflow: hidden;">
-										<!-- code -->
+									<div class="panel-body" itemprop="reviewBody" style="height:400px;overflow: hidden;">
 										<div id="jobCrews"></div>
+										<div>more info...</br>
+											<button onclick="javascript:alert('OK')">Click me</button>
+											<button onclick="javascript:alert('OK')">Click 2</button>
+										</div></br>
 										<div id="jbCrews_meta"></div>
 																						
 									</div><!--/panel-body-->
@@ -694,6 +697,10 @@ transition: all 0.4s ease-in-out;
 									</div><!--/panel-heading-->
 									<div class="panel-body" itemprop="reviewBody" style="height:350px;overflow-y: scroll;">
 										<!-- code -->
+										<div>more info...</br>
+											<button onclick="javascript:alert('OK')">Click me</button>
+											<button onclick="javascript:alert('OK')">Click 2</button>
+										</div></br>
 										<div id="jbDetails_meta"></div>
 																									
 									</div><!--/panel-body-->
@@ -702,28 +709,36 @@ transition: all 0.4s ease-in-out;
 						</div><!-- end row 2 column 1  -->
 						
 						<div class="row" ><!-- row 3 column 1  -->	
-							<div class="col-xs-8 col-sm-8 col-lg-8" >
-								<div class="panel panel-default" style="height: 300px;">
+							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" >
+								<div class="panel panel-default" style="height: 350px;">
 									<div class="panel-heading">
 										<span itemscope itemtype="#">
 										<h3 class="panel-title" itemprop="name">Job Legs / Map</h3>
 									</div><!--/panel-heading-->
 									<div class="panel-body" itemprop="reviewBody" style="height: 280px;overflow: hidden;">
-										<!-- code -->
+										<div id="jobLegs"></div>
+										<div>more info...</br>
+											<button onclick="javascript:alert('OK')">Click me</button>
+											<button onclick="javascript:alert('OK')">Click 2</button>
+										</div></br>
 										<div id="jbLegMap_meta"></div>
 																							
 									</div><!--/panel-body-->
 								</div><!--/panel-->
 							</div>
 								
-							<div class="col-xs-3 col-sm-3 col-lg-3">
-								<div class="panel panel-default" style="height: 300px;">
+							<div class="col-xs-3 col-sm-3  col-md-3 col-lg-3">
+								<div class="panel panel-default" style="height: 350px;">
 									<div class="panel-heading">
 										<span itemscope itemtype="#">
 										<h3 class="panel-title" itemprop="name">Job SP Items</h3>
 									</div><!--/panel-heading-->
 										<div class="panel-body" itemprop="reviewBody" style="height:90%;overflow: hidden;">
-											<!-- code -->
+											<div id="jobSpItems"></div>
+											<div>more info...</br>
+											<button onclick="javascript:alert('OK')">Click me</button>
+											<button onclick="javascript:alert('OK')">Click 2</button>
+										</div></br>
 											<div id="jbSPItems_meta"></div>
 																					
 																								
@@ -807,6 +822,11 @@ transition: all 0.4s ease-in-out;
     </section><!-- end section -->
   </div><!-- end content-wrapper -->
 
+  <!-- xxx -->
+  
+  
+  <!-- xxx -->
+  
   <!-- Main Footer -->
   <footer class="main-footer" >
     <!-- To the right -->
@@ -913,12 +933,21 @@ transition: all 0.4s ease-in-out;
   
 <script>
 
+// check user level
+
+// check trainng level
+
+
+
+// check fran master access	
+
+getEmpData();
 getJobs1Data();
 getAllVehicle();
 getStates1();
 
 // bottom row currently removed sec_func();
-getEmpData();
+
 
 	
 var cUserName = currentUserData[0].FirstName+" "+currentUserData[0].LastName;
@@ -973,6 +1002,18 @@ setTimeout(initKendoCtrls, 3000);
 var g = {'cid':'0532', 'mode':'X', 'franID':'GD00KS', 'id': 0 };//EDS
 getAllEntry(g);// get calendar data
 
+//showHideTab();
+
+function hideMenu1(){
+	//document.getElementById('xMenu').style.display = 'none';
+	if ( document.getElementById('xMenu').style.display == 'none' ) {
+		document.getElementById('xMenu').style.display = 'block';
+		//document.getElementById('yMenu').style.display = 'none';
+	}else{
+		document.getElementById('xMenu').style.display = 'none';
+		//document.getElementById('yMenu').style.display = 'block';
+	};
+}
 
 function showHideTab() {
     var x = document.getElementById("s32");

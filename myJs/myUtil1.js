@@ -1,14 +1,16 @@
 function formatPhoneNumber(a) {
 	var rtData = "";
-	
-	if ( a.length == 7) {
-		rtData = a.slice(0,3)+"-"+a.slice(3,7);
+	if ( a.length < 7 ) {
+		rtData = 'n/a';
+	}else{
+		if ( a.length == 7) {
+			rtData = a.slice(0,3)+"-"+a.slice(3,7);
+		};
+		
+		if ( a .length == 10 ) {
+			rtData = a.slice(0,3)+"-"+a.slice(3,6)+"-"+a.slice(6,10);
+		};
 	};
-	
-	if ( a .length == 10 ) {
-		rtData = a.slice(0,3)+"-"+a.slice(3,6)+"-"+a.slice(6,10);
-	};
-	
 	return rtData;
 }
 function GetLocation(add1) {

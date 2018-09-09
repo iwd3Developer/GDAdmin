@@ -56,7 +56,72 @@ function jobBoardInit() {
 			},
 			pageSize: 20
 		},
-		height: 350,
+		height: 325,
+		scrollable: true,
+		sortable: true,
+		filterable: true,
+		pageable: {
+			input: true,
+			numeric: false
+		},
+		columns: [
+			"ProductName",
+			{ field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "100px" },
+			{ field: "UnitsInStock", title: "Units In Stock", width: "100px" }
+			//{ field: "Discontinued", width: "130px" }
+		]
+	});
+	
+	// job legs
+	// jobLegs stateData
+	$("#jobLegs").kendoGrid({
+		dataSource: {
+			data: products,
+			schema: {
+				model: {
+					fields: {
+						ProductName: { type: "string" },
+						UnitPrice: { type: "number" },
+						UnitsInStock: { type: "number" }
+						//Discontinued: { type: "boolean" }
+					}
+				}
+			},
+			pageSize: 20
+		},
+		height: 200,
+		scrollable: true,
+		sortable: true,
+		filterable: true,
+		pageable: {
+			input: true,
+			numeric: false
+		},
+		columns: [
+			"ProductName",
+			{ field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "100px" },
+			{ field: "UnitsInStock", title: "Units In Stock", width: "100px" }
+			//{ field: "Discontinued", width: "130px" }
+		]
+	});
+	
+	// jobSpItems stateData
+	$("#jobSpItems").kendoGrid({
+		dataSource: {
+			data: products,
+			schema: {
+				model: {
+					fields: {
+						ProductName: { type: "string" },
+						UnitPrice: { type: "number" },
+						UnitsInStock: { type: "number" }
+						//Discontinued: { type: "boolean" }
+					}
+				}
+			},
+			pageSize: 20
+		},
+		height: 200,
 		scrollable: true,
 		sortable: true,
 		filterable: true,

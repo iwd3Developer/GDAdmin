@@ -126,6 +126,57 @@ function initKendoCtrls() {
 			}
 		}
 	});
+	var tabStrip = $("#tabstrip").kendoTabStrip().data("kendoTabStrip");
+	if ( cUserTrainingLevel == 1 ) {
+		hideMenu1();
+		tabStrip.disable(tabStrip.tabGroup.children().eq(1));
+		tabStrip.disable(tabStrip.tabGroup.children().eq(2));
+		tabStrip.disable(tabStrip.tabGroup.children().eq(3));
+		tabStrip.disable(tabStrip.tabGroup.children().eq(4));
+		tabStrip.disable(tabStrip.tabGroup.children().eq(5));
+		//document.getElementById("mainMenu").innerHTML =
+		//var eleman = document.getElementById("mainMenu");
+		//eleman.setAttribute("disabled", true);
+		//eleman.setAttribute("editable", true);		
+	}
+	//USER TRAINING
+	//console.log("TRAINIG LEVEL "+cUserTrainingLevel);
+	switch(cUserTrainingLevel) {
+		case '0':
+			// welcome video
+			var a = "Welcome"
+			var b = "https://www.youtube.com/watch?v=tc3xhD24iTU";
+			trainingVideo(a,b);
+		break;
+		case '1':
+			// intro training video
+			var a = "xxxxx"
+			var b = "https://www.youtube.com/watch?v=tc3xhD24iTU";
+			trainingVideo(a,b);
+		break;
+		
+		default:
+		
+		break;
+		
+	};
+	
+		
+		
+	/*
+	// OK
+	var tabStrip = $("#tabstrip").kendoTabStrip().data("kendoTabStrip");
+    tabStrip.disable(tabStrip.tabGroup.children().eq(1));
+	tabStrip.disable(tabStrip.tabGroup.children().eq(2));
+	tabStrip.disable(tabStrip.tabGroup.children().eq(3));
+	tabStrip.disable(tabStrip.tabGroup.children().eq(4));
+	
+	//var tab = tabStrip.select();
+	//var tab = tabStrip.select(1);
+	
+	tabStrip.enable(tabStrip.tabGroup.children().eq(0), false);
+    tabStrip.enable(tabStrip.tabGroup.children().eq(0), true);
+	*/					
 	
 	$("#panelbar1").kendoPanelBar({
 		expandMode: "single",
@@ -565,13 +616,15 @@ function scheduler_foo() {
 	// end grid 1
 	
 	// edit model and columns
+	// STAFF / EMPLOYEES
 	$("#divGrid2").kendoGrid({
 		dataSource: dSource2(),
 			schema: {
 				model: {
 					fields: {
 						Name: { type: "string" },
-						Phone: { type: "string" }
+						Phone: { type: "string" },
+						Cell: { type: "string" }
 					}
 				}
 			},
@@ -587,8 +640,9 @@ function scheduler_foo() {
 			//numeric: false
 		//},
 		columns: [
-			{ field: "Name", title: "Name", width: "60px" },
-			{ field: "Phone", title: "Phone", width: "70px" }
+			{ field: "Name", title: "Name", width: "90px" },
+			{ field: "Phone", title: "Phone", width: "120px" },
+			{ field: "Cell", title: "Cell", width: "120px" }
 		]
 	});
 	//dGrid2 = $("#divGrid2").data("kendoGrid");
@@ -671,7 +725,7 @@ function scheduler_foo() {
 		
 		// JOB Calendar
 
-
+		showHideTab();
 	// END JOB Calendar
 }
 // END initKendoCtrls(
@@ -1054,10 +1108,21 @@ function dSource2() {
 	*/
 	
 	var dataSource = new kendo.data.DataSource();
+	var t = "";
+	var t2 = "";
 	var i;
 	for (i = 0; i < allUserData.length; i++) {
-		var t = formatPhoneNumber( allUserData[i].phone1 );
-		dataSource.add({Name: allUserData[i].FirstName+" "+allUserData[i].LastName, Phone: t});
+		if ( allUserData[i].phone != "" ) {
+			t = formatPhoneNumber( allUserData[i].phone );
+		}else{
+			t = "n/a";
+		};
+		if ( allUserData[i].cell != "" ) {
+			t2 = formatPhoneNumber( allUserData[i].cell );
+		}else{
+			t2 = "n/a";
+		};
+		dataSource.add({Name: allUserData[i].firstName+" "+allUserData[i].lastName, Phone: t, Cell: t2});
 	};
 	return dataSource;
 }
@@ -1109,10 +1174,10 @@ function getEmpData() {
 		};
 	};
 
-	//xmlhttp.open("GET", "./scripts/dt_users.php" + dbParam, true);
+	//xmlhttp.open("GET", "./scripts/dt_employees.php" + dbParam, true);
 	//xmlhttp.send();
 
-	xmlhttp.open("POST", "./scripts/dt_users.php");//, false);//false-synchronous, true-asynchronously
+	xmlhttp.open("POST", "./scripts/dt_employees.php");//, false);//false-synchronous, true-asynchronously
 	xmlhttp.send(data);
 	
 	// progress on transfers from the server to the client (downloads)
@@ -1128,6 +1193,7 @@ function getEmpData() {
 
 	function transferComplete(evt) {
 	  console.log("The transfer is complete.");
+	  allUserData = myObj;
 	  //document.getElementById("msg1").innerHTML = "loading complete. ";
 		//dGrid1 = $("#divGrid1").data("kendoGrid");		
 		//$("#divGrid1").data("kendoGrid").refresh();	
@@ -1398,6 +1464,56 @@ function getAllEntry(g) {
 }
 
 // END GET DATA SECTION
+function trainingVideo(a,b) {
+	//console.log("....trainingVideo...");
+$("#mediaplayer0").kendoMediaPlayer({
+		autoPlay: false,
+		navigatable: true,
+		
+		play: onPlay2,
+		pause: onPause2,
+		end: onEnd2,
+		ready: onReady2,
+		timeChange: onTimeChange2,
+		volumeChange: onVolumeChange2,
+		/*
+		media: {
+			title: "Recap of Progress Ringing The Bell at Nasdaq (2016)",
+			source: "https://www.youtube.com/watch?v=tc3xhD24iTU"
+		}
+		*/
+		media: {
+			title: a,
+			source: b
+		}
+
+	});
+	function onPlay2() {
+		console.log("event :: play");
+	}
+
+	function onPause2() {
+		console.log("event :: pause");
+	}
+
+	function onEnd2() {
+		console.log("event :: end");
+		alert("The system administrator will be notified you have completed this training and your access will be changed, Thank You.");
+		location.reload();
+	}
+
+	function onReady2() {
+		console.log("event :: ready");
+	}
+
+	function onTimeChange2() {
+		console.log("event :: timeChange");
+	}
+
+	function onVolumeChange2() {
+		console.log("event :: volumeChange");
+	}	
+}
 
 function dateTime2(a) {
 var rtData;

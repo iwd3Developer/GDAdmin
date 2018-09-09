@@ -172,13 +172,14 @@ var cid = '0532';
 		//data: {'loginName': 'joel','pwd':'none', 'franID':'GD00KS', 'cid':'0532' },
 		success: function (data) { 
 			//alert(data.length);
-			//alert("Status "+data[0].status);
+			//alert(data[0].trainingLevel+" Status "+data[0].status);
 			switch (data[0].status) {
 				case 'OK':
 					for (var i=0;i<data.length;++i)
 					{
 						franID = data[0].franID;
 						cUserID = data[0].userID;
+						cUserTrainingLevel = data[0].trainingLevel;
 						currentUserData.push(data[0]);
 					};		
 					//alert(currentUserData.length+" Look: "+currentUserData[0].FirstName);

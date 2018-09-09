@@ -13,7 +13,7 @@ $cid			= $_POST["cid"];
 if ( $cid == $appCid ) {
 
 	// edit query here
-	$SQL_query = "SELECT idx, userID, franID, FirstName, LastName, email, phone1, accessLevel FROM users WHERE loginName = '".$loginName."' AND pwd = '".$pwd."' AND franID = '".$franID."' AND active = 1 ;"; 	
+	$SQL_query = "SELECT idx, userID, franID, FirstName, LastName, email, phone1, accessLevel, trainingLevel FROM users WHERE loginName = '".$loginName."' AND pwd = '".$pwd."' AND franID = '".$franID."' AND active = 1 ;"; 	
 
 	//$SQL_query = "SELECT idx, userID, franID, FirstName, LastName, email, phone1, accessLevel FROM users WHERE loginName = 'joel' AND pwd = 'none' AND franID = 'GD00KS' AND active = 1 ;";
 	//$DB_link = mysqli_connect($host, $user, $pass, $database) or die("Could not connect to host.");
@@ -38,7 +38,8 @@ if ( $cid == $appCid ) {
 		  'franID' 		=> $row['franID'],
 		  'email'		=> $row['email'],
 		  'phone1'		=> $row['phone1'],
-		  'accessLevel' => $row['accessLevel']
+		  'accessLevel' => $row['accessLevel'],
+		  'trainingLevel' => $row['trainingLevel']
 		  
 		  //'delflg' 		=> $row['delflg'],
 		  //'uid' 		=> $row['uid'],

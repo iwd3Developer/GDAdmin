@@ -5,7 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Content-type: application/jsonp", true);
 require './Required/phpDBConfig.php';
 require './Required/phpSecurity.php';
-
+// http://localhost/GD6/scripts/dt_employees.php
 
 $franID			= "GD00KS";//$_POST["franID"];
 $cid			= "0532";//$_POST["cid"];  
@@ -13,7 +13,7 @@ $cid			= "0532";//$_POST["cid"];
 if ( $cid == $appCid ) {
 
 	// edit query here
-	$SQL_query = "SELECT idx, userID, franID, FirstName, LastName, email, phone1, accessLevel, trainingLevel  FROM users WHERE franID = '".$franID."' AND active = 1 ;"; 	
+	$SQL_query = "SELECT idx, userID, franID, firstName, lastName, fullName, email, phone, cell FROM employee WHERE franID = '".$franID."' AND active = 1 ;"; 	
 
 	//$SQL_query = "SELECT idx, userID, franID, FirstName, LastName, email, phone1, accessLevel FROM users WHERE loginName = 'joel' AND pwd = 'none' AND franID = 'GD00KS' AND active = 1 ;";
 	//$DB_link = mysqli_connect($host, $user, $pass, $database) or die("Could not connect to host.");
@@ -30,16 +30,16 @@ if ( $cid == $appCid ) {
 	  // Loop through query and push results into $someArray;
 	  while ($row = mysqli_fetch_assoc($query)) {
 		array_push($someArray, [
-		  'idx'   => $row['idx'],		  
+		  'idx'   		=> $row['idx'],		  
 		  'userID' 		=> $row['userID'],
-		  'FirstName' 	=> $row['FirstName'],
-		  'LastName' 	=> $row['LastName'],
+		  'firstName' 	=> $row['firstName'],
+		  'lastName' 	=> $row['lastName'],
+		  'fullName' 	=> $row['fullName'],
 		  'status'   	=> 'OK',
 		  'franID' 		=> $row['franID'],
 		  'email'		=> $row['email'],
-		  'phone1'		=> $row['phone1'],
-		  'accessLevel' => $row['accessLevel'],
-		  'trainingLevel' => $row['trainingLevel']
+		  'phone'		=> $row['phone'],
+		  'cell' 		=> $row['cell']
 		  
 		  //'delflg' 		=> $row['delflg'],
 		  //'uid' 		=> $row['uid'],
