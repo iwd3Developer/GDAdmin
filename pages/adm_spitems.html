@@ -1,0 +1,420 @@
+<style>
+#fieldlist {
+	margin: 0;
+	padding: 0;
+}
+
+#fieldlist li {
+	list-style: none;
+	padding-bottom: .7em;
+	text-align: left;
+}
+
+#fieldlist label {
+	display: block;
+	padding-bottom: .3em;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #444;
+}
+
+#fieldlist li.status {
+	text-align: center;
+}
+
+#fieldlist li .k-widget:not(.k-tooltip),
+#fieldlist li .k-textbox {
+	margin: 0 5px 5px 0;
+}
+
+.confirm {
+	padding-top: 1em;
+}
+
+.valid {
+	color: green;
+}
+
+.invalid {
+	color: red;
+}
+
+#fieldlist li input[type="checkbox"] {
+	margin: 0 5px 0 0;
+}
+
+span.k-widget.k-tooltip-validation {
+	display; inline-block;
+	width: 160px;
+	text-align: left;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: none;
+	box-shadow: none;
+	color: red;
+}
+
+.k-tooltip-validation .k-warning {
+	display: none;
+}
+
+</style>
+
+<div class="row" style="height:350px;">
+
+	<div id="gridArea" class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<div id="grid"></div>
+	</div>
+	
+	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" >
+		<div style="height:325px;width:100%;overflow-y: scroll;overflow-x:hidden;">
+		<form id="ticketsForm">
+                <ul id="fieldlist">
+                    <li>
+                        <label for="itemidNo_fld" class="required">Item Id</label>
+                        <input type="text" id="itemidNo_fld" name="itemidNo_fld" class="k-textbox" placeholder="Item No" required validationMessage="Enter {0}" style="width: 220px;" />
+                    </li>
+					<li>
+                        <label for="descript_fld" class="required">Description</label>
+                        <input type="text" id="descript_fld" name="descript_fld" class="k-textbox" placeholder="Description" required validationMessage="Enter {0}" style="width: 220px;" />
+                    </li>
+                    <li>
+                        <label for="price_fld" class="required">Price</label>
+                        <input id="price_fld" type="number" name="price_fld" min="0.00" max="10000.00" step="0.01" style="width: 220px;" />
+                    </li>
+					<li>
+                        <label for="qnotes_fld" class="required">Notes</label>
+                        <input type="text" id="qnotes_fld" name="qnotes_fld" class="k-textbox" placeholder="Description" required validationMessage="Enter {0}" style="width: 220px;" />
+                    </li>
+					
+					
+                    <li class="status">
+                    </li>
+                </ul>
+            </form>
+		</br>
+		</div>
+	</div>
+	
+</div>
+<div class="row">
+
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<div id="formMsg"><p>MESSAGES</p></div>
+	</div>
+	
+	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+		<button class="k-button">Help</button>&nbsp;
+		<button class="k-button">Edit</button>&nbsp;
+		<button class="k-button">News</button>&nbsp;
+		<button class="k-button">Delete</button>&nbsp;
+		<button class="k-button" onclick="javascript:refresh();">Re-Fresh</button>&nbsp;
+        <button class="k-button k-primary" onclick="javascript:editSave();">Submit</button>
+	</div>
+	
+</div>
+<div id="dialog_X"></div>
+<script>
+var spItemsData = [];
+var str1 = "";
+var dataSource;// = new kendo.data.DataSource();
+var selectedSpItem_idx;
+var formMode = "VIEW";
+
+// create NumericTextBox from input HTML element
+$("#numeric").kendoNumericTextBox();
+
+// create Curerncy NumericTextBox from input HTML element
+//$("#price_fld").kendoNumericTextBox({
+	//format: "c",
+	//decimals: 2
+//});
+
+// create NumericTextBox from input HTML element using custom format
+//$("#price_fld").kendoNumericTextBox({
+	//format: "#.## kg"
+//});
+
+//$("#price_fld").kendoNumericTextBox();
+//$("#date").kendoDateInput();
+
+var validator = $("#ticketsForm").kendoValidator().data("kendoValidator"),
+status = $(".status");
+
+$("form").submit(function(event) {
+	event.preventDefault();
+	if (validator.validate()) {
+		status.text("Hooray!!")
+			.removeClass("invalid")
+			.addClass("valid");
+	} else {
+		status.text("Oops! There is invalid data in the form.")
+			.removeClass("valid")
+			.addClass("invalid");
+	}
+});
+
+// end form
+
+	$(document).ready(function() {
+	
+	});
+	
+	// 1	
+	var data = new FormData();
+	//EDIT AS NEEDED IT
+	data.append("franID", franID);//MUST!!
+	data.append("cid", cid);//MUST!!
+	data.append("mode", "x");//MUST!!
+	getGirdData("X", data, 0);	
+	// end 1
+	
+	function refresh(){
+		var dT = new Date();
+		document.getElementById('formMsg').innerHTML = "Working..."+dT;
+		//a_dialog_X("My Dialog","Hello World!");
+		//spItemsData = [];
+		saveUpdate("U");
+	}
+	 
+	function editSave(){
+		var dT = new Date();
+		//document.getElementById('formMsg').innerHTML = "Working..."+dT;
+
+		saveUpdate("U");
+	}
+	
+	function a_dialog_X(c,a){
+		var dialogX = $("#dialog_X").kendoDialog({
+		   width: "400px",
+		   title: c,
+		   modal: true,
+		   buttonLayout: "normal", //"stretched",
+		   visible: true,
+		   content: a 
+		});
+	}
+
+	function getDataNow(d) {
+		dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: function (e) {
+                        // on success
+                        e.success(d);
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    create: function (e) {
+                        // assign an ID to the new item
+                        //e.data.ProductID = sampleDataNextID++;
+                        // save data item to the original datasource
+                        //sampleData.push(e.data);
+                        // on success
+                        e.success(e.data);
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    update: function (e) {
+                        // locate item in original datasource and update it
+                        //sampleData[getIndexById(e.data.ProductID)] = e.data;
+                        // on success
+                        e.success();
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    destroy: function (e) {
+                        // locate item in original datasource and remove it
+                        //sampleData.splice(getIndexById(e.data.ProductID), 1);
+                        // on success
+                        e.success();
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    }
+                },
+                error: function (e) {
+                    // handle data operation error
+                    alert("Status: " + e.status + "; Error message: " + e.errorThrown);
+                },
+                pageSize: 10,
+                batch: false,
+				
+                schema: {
+                    model: {
+                        id: "ProductID",
+                        fields: {
+                            idx: { type: "number" },
+                            itemidNo: { type: "number" },
+							descript: { type: "string" },
+							price: { type: "number" },
+							qnotes: { type: "string" }
+							//idx: { editable: false, nullable: true },
+                            //Introduced: { type: "date" },
+                            //UnitPrice: { type: "number", validation: { required: true, min: 1} },
+                            //Discontinued: { type: "boolean" },
+                            //UnitsInStock: { type: "number", validation: { min: 0, required: true } }
+                        }
+                    }
+                }
+				
+            });
+		//var grid = $("#grid").data("kendoGrid");
+		//grid.refresh();
+	}
+	
+	function showG() {
+		
+            $("#grid").kendoGrid({
+                dataSource: dataSource,
+                pageable: true,
+				height: 325,
+			scrollable: true,
+			sortable: true,
+			//filterable: true,
+			persistSelection: true,
+			selectable: "row",
+                //toolbar: ["create"],
+                columns: [
+                    { field: "idx", title: "#", width: "50px" },
+					{ field: "itemidNo", title: "Item Id", width: "70px" },
+					{ field: "descript", title: "Description", width: "200px" },
+					{ field: "price", title: "Price", format: "{0:c}", width: "110px" },
+					{ field: "qnotes", title: "Notes", width: "200px" }
+                    //{ field: "itemidNo", title: "itemidNo", format: "{0:yyyy/MM/dd}", width: "200px" },
+                    //{ field: "UnitPrice", title: "Price", format: "{0:c}", width: "120px" },
+                    //{ field: "UnitsInStock", title:"Units In Stock", width: "120px" },
+                    //{ field: "Discontinued", width: "120px" },
+                    //{ command: ["edit", "destroy"], title: "&nbsp;", width: "200px" }
+                ],
+				editable: "inline"
+				,change: onChange_divGrid
+            });
+			adm_Grid1 = $("#grid").data("kendoGrid");
+			console.log("grid loaded...");
+	}
+
+	function onChange_divGrid(e) {
+		//adm_Grid1 = $("#grid").data("kendoGrid");
+		//alert("OK");
+		// https://www.codeproject.com/Articles/606682/Kendo-Grid-In-Action
+		//Selecting Grid
+		//var gview = $("#grid").data("kendoGrid");
+		//Getting selected item
+		var selectedItem = adm_Grid1.dataItem(adm_Grid1.select());
+		//cJobNo = selectedItem.idx;
+		//accessing selected rows data 
+		//alert(selectedItem.idx);
+		// simple-input
+		document.getElementById('itemidNo_fld').value = selectedItem.itemidNo;
+		document.getElementById('descript_fld').value = selectedItem.descript;
+		document.getElementById('price_fld').value = selectedItem.price;
+		document.getElementById('qnotes_fld').value = selectedItem.qnotes;
+		//console.log("PRICE "+selectedItem.price);
+		selectedSpItem_idx = selectedItem.idx;
+		formMode = "EDIT";
+	}
+	
+function getGirdData(mode, fData, f) {
+    //dataOut = $(this).serialize() + "&" + $.param(dataObj);
+	var dbParam, xmlhttp, myObj, x, txt = "";
+	var i = 0;
+	var data = new FormData();
+	//EDIT AS NEEDED IT
+	//data.append("franID", franID);//MUST!!
+	//data.append("cid", cid);//MUST!!
+	//data.append("mode", "x");//MUST!!
+	//data.append("limit", 40);
+
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.synchronous = false;
+	//EVENTS
+	xmlhttp.addEventListener("progress", updateProgress);
+	xmlhttp.addEventListener("load", transferComplete);
+	xmlhttp.addEventListener("error", transferFailed);
+	xmlhttp.addEventListener("abort", transferCanceled);
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			myObj = JSON.parse(this.responseText);
+			spItemsData = myObj;//EDS
+			getDataNow(spItemsData);
+		};
+	};
+
+	//xmlhttp.open("GET", "./scripts/spItems.php" + dbParam, true);
+	//xmlhttp.send();
+
+	xmlhttp.open("POST", "./scripts/adm_spItems.php");//, false);//false-synchronous, true-asynchronously
+	xmlhttp.send(fData);
+	
+	// progress on transfers from the server to the client (downloads)
+	function updateProgress (oEvent) {
+	  if (oEvent.lengthComputable) {
+		var percentComplete = oEvent.loaded / oEvent.total * 100;
+		//console.log(percentComplete);
+		//document.getElementById("msg1").innerHTML = " "+percentComplete;		
+	  } else {
+		//console.log("Unable to compute progress information since the total size is unknown");
+	  }
+	}
+
+	function transferComplete(evt) {
+		if ( f == 0 ) {
+			//document.getElementById('grid').innerHTML = "<p>Loading...</p>";
+			showG();
+			
+		};
+		//getDataNow(spItemsData);
+		//var dataSource = new kendo.data.DataSource({
+			//data: spItemsData
+		//}
+		showG();
+		//adm_Grid1 = $("#grid").data("kendoGrid");
+		console.log("The transfer is complete spItems.");	
+		//$("#grid").data("kendoGrid").refresh();	
+		//$('#grid').data('kendoGrid').dataSource.read();
+
+	}
+
+	function transferFailed(evt) {
+	  //console.log("An error occurred while transferring the file.");
+	}
+
+	function transferCanceled(evt) {
+	  //console.log("The transfer has been canceled by the user.");
+	}
+
+
+}
+
+function saveUpdate(mode) {
+
+	if ( mode == "U") {
+		// update
+		var data = new FormData();
+		//EDIT AS NEEDED IT
+		data.append("franID", franID);//MUST!!
+		data.append("cid", cid);//MUST!!
+		data.append("mode", "U");//MUST!!		
+		data.append("idx", selectedSpItem_idx);//MUST!!
+		//console.log("PRICE "+document.getElementById('price_fld').value);
+		data.append("itemid", document.getElementById('itemidNo_fld').value);
+		data.append("descript", document.getElementById('descript_fld').value);
+		data.append("price", document.getElementById('price_fld').value);
+		data.append("qnotes", document.getElementById('qnotes_fld').value);
+		getGirdData(mode, data, 1);
+
+	};
+	if ( mode == "D") {
+		// delete
+
+	};
+	if ( mode == "I") {
+		// insert
+
+	};
+
+}
+
+</script>

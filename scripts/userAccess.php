@@ -1,8 +1,11 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
 header('Content-Type: application/json');
-
+//header("Content-type: application/jsonp", true);
 require './Required/phpDBConfig.php';
 require './Required/phpSecurity.php';
+// http://localhost/GD6/scripts/userAccess.php
 
 
 $loginName		= $_POST["loginName"];

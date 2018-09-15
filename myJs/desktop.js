@@ -35,23 +35,23 @@ function updateMap(){
 function initKendoCtrls() {
 	/*
 	function onOpen_mainMenu(e) {
-		kendoConsole.log("Opened: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
+		kendo//console.log("Opened: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
 	}
 
 	function onClose_mainMenu(e) {
-		kendoConsole.log("Closed: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
+		kendo//console.log("Closed: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
 	}
 
 	function onSelect_mainMenu(e) {
-		kendoConsole.log("Selected: " + $(e.item).children(".k-link").text());
+		kendo//console.log("Selected: " + $(e.item).children(".k-link").text());
 	}
 
 	function onActivate_mainMenu(e) {
-		kendoConsole.log("Activated: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
+		kendo//console.log("Activated: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
 	}
 
 	function onDeactivate_mainMenu(e) {
-		kendoConsole.log("Deactivated: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
+		kendo//console.log("Deactivated: " + ($(e.item).children(".k-link").text() || "ContextMenu"));
 	}
 	*/
 	function onSelect_mainMenu(e) {
@@ -61,10 +61,10 @@ function initKendoCtrls() {
 			case "Current Job Locations":
 				updateMap();
 			break;
-			case "Alerts":
+			case " Alerts":
 				showAlerts();
 			break;
-			case "Tasks":
+			case " Tasks":
 				showTasks();
 			break;
 			case "Application Overview":
@@ -72,10 +72,16 @@ function initKendoCtrls() {
 				a_window_help();
 			break;
 			case "Quick Calendar (Desktop)":
-				help_win_title = "HELP!";
-				media2_title = "XXX";
-				media2_url = "https://www.youtube.com/watch?v=tc3xhD24iTU";
-				b_window_help();
+				//help_win_title = "HELP!";
+				//media2_title = "XXX";
+				//media2_url = "https://www.youtube.com/watch?v=tc3xhD24iTU";
+				//b_window_help();
+				//a_dialog_videoEnd();
+			break;
+			//addmin
+			case " SP Items":
+			// aTitle, aContent, aW, aH, aT, aL
+				a_window_admin("Special Items","adm_spitems.html",850, 425,200, 350);
 			break;
 		};
 	}
@@ -140,19 +146,19 @@ function initKendoCtrls() {
 		//eleman.setAttribute("editable", true);		
 	}
 	//USER TRAINING
-	//console.log("TRAINIG LEVEL "+cUserTrainingLevel);
+	////console.log("TRAINIG LEVEL "+cUserTrainingLevel);
 	switch(cUserTrainingLevel) {
 		case '0':
 			// welcome video
 			var a = "Welcome"
-			var b = "https://www.youtube.com/watch?v=tc3xhD24iTU";
-			trainingVideo(a,b);
+			var b = "./videos/GD6-Desktop.mp4";
+			trainingVideo(a,b,0);
 		break;
 		case '1':
 			// intro training video
-			var a = "xxxxx"
-			var b = "https://www.youtube.com/watch?v=tc3xhD24iTU";
-			trainingVideo(a,b);
+			var a = "Intro Training Video";
+			var b = "./videos/GD6-Desktop.mp4";
+			trainingVideo(a,b,1);
 		break;
 		
 		default:
@@ -208,11 +214,11 @@ function initKendoCtrls() {
 	   +new Date(today.getFullYear(), today.getMonth() - 2, 27)
 	];
 	function onChange_calendar1(e) {
-		console.log("Change :: " + kendo.toString(this.value(), 'd'));
+		//console.log("Change :: " + kendo.toString(this.value(), 'd'));
 		desktopFooters("divCal_meta");
 	}
 	function onNavigate_calendar1(e) {
-		console.log("Navigate");
+		//console.log("Navigate");
 	}
 	$("#calendar1").kendoCalendar({
 		value: today,
@@ -293,24 +299,24 @@ function initKendoCtrls() {
 	// cal
 	
 	function scheduler_dataBinding(e) {
-        console.log("dataBinding");
+        //console.log("dataBinding");
     }
 
     function scheduler_dataBound(e) {
-        console.log("dataBound");
+        //console.log("dataBound");
     }
 
     function scheduler_save(e) {
 		e.preventDefault();
-		console.log("save ");
+		//console.log("save ");
     }
 
     function scheduler_remove(e) {
-        console.log("remove");
+        //console.log("remove");
     }
 
     function scheduler_cancel(e) {
-        console.log("cancel");
+        //console.log("cancel");
     }
 
     function scheduler_change(e) {
@@ -331,45 +337,45 @@ function initKendoCtrls() {
 			//alert( selectedSD+" : "+ selectedED );
         }
 		a_window_Cal1();
-        console.log(kendo.format(message, start, end));
+        //console.log(kendo.format(message, start, end));
     }
 
     function scheduler_edit(e) {
 		e.preventDefault();
-        console.log("edit");
-		console.log(selectedSD+" edit Opend window use this data "+selectedED );
+        //console.log("edit");
+		//console.log(selectedSD+" edit Opend window use this data "+selectedED );
     }
 
     function scheduler_add(e) {
-        console.log(selectedSD+" add Opend window use this data "+selectedED );
+        //console.log(selectedSD+" add Opend window use this data "+selectedED );
     }
 
     function scheduler_moveStart(e) {
-        console.log("moveStart");
+        //console.log("moveStart");
     }
 
     function scheduler_move(e) {
-        console.log("move");
+        //console.log("move");
     }
 
     function scheduler_moveEnd(e) {
-        console.log("moveEnd");
+        //console.log("moveEnd");
     }
 
     function scheduler_resizeStart(e) {
-        console.log("resizeStart");
+        //console.log("resizeStart");
     }
 
     function scheduler_resize(e) {
-        console.log("resize");
+        //console.log("resize");
     }
 
     function scheduler_resizeEnd(e) {
-        console.log("resizeEnd");
+        //console.log("resizeEnd");
     }
 
     function scheduler_navigate(e) {
-        console.log(kendo.format("navigate:: action:{0}; view:{1}; date:{2:d};", e.action, e.view, e.date));
+        //console.log(kendo.format("navigate:: action:{0}; view:{1}; date:{2:d};", e.action, e.view, e.date));
     }
 
 	//var dataSource = new kendo.data.SchedulerDataSource();
@@ -716,6 +722,8 @@ function scheduler_foo() {
 	
 	// end Vehicle
 	
+	
+	
 		showHideMainMenu();
 		showHideFranMenu();
 		sideBarA();
@@ -729,6 +737,7 @@ function scheduler_foo() {
 	// END JOB Calendar
 }
 // END initKendoCtrls(
+
 
 function sec_func() {
 
@@ -826,7 +835,6 @@ function showAlerts() {
 */
 
 function showTasks() {
-	//alert("showTasks()");
 	// open window
 	a_window_tasks();
 }
@@ -949,15 +957,15 @@ function getAlerts() {
 	function updateProgress (oEvent) {
 	  if (oEvent.lengthComputable) {
 		var percentComplete = oEvent.loaded / oEvent.total * 100;
-		console.log(percentComplete);
+		//console.log(percentComplete);
 		//document.getElementById("msg1").innerHTML = " "+percentComplete;
 	  } else {
-		console.log("Unable to compute progress information since the total size is unknown");
+		//console.log("Unable to compute progress information since the total size is unknown");
 	  }
 	}
 
 	function transferComplete(evt) {
-	  console.log("The transfer is complete.");
+	  //console.log("The transfer is complete.");
 	  //document.getElementById("msg1").innerHTML = "loading complete. ";
 		document.getElementById("notifications-alerts").innerHTML = dtAlerts.length;		
 		//$("#divGrid1").data("kendoGrid").refresh();	
@@ -966,11 +974,11 @@ function getAlerts() {
 	}
 
 	function transferFailed(evt) {
-	  console.log("An error occurred while transferring the file.");
+	  //console.log("An error occurred while transferring the file.");
 	}
 
 	function transferCanceled(evt) {
-	  console.log("The transfer has been canceled by the user.");
+	  //console.log("The transfer has been canceled by the user.");
 	}
 
 	/*
@@ -1184,15 +1192,15 @@ function getEmpData() {
 	function updateProgress (oEvent) {
 	  if (oEvent.lengthComputable) {
 		var percentComplete = oEvent.loaded / oEvent.total * 100;
-		console.log(percentComplete);
+		//console.log(percentComplete);
 		//document.getElementById("msg1").innerHTML = " "+percentComplete;
 	  } else {
-		console.log("Unable to compute progress information since the total size is unknown");
+		//console.log("Unable to compute progress information since the total size is unknown");
 	  }
 	}
 
 	function transferComplete(evt) {
-	  console.log("The transfer is complete.");
+	  //console.log("The transfer is complete.");
 	  allUserData = myObj;
 	  //document.getElementById("msg1").innerHTML = "loading complete. ";
 		//dGrid1 = $("#divGrid1").data("kendoGrid");		
@@ -1202,11 +1210,11 @@ function getEmpData() {
 	}
 
 	function transferFailed(evt) {
-	  console.log("An error occurred while transferring the file.");
+	  //console.log("An error occurred while transferring the file.");
 	}
 
 	function transferCanceled(evt) {
-	  console.log("The transfer has been canceled by the user.");
+	  //console.log("The transfer has been canceled by the user.");
 	}
 
 	/*
@@ -1280,15 +1288,15 @@ function getJobs1Data() {
 	function updateProgress (oEvent) {
 	  if (oEvent.lengthComputable) {
 		var percentComplete = oEvent.loaded / oEvent.total * 100;
-		console.log(percentComplete);
+		//console.log(percentComplete);
 		//document.getElementById("msg1").innerHTML = " "+percentComplete;
 	  } else {
-		console.log("Unable to compute progress information since the total size is unknown");
+		//console.log("Unable to compute progress information since the total size is unknown");
 	  }
 	}
 
 	function transferComplete(evt) {
-	  console.log("The transfer is complete getJobs1Data.");
+	  //console.log("The transfer is complete getJobs1Data.");
 	  //document.getElementById("msg1").innerHTML = "loading complete. ";
 	  //var dataSource = new kendo.data.DataSource();
 
@@ -1299,11 +1307,11 @@ function getJobs1Data() {
 	}
 
 	function transferFailed(evt) {
-	  console.log("An error occurred while transferring the file.");
+	  //console.log("An error occurred while transferring the file.");
 	}
 
 	function transferCanceled(evt) {
-	  console.log("The transfer has been canceled by the user.");
+	  //console.log("The transfer has been canceled by the user.");
 	}
 
 
@@ -1432,15 +1440,15 @@ function getAllEntry(g) {
 	function updateProgress (oEvent) {
 	  if (oEvent.lengthComputable) {
 		var percentComplete = oEvent.loaded / oEvent.total * 100;
-		console.log(percentComplete);
+		//console.log(percentComplete);
 		//document.getElementById("msg1").innerHTML = " "+percentComplete;
 	  } else {
-		console.log("Unable to compute progress information since the total size is unknown");
+		//console.log("Unable to compute progress information since the total size is unknown");
 	  }
 	}
 
 	function transferComplete(evt) {
-	  console.log("The transfer is complete CALENDAR.");
+	  //console.log("The transfer is complete CALENDAR.");
 	  //calCurrentData = myObj;
 	  //alert(calCurrentData);
 	  //alert(calCurrentData.length);
@@ -1454,18 +1462,36 @@ function getAllEntry(g) {
 	}
 
 	function transferFailed(evt) {
-	  console.log("An error occurred while transferring the file.");
+	  //console.log("An error occurred while transferring the file.");
 	}
 
 	function transferCanceled(evt) {
-	  console.log("The transfer has been canceled by the user.");
+	  //console.log("The transfer has been canceled by the user.");
 	}
 
 }
 
 // END GET DATA SECTION
-function trainingVideo(a,b) {
-	//console.log("....trainingVideo...");
+function trainingVideo(a,b,c) {
+	////console.log("....trainingVideo...");
+	if ( c == 1 ) {
+		tabStrip = $("#tabstrip").kendoTabStrip().data("kendoTabStrip");
+		tabStrip.disable(tabStrip.tabGroup.children().eq(1));
+		tabStrip.disable(tabStrip.tabGroup.children().eq(2));
+		tabStrip.disable(tabStrip.tabGroup.children().eq(3));
+		tabStrip.disable(tabStrip.tabGroup.children().eq(4));
+		tabStrip.disable(tabStrip.tabGroup.children().eq(5));
+		// hide menubar
+		hideMenu1();
+		document.getElementById('xMenu').style.display = 'none';
+		showHideMainMenu();
+		showHideFranMenu();
+		//sideBarA();
+		//sideBarB();
+		//showHideTab();
+		
+	};
+	
 $("#mediaplayer0").kendoMediaPlayer({
 		autoPlay: false,
 		navigatable: true,
@@ -1489,29 +1515,40 @@ $("#mediaplayer0").kendoMediaPlayer({
 
 	});
 	function onPlay2() {
-		console.log("event :: play");
+		//console.log("event :: play");
 	}
 
 	function onPause2() {
-		console.log("event :: pause");
+		//console.log("event :: pause");
+		a_dialog_videoEnd();
 	}
 
 	function onEnd2() {
-		console.log("event :: end");
-		alert("The system administrator will be notified you have completed this training and your access will be changed, Thank You.");
-		location.reload();
+		//console.log("event :: end");
+		switch(c) {
+			case 1:
+				//alert("The system administrator will be notified you have completed this training and your access will be changed, Thank You.");
+				a_dialog_videoEnd("The system administrator will be notified you have completed this training and your access will be changed, Thank You.");
+				location.reload();
+			break;
+			default:
+				// show alert video done
+				a_dialog_videoEnd("Your Training Video Has Completed, Thank You.");
+			break;
+		};
+		
 	}
 
 	function onReady2() {
-		console.log("event :: ready");
+		//console.log("event :: ready");
 	}
 
 	function onTimeChange2() {
-		console.log("event :: timeChange");
+		//console.log("event :: timeChange");
 	}
 
 	function onVolumeChange2() {
-		console.log("event :: volumeChange");
+		//console.log("event :: volumeChange");
 	}	
 }
 

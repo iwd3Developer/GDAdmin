@@ -1,0 +1,1 @@
+i_splist price decimal 6,2

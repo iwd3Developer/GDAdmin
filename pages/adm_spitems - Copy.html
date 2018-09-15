@@ -1,0 +1,727 @@
+<style>
+#fieldlist {
+	margin: 0;
+	padding: 0;
+}
+
+#fieldlist li {
+	list-style: none;
+	padding-bottom: .7em;
+	text-align: left;
+}
+
+#fieldlist label {
+	display: block;
+	padding-bottom: .3em;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #444;
+}
+
+#fieldlist li.status {
+	text-align: center;
+}
+
+#fieldlist li .k-widget:not(.k-tooltip),
+#fieldlist li .k-textbox {
+	margin: 0 5px 5px 0;
+}
+
+.confirm {
+	padding-top: 1em;
+}
+
+.valid {
+	color: green;
+}
+
+.invalid {
+	color: red;
+}
+
+#fieldlist li input[type="checkbox"] {
+	margin: 0 5px 0 0;
+}
+
+span.k-widget.k-tooltip-validation {
+	display; inline-block;
+	width: 160px;
+	text-align: left;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: none;
+	box-shadow: none;
+	color: red;
+}
+
+.k-tooltip-validation .k-warning {
+	display: none;
+}
+
+</style>
+
+<div class="row" style="height:350px;">
+
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<table id="grid"></table>
+	</div>
+	
+	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" >
+		<div style="height:325px;width:100%;overflow-y: scroll;overflow-x:hidden;">
+		<form id="ticketsForm">
+                <ul id="fieldlist">
+                    <li>
+                        <label for="fullname" class="required">Your Name</label>
+                        <input type="text" id="fullname" name="fullname" class="k-textbox" placeholder="Full name" required validationMessage="Enter {0}" style="width: 220px;" />
+                    </li>
+                    <li>
+                        <label for="search" class="required">Movie</label>
+                        <input type="search" id="search" name="search" required validationMessage="Select movie" style="width: 220px;" /><span class="k-invalid-msg" data-for="search"></span>
+                    </li>
+					<li>
+						<label for="fabric">T-shirt Fabric</label></h4>
+						<input id="fabric" placeholder="Select fabric..." style="width: 220px;" />
+					</li>
+					<li>
+						<label for="size">T-shirt Size</label></h4>
+						<select id="size" placeholder="Select size..." style="width: 220px;" >
+						  <option>X-Small</option>
+						  <option>Small</option>
+						  <option>Medium</option>
+						  <option>Large</option>
+						  <option>X-Large</option>
+						  <option>2X-Large</option>
+						</select>
+					</li>
+                    <li>
+                        <label for="date" class="required">Date</label>
+                        <input type="text" id="date" name="date"
+                               min="5/6/2017" data-max-msg="Enter date after '5/6/2017''"
+                               pattern="\d+\/\d+\/\d+" validationMessage="Enter full date"
+                               style="width: 220px;" /><span class="k-invalid-msg" data-for="date"></span>
+                    </li>
+                    <li>
+                        <label for="time">Start time</label>
+                        <select name="time" id="time" required data-required-msg="Select start time" style="width: 220px;" >
+                            <option>14:00</option>
+                            <option>15:30</option>
+                            <option>17:00</option>
+                            <option>20:15</option>
+                        </select>
+                        <span class="k-invalid-msg" data-for="time"></span>
+                    </li>
+					<li>
+                        <label for="time">Start time</label>
+                        <input id="datetimepicker" title="datetimepicker" style="width: 220px;" />
+                        <span class="k-invalid-msg" data-for="time"></span>
+                    </li>
+                    <li>
+                        <label for="amount">Amount</label>
+                        <input id="amount" name="Amount" type="text" min="1" max="10" value="1" required data-max-msg="Enter value between 1 and 10" style="width: 220px;" />
+                        <span class="k-invalid-msg" data-for="Amount"></span>
+                    </li>
+                    <li>
+                        <label for="email" class="required">Email</label>
+                        <input type="email" id="email" name="Email" class="k-textbox" placeholder="e.g. myname@example.net"  required data-email-msg="Email format is not valid"  style="width: 220px;"/>
+                    </li>
+                    <li>
+                        <label for="tel" class="required">Phone</label>
+                        <input type="tel" id="tel" name="tel" class="k-textbox" pattern="\d{10}" placeholder="Enter a ten digit number" required
+                            validationMessage="Enter at least ten digits" style="width: 220px;" />
+                    </li>
+                    <li  class="accept">
+                        <label>Terms of Service</label>
+                        <input type="checkbox" name="Accept" required validationMessage="Acceptance is required" /> <p>I accept the terms of service.</p>
+                    </li>
+					<li>
+                        <label>Phone number:</label>
+                        <input id="phone_number" value="555 123 4567" />
+                    </li>
+                    <li>
+                        <label>Credit Card number:</h4>
+                        <input id="credit_card" value="1234 1234 1234 1234" />
+                    </li>
+                    <li>
+                        <label>Social security number:</label>
+                        <input id="ssn" value="003-12-3456" />
+                    </li>
+                    <li>
+                        <label>UK postcode:</label>
+                        <input id="postcode" value="W1N 1AC"/>
+                    </li>
+					<li>
+                        <label>
+                            Price:
+                            <input id="currency" type="number" title="currency" value="30" min="0" max="100" style="width: 220px;" />
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Price Discount:
+                            <input id="percentage" value="0.05" title="percentage" style="width: 220px;" />
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Weight:
+                            <input id="custom" value="2" title="custom" style="width: 220px;" />
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            Currently in stock:
+                            <input id="numeric" type="number" title="numeric" value="17" min="0" max="100" step="1" style="width: 220px;" />
+                        </label>
+                    </li>
+					<li>
+						<label for="required">Required</label>
+						<select id="required" multiple="multiple" data-placeholder="Select attendees..."  style="width: 220px;">
+							<option>Steven White</option>
+							<option>Nancy King</option>
+							<option>Nancy Davolio</option>
+							<option>Robert Davolio</option>
+							<option>Michael Leverling</option>
+							<option>Andrew Callahan</option>
+							<option>Michael Suyama</option>
+							<option selected>Anne King</option>
+							<option>Laura Peacock</option>
+							<option>Robert Fuller</option>
+							<option>Janet White</option>
+							<option>Nancy Leverling</option>
+							<option>Robert Buchanan</option>
+							<option>Margaret Buchanan</option>
+							<option selected>Andrew Fuller</option>
+							<option>Anne Davolio</option>
+							<option>Andrew Suyama</option>
+							<option>Nige Buchanan</option>
+							<option>Laura Fuller</option>
+						</select>
+					</li>
+					<li>
+						<label for="optional">Optional</label>
+						<select id="optional" multiple="multiple" data-placeholder="Select attendees..."  style="width: 220px;">
+							<option>Steven White</option>
+							<option>Nancy King</option>
+							<option>Nancy Davolio</option>
+							<option>Robert Davolio</option>
+							<option>Michael Leverling</option>
+							<option>Andrew Callahan</option>
+							<option>Michael Suyama</option>
+							<option>Anne King</option>
+							<option>Laura Peacock</option>
+							<option>Robert Fuller</option>
+							<option>Janet White</option>
+							<option>Nancy Leverling</option>
+							<option>Robert Buchanan</option>
+							<option>Margaret Buchanan</option>
+							<option>Andrew Fuller</option>
+							<option>Anne Davolio</option>
+							<option>Andrew Suyama</option>
+							<option>Nige Buchanan</option>
+							<option>Laura Fuller</option>
+						</select>
+					</li>
+					<li>
+						<label>Show e-mails from:</label>
+						<input id="datepicker" value="10/18/2018" title="datepicker" style="width: 220px;" />
+					</li>
+					<li>
+						<label style="margin-top: 2em;">Add to archive mail from::</label>
+						<input id="monthpicker" value="November 2018" title="monthpicker" style="width: 220px;" />
+					</li>
+                    <li class="confirm">
+                        <button class="k-button k-primary" type="submit">Submit</button>
+                    </li>
+                    <li class="status">
+                    </li>
+                </ul>
+            </form>
+		</br></br></br></br></br></br></br></br></br></br></br>
+		</div>
+	</div>
+	
+</div>
+<div class="row">
+
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+		<div id="formMsg"><p>MESSAGES</p></div>
+	</div>
+	
+	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+		<button class="k-button">Help</button>&nbsp;
+		<button class="k-button">Edit</button>&nbsp;
+		<button class="k-button">News</button>&nbsp;
+		<button class="k-button">Delete</button>&nbsp;
+		<button class="k-button" onclick="javascript:refresh();">Re-Fresh</button>&nbsp;
+        <button class="k-button k-primary">Submit</button>
+	</div>
+	
+</div>
+<div id="dialog_X"></div>
+<script>
+var spItemsData = [];
+var str1 = "";
+var dataSource;// = new kendo.data.DataSource();
+
+var data = new FormData();
+//EDIT AS NEEDED IT
+data.append("franID", franID);//MUST!!
+data.append("cid", cid);//MUST!!
+data.append("mode", "x");//MUST!!
+getGirdData("X", data, 0);
+
+// form
+var data = [
+"12 Angry Men",
+"Il buono, il brutto, il cattivo.",
+"Inception",
+"One Flew Over the Cuckoo's Nest",
+"Pulp Fiction",
+"Schindler's List",
+"The Dark Knight",
+"The Godfather",
+"The Godfather: Part II",
+"The Shawshank Redemption"
+];
+// create MultiSelect from select HTML element
+var required = $("#required").kendoMultiSelect().data("kendoMultiSelect");
+var optional = $("#optional").kendoMultiSelect({
+	autoClose: false
+}).data("kendoMultiSelect");
+
+$("#datepicker").kendoDatePicker();
+
+$("#monthpicker").kendoDatePicker({
+	// defines the start view
+	start: "year",
+
+	// defines when the calendar should return date
+	depth: "year",
+
+	// display month and year in the input
+	format: "MMMM yyyy",
+
+	// specifies that DateInput is used for masking the input element
+	dateInput: true
+});
+				
+$("#get").click(function() {
+	alert("Attendees:\n\nRequired: " + required.value() + "\nOptional: " + optional.value());
+});
+// create NumericTextBox from input HTML element
+$("#numeric").kendoNumericTextBox();
+
+// create Curerncy NumericTextBox from input HTML element
+$("#currency").kendoNumericTextBox({
+	format: "c",
+	decimals: 3
+});
+
+// create Percentage NumericTextBox from input HTML element
+$("#percentage").kendoNumericTextBox({
+	format: "p0",
+	min: 0,
+	max: 0.1,
+	step: 0.01
+});
+
+// create NumericTextBox from input HTML element using custom format
+$("#custom").kendoNumericTextBox({
+	format: "#.00 kg"
+});
+$("#search").kendoAutoComplete({
+	dataSource: data,
+	separator: ", "
+});
+
+$("#time").kendoDropDownList({
+	optionLabel: "--Start time--"
+});
+$("#datetimepicker").kendoDateTimePicker({
+	value: new Date(),
+	dateInput: true
+});
+$("#fabric").kendoComboBox({
+	dataTextField: "text",
+	dataValueField: "value",
+	dataSource: [
+		{ text: "Cotton", value: "1" },
+		{ text: "Polyester", value: "2" },
+		{ text: "Cotton/Polyester", value: "3" },
+		{ text: "Rib Knit", value: "4" }
+	],
+	filter: "contains",
+	suggest: true,
+	index: 3
+});
+/*
+var fabric = $("#fabric").data("kendoComboBox");
+var select = $("#size").data("kendoComboBox");
+
+
+$("#get").click(function() {
+	alert('Thank you! Your Choice is:\n\nFabric ID: ' + fabric.value() + ' and Size: ' + select.value());
+});
+*/
+$("#size").kendoComboBox();
+$("#amount").kendoNumericTextBox();
+
+$("#date").kendoDateInput();
+
+var validator = $("#ticketsForm").kendoValidator().data("kendoValidator"),
+status = $(".status");
+
+$("form").submit(function(event) {
+	event.preventDefault();
+	if (validator.validate()) {
+		status.text("Hooray! Your tickets has been booked!")
+			.removeClass("invalid")
+			.addClass("valid");
+	} else {
+		status.text("Oops! There is invalid data in the form.")
+			.removeClass("valid")
+			.addClass("invalid");
+	}
+});
+
+// end form
+
+/*
+	function onChange(e) {
+		var rows = e.sender.select();
+		rows.each(function(e) {
+			var grid = $("#grid").data("kendoGrid");
+			var dataItem = grid.dataItem(this);
+
+			alert(dataItem);
+		});
+
+		//alert("Selected: " + selected.length + " item(s), [" + selected.join(", ") + "]");
+	}
+*/
+	$(document).ready(function() {
+	
+	});
+	
+	function refresh(){
+		var dT = new Date();
+		document.getElementById('formMsg').innerHTML = "Working..."+dT;
+		//a_dialog_X("My Dialog","Hello World!");
+		//spItemsData = [];
+		saveUpdate("U");
+	}
+	 
+	function a_dialog_X(c,a){
+		var dialogX = $("#dialog_X").kendoDialog({
+		   width: "400px",
+		   title: c,
+		   modal: true,
+		   buttonLayout: "normal", //"stretched",
+		   visible: true,
+		   content: a 
+		});
+	}
+
+	function getDataNow(d) {
+		dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: function (e) {
+                        // on success
+                        e.success(d);
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    create: function (e) {
+                        // assign an ID to the new item
+                        e.data.ProductID = sampleDataNextID++;
+                        // save data item to the original datasource
+                        sampleData.push(e.data);
+                        // on success
+                        e.success(e.data);
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    update: function (e) {
+                        // locate item in original datasource and update it
+                        sampleData[getIndexById(e.data.ProductID)] = e.data;
+                        // on success
+                        e.success();
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    destroy: function (e) {
+                        // locate item in original datasource and remove it
+                        sampleData.splice(getIndexById(e.data.ProductID), 1);
+                        // on success
+                        e.success();
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    }
+                },
+                error: function (e) {
+                    // handle data operation error
+                    alert("Status: " + e.status + "; Error message: " + e.errorThrown);
+                },
+                pageSize: 10,
+                batch: false,
+                schema: {
+                    model: {
+                        id: "ProductID",
+                        fields: {
+                            idx: { type: "number" },
+                            itemidNo: { type: "number" },
+							descript: { type: "string" },
+							qnotes: { type: "string" }
+							//idx: { editable: false, nullable: true },
+                            //Introduced: { type: "date" },
+                            //UnitPrice: { type: "number", validation: { required: true, min: 1} },
+                            //Discontinued: { type: "boolean" },
+                            //UnitsInStock: { type: "number", validation: { min: 0, required: true } }
+                        }
+                    }
+                }
+            });
+		var grid = $("#grid").data("kendoGrid");
+		grid.refresh();
+	}
+	
+	function showG() {
+		/*
+		dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: function (e) {
+                        // on success
+                        e.success(spItemsData);
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    create: function (e) {
+                        // assign an ID to the new item
+                        e.data.ProductID = sampleDataNextID++;
+                        // save data item to the original datasource
+                        sampleData.push(e.data);
+                        // on success
+                        e.success(e.data);
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    update: function (e) {
+                        // locate item in original datasource and update it
+                        sampleData[getIndexById(e.data.ProductID)] = e.data;
+                        // on success
+                        e.success();
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    },
+                    destroy: function (e) {
+                        // locate item in original datasource and remove it
+                        sampleData.splice(getIndexById(e.data.ProductID), 1);
+                        // on success
+                        e.success();
+                        // on failure
+                        //e.error("XHR response", "status code", "error message");
+                    }
+                },
+                error: function (e) {
+                    // handle data operation error
+                    alert("Status: " + e.status + "; Error message: " + e.errorThrown);
+                },
+                pageSize: 10,
+                batch: false,
+                schema: {
+                    model: {
+                        id: "ProductID",
+                        fields: {
+                            idx: { type: "number" },
+                            itemidNo: { type: "number" },
+							descript: { type: "string" }
+							//idx: { editable: false, nullable: true },
+                            //Introduced: { type: "date" },
+                            //UnitPrice: { type: "number", validation: { required: true, min: 1} },
+                            //Discontinued: { type: "boolean" },
+                            //UnitsInStock: { type: "number", validation: { min: 0, required: true } }
+                        }
+                    }
+                }
+            });
+			*/
+            $("#grid").kendoGrid({
+                dataSource: dataSource,
+                pageable: true,
+				height: 325,
+			scrollable: true,
+			sortable: true,
+			filterable: true,
+			persistSelection: true,
+			selectable: "row",
+                toolbar: ["create"],
+                columns: [
+                    { field: "idx", title: "idx", width: "60px" },
+					{ field: "itemidNo", title: "itemidNo", width: "60px" },
+					{ field: "descript", title: "descript", width: "200px" },
+					{ field: "qnotes", title: "qnotes", width: "200px" }
+                    //{ field: "itemidNo", title: "itemidNo", format: "{0:yyyy/MM/dd}", width: "200px" },
+                    //{ field: "UnitPrice", title: "Price", format: "{0:c}", width: "120px" },
+                    //{ field: "UnitsInStock", title:"Units In Stock", width: "120px" },
+                    //{ field: "Discontinued", width: "120px" },
+                    //{ command: ["edit", "destroy"], title: "&nbsp;", width: "200px" }
+                ],
+				editable: "inline"
+				,change: onChange_divGrid
+            });
+			adm_Grid1 = $("#grid").data("kendoGrid");
+	}
+	
+	function showG2() {
+		
+		$("#grid").kendoGrid({
+			dataSource: {
+				data: dataSource,
+				schema: {
+					model: {
+						fields: {
+							idx: { type: "number" },
+							itemidNo: { type: "number" },
+							price: { type: "string" },
+							descript: { type: "string" },
+							qnotes: { type: "string" }
+						}
+					}
+				},
+				pageSize: 20
+			},
+			height: 325,
+			scrollable: true,
+			sortable: true,
+			filterable: true,
+			persistSelection: true,
+			selectable: "row",
+			pageable: {
+				input: true,
+				numeric: false
+			},
+			columns: [
+				{ field: "idx", title: "#", width: "60px" },
+				{ hidden: true, field: "itemidNo", title: "itemidNo", width: "60px" },
+				{ field: "price", title: "Price", width: "130px" },
+				{ field: "descript", title: "Description",  width: "130px" },
+				{ field: "qnotes", title: "qnotes", width: "230px" }
+			], change: onChange_divGrid
+		});
+		
+		
+		adm_Grid1 = $("#grid").data("kendoGrid");
+	}
+	function onChange_divGrid(e) {
+		//adm_Grid1 = $("#grid").data("kendoGrid");
+		//alert("OK");
+		// https://www.codeproject.com/Articles/606682/Kendo-Grid-In-Action
+		//Selecting Grid
+		//var gview = $("#grid").data("kendoGrid");
+		//Getting selected item
+		var selectedItem = adm_Grid1.dataItem(adm_Grid1.select());
+		//cJobNo = selectedItem.idx;
+		//accessing selected rows data 
+		//alert(selectedItem.idx);
+		// simple-input
+		document.getElementById('fullname').value = selectedItem.descript;
+	}	
+function getGirdData(mode, fData, f) {
+    //dataOut = $(this).serialize() + "&" + $.param(dataObj);
+	var dbParam, xmlhttp, myObj, x, txt = "";
+	var i = 0;
+	var data = new FormData();
+	//EDIT AS NEEDED IT
+	//data.append("franID", franID);//MUST!!
+	//data.append("cid", cid);//MUST!!
+	//data.append("mode", "x");//MUST!!
+	//data.append("limit", 40);
+
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.synchronous = false;
+	//EVENTS
+	xmlhttp.addEventListener("progress", updateProgress);
+	xmlhttp.addEventListener("load", transferComplete);
+	xmlhttp.addEventListener("error", transferFailed);
+	xmlhttp.addEventListener("abort", transferCanceled);
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			myObj = JSON.parse(this.responseText);
+			spItemsData = myObj;//EDS
+			getDataNow(spItemsData);
+		};
+	};
+
+	//xmlhttp.open("GET", "./scripts/spItems.php" + dbParam, true);
+	//xmlhttp.send();
+
+	xmlhttp.open("POST", "./scripts/adm_spItems.php");//, false);//false-synchronous, true-asynchronously
+	xmlhttp.send(fData);
+	
+	// progress on transfers from the server to the client (downloads)
+	function updateProgress (oEvent) {
+	  if (oEvent.lengthComputable) {
+		var percentComplete = oEvent.loaded / oEvent.total * 100;
+		console.log(percentComplete);
+		//document.getElementById("msg1").innerHTML = " "+percentComplete;		
+	  } else {
+		console.log("Unable to compute progress information since the total size is unknown");
+	  }
+	}
+
+	function transferComplete(evt) {
+		if ( f == 0 ) {
+			showG();
+			
+		};
+		//getDataNow(spItemsData);
+		//var dataSource = new kendo.data.DataSource({
+			//data: spItemsData
+		//}
+		console.log("The transfer is complete spItems.");	
+		//$("#divGridVehicle").data("kendoGrid").refresh();	
+		//$('#divGridVehicle').data('kendoGrid').dataSource.read();
+
+	}
+
+	function transferFailed(evt) {
+	  console.log("An error occurred while transferring the file.");
+	}
+
+	function transferCanceled(evt) {
+	  console.log("The transfer has been canceled by the user.");
+	}
+
+
+}
+
+function saveUpdate(mode) {
+
+	if ( mode == "U") {
+		// update
+		var data = new FormData();
+		//EDIT AS NEEDED IT
+		data.append("franID", franID);//MUST!!
+		data.append("cid", cid);//MUST!!
+		data.append("mode", "U");//MUST!!
+		
+		data.append("idx", "4");
+		data.append("qnotes", "QQQQo99999");
+		getGirdData(mode, data, 1);
+
+	};
+	if ( mode == "D") {
+		// delete
+
+	};
+	if ( mode == "I") {
+		// insert
+
+	};
+
+}
+
+</script>

@@ -153,6 +153,7 @@ var cid = '0532';
 	//alert("a");
 	
 	// works
+	/*
 	 var data = {
       'loginName': 'joel',
 	  'pwd':'none',
@@ -160,6 +161,7 @@ var cid = '0532';
 	  'cid':'0532'
     };
     data = $(this).serialize() + "&" + $.param(data);
+	*/
 	
 	//var data = {};
 	$.ajax({ 
@@ -168,7 +170,7 @@ var cid = '0532';
     url: "./scripts/userAccess.php", 
 		//data: { },  
 		//data: data,
-		data: {'loginName': a,'pwd':b, 'franID':c, 'cid':d },
+		data: {'loginName':a,'pwd':b, 'franID':c, 'cid':d },
 		//data: {'loginName': 'joel','pwd':'none', 'franID':'GD00KS', 'cid':'0532' },
 		success: function (data) { 
 			//alert(data.length);
@@ -193,7 +195,7 @@ var cid = '0532';
 					};
 				break;
 				case 'ERROR':
-					//alert("Login Failure, Access Denied!");
+					alert("Login Failure, Access Denied!");
 					document.getElementById('login').value = "";
 					document.getElementById('password').value = "";
 					document.getElementById('acct').value = "";

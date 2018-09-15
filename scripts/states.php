@@ -5,6 +5,7 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Content-type: application/jsonp", true);
 require './Required/phpDBConfig.php';
 require './Required/phpSecurity.php';
+//
 
 
 //$id					= $_POST["id"];
