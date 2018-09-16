@@ -73,8 +73,8 @@ span.k-widget.k-tooltip-validation {
 		<form id="ticketsForm">
                 <ul id="fieldlist">
                     <li>
-                        <label for="itemidNo_fld" class="required">Item Id</label>
-                        <input type="text" id="itemidNo_fld" name="itemidNo_fld" class="k-textbox" placeholder="Item No" required validationMessage="Enter {0}" style="width: 220px;" />
+                        <label for="itemid_fld" class="required">Item Id</label>
+                        <input type="text" id="itemid_fld" name="itemid_fld" class="k-textbox" placeholder="Item No" required validationMessage="Enter {0}" style="width: 220px;" />
                     </li>
 					<li>
                         <label for="descript_fld" class="required">Description</label>
@@ -106,12 +106,12 @@ span.k-widget.k-tooltip-validation {
 	</div>
 	
 	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-		<button class="k-button">Help</button>&nbsp;
-		<button class="k-button">Edit</button>&nbsp;
-		<button class="k-button">News</button>&nbsp;
-		<button class="k-button">Delete</button>&nbsp;
 		<button class="k-button" onclick="javascript:refresh();">Re-Fresh</button>&nbsp;
-        <button class="k-button k-primary" onclick="javascript:editSave();">Submit</button>
+		<button id="formBtn_cancel" class="k-button" onclick="javascript:cancelEdit();">Cancel</button>&nbsp;
+		<!-- <button class="k-button">Edit</button>&nbsp; -->
+		<button id="formBtn_new" class="k-button" onclick="javascript:newOpts();">New</button>&nbsp;
+		<button id="formBtn_delete" class="k-button" onclick="javascript:deleteOpts();">Delete</button>&nbsp;
+        <button id="formBtn_submit" class="k-button k-primary" onclick="javascript:editSave();">Submit</button>
 	</div>
 	
 </div>
@@ -178,14 +178,117 @@ $("form").submit(function(event) {
 		//spItemsData = [];
 		saveUpdate("U");
 	}
-	 
+// BUTTONS
+$('#formBtn_submit').prop('disabled', true);
+$('#formBtn_delete').prop('disabled', true);
+$('#formBtn_new').prop('disabled', false);
+$('#formBtn_cancel').prop('disabled', true);
+		
+	function cancelEdit(){
+		var dT = new Date();
+		//document.getElementById('formMsg').innerHTML = "Working..."+dT;
+		document.getElementById('itemid_fld').value = "";
+		document.getElementById('descript_fld').value = "";
+		document.getElementById('price_fld').value = "";
+		document.getElementById('qnotes_fld').value = "";
+		$('#formBtn_submit').prop('disabled', true);
+		$('#formBtn_delete').prop('disabled', false);
+		$('#formBtn_new').prop('disabled', true);
+		$('#formBtn_cancel').prop('disabled', true);
+		formMode = "VIEW";
+	} 
+	
 	function editSave(){
 		var dT = new Date();
 		//document.getElementById('formMsg').innerHTML = "Working..."+dT;
-
-		saveUpdate("U");
+		if ( formMode == "NEW" ) {
+			saveUpdate("I");
+		};
+		if ( formMode == "EDIT" ) {
+			saveUpdate("U");
+		};
+		//if ( formMode == "DELETE" ) {
+			//saveUpdate("D");
+		//};
 	}
+	function deleteOpts(){
+		if ( document.getElementById('itemid_fld').value != "") {
+			//$( "#itemid_fld" ).focus();
+			//$('#formBtn_submit').prop('disabled', true);
+			//$('#formBtn_delete').prop('disabled', true);
+			//$('#formBtn_new').prop('disabled', true);
+			//$('#formBtn_cancel').prop('disabled', false);
+			formMode = "DELETE";
+			//saveUpdate("D");
+			console.log("deleteOpts()...");
+		};
+	}
+	function newOpts(){
+		var dT = new Date();
+		//document.getElementById('formMsg').innerHTML = "Working..."+dT;
+		document.getElementById('itemid_fld').value = "";
+		document.getElementById('descript_fld').value = "";
+		document.getElementById('price_fld').value = "";
+		document.getElementById('qnotes_fld').value = "";
+		// set focus
+		$( "#itemid_fld" ).focus();
+		$('#formBtn_submit').prop('disabled', false);
+		$('#formBtn_delete').prop('disabled', true);
+		$('#formBtn_new').prop('disabled', true);
+		$('#formBtn_cancel').prop('disabled', false);
+		formMode = "NEW";
+		
+		//$('.enableOnInput').prop('disabled', true);
+		//$('#formBtn_submit').prop('disabled', true);
+		//saveUpdate("I");
+	}
+
 	
+function saveUpdate(mode) {
+
+	if ( mode == "U") {
+		// update
+		var data = new FormData();
+		//EDIT AS NEEDED IT
+		data.append("franID", franID);//MUST!!
+		data.append("cid", cid);//MUST!!
+		data.append("mode", "U");//MUST!!		
+		data.append("idx", selectedSpItem_idx);//MUST!!
+		//console.log("PRICE U "+document.getElementById('price_fld').value);
+		data.append("itemid", document.getElementById('itemid_fld').value);
+		data.append("descript", document.getElementById('descript_fld').value);
+		data.append("price", document.getElementById('price_fld').value);
+		data.append("qnotes", document.getElementById('qnotes_fld').value);
+		getGirdData(mode, data, 1);
+
+	};
+	if ( mode == "D") {
+		// delete
+
+	};
+	if ( mode == "I") {
+		alert(cUserID+" Insert "+cUserName);
+		// insert
+		var data = new FormData();
+		//EDIT AS NEEDED IT
+		data.append("franID", franID);//MUST!!
+		data.append("cid", cid);//MUST!!
+		data.append("mode", "I");//MUST!!		
+		//data.append("idx", selectedSpItem_idx);//MUST!!
+		console.log("itemid "+document.getElementById('itemid_fld').value);
+		
+		data.append("itemid", document.getElementById('itemid_fld').value);
+		data.append("descript", document.getElementById('descript_fld').value);
+		data.append("price", document.getElementById('price_fld').value);
+		data.append("qnotes", document.getElementById('qnotes_fld').value);
+		data.append("cUserID",cUserID);//MUST MAYBE!!
+		data.append("cUserName",cUserName);//MUST MAYBE!!
+		//data.append("updatedwhen",null);
+		getGirdData(mode, data, 1);
+	};
+
+}
+
 	function a_dialog_X(c,a){
 		var dialogX = $("#dialog_X").kendoDialog({
 		   width: "400px",
@@ -199,120 +302,119 @@ $("form").submit(function(event) {
 
 	function getDataNow(d) {
 		dataSource = new kendo.data.DataSource({
-                transport: {
-                    read: function (e) {
-                        // on success
-                        e.success(d);
-                        // on failure
-                        //e.error("XHR response", "status code", "error message");
-                    },
-                    create: function (e) {
-                        // assign an ID to the new item
-                        //e.data.ProductID = sampleDataNextID++;
-                        // save data item to the original datasource
-                        //sampleData.push(e.data);
-                        // on success
-                        e.success(e.data);
-                        // on failure
-                        //e.error("XHR response", "status code", "error message");
-                    },
-                    update: function (e) {
-                        // locate item in original datasource and update it
-                        //sampleData[getIndexById(e.data.ProductID)] = e.data;
-                        // on success
-                        e.success();
-                        // on failure
-                        //e.error("XHR response", "status code", "error message");
-                    },
-                    destroy: function (e) {
-                        // locate item in original datasource and remove it
-                        //sampleData.splice(getIndexById(e.data.ProductID), 1);
-                        // on success
-                        e.success();
-                        // on failure
-                        //e.error("XHR response", "status code", "error message");
-                    }
-                },
-                error: function (e) {
-                    // handle data operation error
-                    alert("Status: " + e.status + "; Error message: " + e.errorThrown);
-                },
-                pageSize: 10,
-                batch: false,
-				
-                schema: {
-                    model: {
-                        id: "ProductID",
-                        fields: {
-                            idx: { type: "number" },
-                            itemidNo: { type: "number" },
-							descript: { type: "string" },
-							price: { type: "number" },
-							qnotes: { type: "string" }
-							//idx: { editable: false, nullable: true },
-                            //Introduced: { type: "date" },
-                            //UnitPrice: { type: "number", validation: { required: true, min: 1} },
-                            //Discontinued: { type: "boolean" },
-                            //UnitsInStock: { type: "number", validation: { min: 0, required: true } }
-                        }
-                    }
-                }
-				
-            });
-		//var grid = $("#grid").data("kendoGrid");
-		//grid.refresh();
+			transport: {
+				read: function (e) {
+					// on success
+					e.success(d);
+					// on failure
+					//e.error("XHR response", "status code", "error message");
+				},
+				create: function (e) {
+					// assign an ID to the new item
+					//e.data.ProductID = sampleDataNextID++;
+					// save data item to the original datasource
+					//sampleData.push(e.data);
+					// on success
+					e.success(e.data);
+					// on failure
+					//e.error("XHR response", "status code", "error message");
+				},
+				update: function (e) {
+					// locate item in original datasource and update it
+					//sampleData[getIndexById(e.data.ProductID)] = e.data;
+					// on success
+					e.success();
+					// on failure
+					//e.error("XHR response", "status code", "error message");
+				},
+				destroy: function (e) {
+					// locate item in original datasource and remove it
+					//sampleData.splice(getIndexById(e.data.ProductID), 1);
+					// on success
+					e.success();
+					// on failure
+					//e.error("XHR response", "status code", "error message");
+				}
+			},
+			error: function (e) {
+				// handle data operation error
+				alert("Status: " + e.status + "; Error message: " + e.errorThrown);
+			},
+			pageSize: 10,
+			batch: false,
+			
+			schema: {
+				model: {
+					id: "idx",
+					fields: {
+						idx: { type: "number" },
+						itemid: { type: "string" },
+						descript: { type: "string" },
+						price: { type: "number" },
+						qnotes: { type: "string" }
+						//idx: { editable: false, nullable: true },
+						//Introduced: { type: "date" },
+						//UnitPrice: { type: "number", validation: { required: true, min: 1} },
+						//Discontinued: { type: "boolean" },
+						//UnitsInStock: { type: "number", validation: { min: 0, required: true } }
+					}
+				}
+			}
+			
+		});
 	}
 	
 	function showG() {
 		
-            $("#grid").kendoGrid({
-                dataSource: dataSource,
-                pageable: true,
-				height: 325,
-			scrollable: true,
-			sortable: true,
-			//filterable: true,
-			persistSelection: true,
-			selectable: "row",
-                //toolbar: ["create"],
-                columns: [
-                    { field: "idx", title: "#", width: "50px" },
-					{ field: "itemidNo", title: "Item Id", width: "70px" },
-					{ field: "descript", title: "Description", width: "200px" },
-					{ field: "price", title: "Price", format: "{0:c}", width: "110px" },
-					{ field: "qnotes", title: "Notes", width: "200px" }
-                    //{ field: "itemidNo", title: "itemidNo", format: "{0:yyyy/MM/dd}", width: "200px" },
-                    //{ field: "UnitPrice", title: "Price", format: "{0:c}", width: "120px" },
-                    //{ field: "UnitsInStock", title:"Units In Stock", width: "120px" },
-                    //{ field: "Discontinued", width: "120px" },
-                    //{ command: ["edit", "destroy"], title: "&nbsp;", width: "200px" }
-                ],
-				editable: "inline"
-				,change: onChange_divGrid
-            });
-			adm_Grid1 = $("#grid").data("kendoGrid");
-			console.log("grid loaded...");
+		$("#grid").kendoGrid({
+			dataSource: dataSource,
+			pageable: true,
+			height: 325,
+		scrollable: true,
+		sortable: true,
+		//filterable: true,
+		persistSelection: true,
+		selectable: "row",
+			//toolbar: ["create"],
+			columns: [
+				{ field: "idx", title: "#", width: "50px" },
+				{ field: "itemid", title: "Item Id", width: "70px" },
+				{ field: "descript", title: "Description", width: "200px" },
+				{ field: "price", title: "Price", format: "{0:c}", width: "110px" },
+				{ field: "qnotes", title: "Notes", width: "200px" }
+				//{ field: "itemidNo", title: "itemidNo", format: "{0:yyyy/MM/dd}", width: "200px" },
+				//{ field: "UnitPrice", title: "Price", format: "{0:c}", width: "120px" },
+				//{ field: "UnitsInStock", title:"Units In Stock", width: "120px" },
+				//{ field: "Discontinued", width: "120px" },
+				//{ command: ["edit", "destroy"], title: "&nbsp;", width: "200px" }
+			],
+			editable: "inline"
+			,change: onChange_divGrid
+		});
+		adm_Grid1 = $("#grid").data("kendoGrid");
+		//console.log("grid loaded...");
 	}
 
 	function onChange_divGrid(e) {
 		//adm_Grid1 = $("#grid").data("kendoGrid");
-		//alert("OK");
 		// https://www.codeproject.com/Articles/606682/Kendo-Grid-In-Action
 		//Selecting Grid
-		//var gview = $("#grid").data("kendoGrid");
 		//Getting selected item
 		var selectedItem = adm_Grid1.dataItem(adm_Grid1.select());
-		//cJobNo = selectedItem.idx;
-		//accessing selected rows data 
-		//alert(selectedItem.idx);
 		// simple-input
-		document.getElementById('itemidNo_fld').value = selectedItem.itemidNo;
+		document.getElementById('itemid_fld').value = selectedItem.itemid;
 		document.getElementById('descript_fld').value = selectedItem.descript;
 		document.getElementById('price_fld').value = selectedItem.price;
 		document.getElementById('qnotes_fld').value = selectedItem.qnotes;
 		//console.log("PRICE "+selectedItem.price);
 		selectedSpItem_idx = selectedItem.idx;
 		formMode = "EDIT";
+		$('#formBtn_submit').prop('disabled', false);
+		$( "#itemid_fld" ).focus();
+		//$('#formBtn_submit').prop('disabled', false);
+		$('#formBtn_delete').prop('disabled', false);
+		$('#formBtn_new').prop('disabled', false);
+		$('#formBtn_cancel').prop('disabled', false);
 	}
 	
 function getGirdData(mode, fData, f) {
@@ -360,16 +462,15 @@ function getGirdData(mode, fData, f) {
 	}
 
 	function transferComplete(evt) {
-		if ( f == 0 ) {
+		//if ( f == 0 ) {
 			//document.getElementById('grid').innerHTML = "<p>Loading...</p>";
 			showG();
-			
-		};
+		//};
 		//getDataNow(spItemsData);
 		//var dataSource = new kendo.data.DataSource({
 			//data: spItemsData
 		//}
-		showG();
+		//showG();
 		//adm_Grid1 = $("#grid").data("kendoGrid");
 		console.log("The transfer is complete spItems.");	
 		//$("#grid").data("kendoGrid").refresh();	
@@ -385,35 +486,6 @@ function getGirdData(mode, fData, f) {
 	  //console.log("The transfer has been canceled by the user.");
 	}
 
-
-}
-
-function saveUpdate(mode) {
-
-	if ( mode == "U") {
-		// update
-		var data = new FormData();
-		//EDIT AS NEEDED IT
-		data.append("franID", franID);//MUST!!
-		data.append("cid", cid);//MUST!!
-		data.append("mode", "U");//MUST!!		
-		data.append("idx", selectedSpItem_idx);//MUST!!
-		//console.log("PRICE "+document.getElementById('price_fld').value);
-		data.append("itemid", document.getElementById('itemidNo_fld').value);
-		data.append("descript", document.getElementById('descript_fld').value);
-		data.append("price", document.getElementById('price_fld').value);
-		data.append("qnotes", document.getElementById('qnotes_fld').value);
-		getGirdData(mode, data, 1);
-
-	};
-	if ( mode == "D") {
-		// delete
-
-	};
-	if ( mode == "I") {
-		// insert
-
-	};
 
 }
 

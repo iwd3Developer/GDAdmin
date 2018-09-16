@@ -19,14 +19,20 @@ if ( $cid == $appCid ) {
 		
 	if ( $mode == "I" ) {
 		// edit query here 
-		$aDesc 		= $_POST["aDesc"];
-		$aStatus 	= $_POST["aStatus"];
-		$aLevel 	= $_POST["aLevel"];
-		$aFrom		= $_POST["aFrom"];
-		$aDateTime	= $_POST["aDateTime"];
+		$itemid 	= $_POST["itemid"];
+		$descript 	= $_POST["descript"];
+		$price 		= $_POST["price"];
+		$qnotes 	= $_POST["qnotes"];
+		$cUserID	= $_POST["cUserID"];
+		$cUserName	= $_POST["cUserName"];
 		
-		$SQL_query = "INSERT INTO `i_splist` (`idx`, `aDesc`, `aFrom`, `aDateTime`, `aStatus`, `aFranID`, `aLevel`) ";
-		$SQL_query .= "VALUES(NULL,'".$aDesc."', '".$aFrom."', '".$aDateTime."', '".$aStatus."', '".$afranID."', '".$aLevel."')"; 	
+		//$SQL_query = "INSERT INTO `i_splist` (`idx`, `itemid`, `descript`, `price`, `qnotes`, `franID`) ";
+		//$SQL_query .= "VALUES(NULL,'".$itemid."', '".$descript."', '".$price."', '".$qnotes."', '".$franID."')"; 	
+				
+		$SQL_query = "INSERT INTO `i_splist` (`idx`, `itemid`, `descript`, `price`, `franID`, `qnotes`, `updatedbyid`, `updatedby`, `updatedwhen`, `active`, `flg1`, `ts1`) "; 
+		$SQL_query .= " VALUES (NULL, '".$itemid."', '".$descript."', ".$price.", '".$franID."', '".$qnotes."', '".$cUserID."', '".$cUserName."', CURRENT_TIMESTAMP, '0', 'Z', CURRENT_TIMESTAMP) ";
+		
+		
 		// Query to run
 		$query = mysqli_query($connection,$SQL_query);
 	}
@@ -44,8 +50,7 @@ if ( $cid == $appCid ) {
 		$SQL_query 	.= "itemid = '".$itemid."' ";
 		$SQL_query 	.= ", descript = '".$descript."' ";
 		$SQL_query 	.= ", price = '".$price."' ";
-		$SQL_query 	.= ", qnotes = '".$qnotes."' "; 
-		
+		$SQL_query 	.= ", qnotes = '".$qnotes."' ";	
 
 		$SQL_query .= " WHERE idx = ".$idx." ;";
 		//$SQL_query .= "";
@@ -54,8 +59,12 @@ if ( $cid == $appCid ) {
 	}
 	if ( $mode == "D" ) {
 		// edit query here 
-		$id = 2; //$_POST["idx"];
-		$SQL_query = "DELETE TABLE i_splist WHERE idx = ".$id." ;"; 	
+		$idx 		= $_POST["idx"];
+		
+		// edit query here 
+		$SQL_query 	= "UPDATE i_splist SET ";
+		$SQL_query 	.= "flg1 = '0' ";
+		$SQL_query .= " WHERE idx = ".$idx." ;";
 		// Query to run
 		$query = mysqli_query($connection,$SQL_query);	
 	}
@@ -65,7 +74,7 @@ if ( $cid == $appCid ) {
 	
 	// return data here
 	// edit query here 
-	$SQL_query = "SELECT idx, itemid, descript, price, franID, qnotes, updatedbyid, updatedby, updatedwhen, active FROM i_splist WHERE franID = '$franID' AND flg1 = 'Z' ;"; 	
+	$SQL_query = "SELECT idx, itemid, descript, price, franID, qnotes, updatedbyid, updatedby, updatedwhen, active FROM i_splist WHERE franID = '".$franID."' AND flg1 = 'Z' ORDER BY itemid ;"; 	
 	// Query to run
 	$query = mysqli_query($connection,$SQL_query);	
 	// Create empty array to hold query results
@@ -79,7 +88,7 @@ if ( $cid == $appCid ) {
 			array_push($someArray, [
 				'idx'   		=> $row['idx'],
 				// edit columns below
-				'itemidNo' 		=> $row['itemid'],
+				'itemid' 		=> $row['itemid'],
 				'descript' 		=> $row['descript'],		  
 				'price' 		=> $row['price'],				
 				'franID'      	=> $row['franID'],

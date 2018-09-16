@@ -1,1 +1,5 @@
 i_splist price decimal 6,2
+	itemid change to text 11
+	updatedbyid to varchar 11
+
+
